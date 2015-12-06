@@ -1,0 +1,137 @@
+/*
+/*  CapSlider.ino
+ *  Paul Badger 6-2012
+ *  Demo sketch for the CapSlider class
+ *  Requires a resistive bridge of some form, between two wires
+ *  The resistive bridge is read capacitively
+ *  Adding some small (20-40 pf) caps at the pins helps stability and jitter.
+
+
+ #include <CapSlider.h>
+
+// requires a resistive slider setup between send and receive pins - see the docs
+// use any pins you like
+CapSlider slider_4_2 = CapSlider(4,2);
+
+int potVal;
+
+void setup()
+{
+    Serial.begin(9600);
+    Serial.println("start");
+}
+
+void loop()
+{   // The readSlider() method is designed to return values in between about 15 and 85 depending on how the slider is wired.
+    // You can either live with these values or map them to a larger range (as below).
+    // Because the library calibrates the first time through the readSlider() function - keep your hands off
+    // the snesor while the chip boots.
+    // Once the the readSlider() method is called the first time, there is no further calibration.
+    // A chip reset will be required to re-calibrate the slider.
+
+    // A capacitive slider will not work just like a slide pot since it is necessary to see if a user has actually touched
+    // the slider, before changing parameters that have been hooked up to the slider.
+    // You can query the class variable "total" to see what the "touched" value is and make decisions based upon that.
+    // The "smooth" function in the Arduino Playground might be useful for taking out jitter.
+
+    long start = millis();
+
+    int total = map(slider_4_2.readSlider(30),14,81,0,100);  // adjust map input to returned values for ends of slider
+    total = constrain(total, 0, 100);                          // constrain endpoints
+
+    Serial.print(millis() - start);             // check on performance in milliseconds
+    Serial.print("\t");                         // tab character for debug windown spacing
+    Serial.print(total);                        // print sensor output 1
+    Serial.print("\t");                         // tab character for debug windown spacing
+    Serial.print(slider_4_2.pressure);
+
+    if (slider_4_2.pressure > 550){           // adjust per your slider / also per sample param in readSlider()
+        potVal = total;
+    }
+
+    Serial.print("\t pot val = ");
+    Serial.println(potVal);
+
+    delay(50);                                  // arbitrary delay to limit data to serial por
+}*/
+
+
+---------- CODE INITIAL 3 pins ------------------------------------------------
+/*******************************************************************************
+* CapSense Slider
+*
+* Calculates the slider value.
+*
+* Format:
+*   <timestamp>\t<value>\n
+*******************************************************************************/
+#include <CapacitiveSensor.h>
+
+String times;
+const int SENSOR_POWER = 4;
+const int SENSOR_DELAY = 10;
+CapacitiveSensor sensor0 = CapacitiveSensor(SENSOR_POWER, 2);
+CapacitiveSensor sensor1 = CapacitiveSensor(SENSOR_POWER, 3);
+CapacitiveSensor sensor2 = CapacitiveSensor(SENSOR_POWER, 6);
+
+void setup()
+{
+   Serial.begin(9600);
+}
+
+void loop()
+{
+  // Send time
+  times = String(micros());
+  //Serial.print(times);
+  //Serial.print("\t");
+  float analog[3];
+  // Calculate slider value
+  analog[0] = sensor0.capacitiveSensor(SENSOR_DELAY);
+  analog[1] = sensor1.capacitiveSensor(SENSOR_DELAY);
+  analog[2] = sensor2.capacitiveSensor(SENSOR_DELAY);
+  float sum = analog[0] + analog[1] + analog[2] ;
+
+
+  if(sum > 100) {
+
+    for (int i=0; i <= 2; i++){
+
+      if (analog[i]>100) {
+        Serial.print("analog");
+         Serial.print("\t");
+         Serial.print(i);
+         Serial.print("\n");
+         Serial.print(analog[i]);
+         Serial.print("\n");
+      }
+    }
+    /* Show debug output
+      Serial.print("analog1");
+     Serial.print("\n");
+      Serial.print(analog1);
+     Serial.print("\n");
+     Serial.print("analog2");
+     Serial.print("\n");
+     Serial.print(analog2);
+     Serial.print("\n");
+     Serial.print("analog3");
+     Serial.print("\n");
+     Serial.print(analog3);
+     Serial.print("\n");*/
+
+    // Calculate value
+    //float diff = analog2 - analog1;
+    //float sliderValue = diff / sum + 0.5;
+
+    // Print slider value
+    //Serial.print("sliderValue");
+    //Serial.print("\n");
+    //Serial.print(sliderValue);
+    //Serial.print("\n");
+    //Serial.println();
+  } else {
+    //Serial.println("Not touched!");
+  }
+  delay(100);
+}

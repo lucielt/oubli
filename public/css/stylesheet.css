@@ -1,0 +1,15 @@
+* { margin: 0; padding: 0; /*cursor : none;*/}
+
+body, html { height:100%; }
+
+#canvas {
+    margin-left: auto;
+    margin-right: auto;
+    position:absolute;
+}
+
+#canvas2 {
+    margin-left: auto;
+    margin-right: auto;
+    position:absolute;
+}
