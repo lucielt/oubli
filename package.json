@@ -10,13 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.1",
+    "cloudinary": "^1.2.6",
+    "ejs": "^2.3.4",
     "express": "^4.13.1",
-    "socket.io": "^1.3.6"
+    "express-handlebars": "^2.0.1",
+    "mongoose": "^4.2.9",
+    "multer": "^1.1.0",
+    "socket.io": "^1.3.6",
+    "stream-buffers": "^3.0.0"
   },
   "optionalDependencies": {
     "serialport": "^1.7.4"
   },
-  "engines" : {
-    "node" : ">=0.12.0"
+  "engines": {
+    "node": ">=0.12.0"
   }
 }
