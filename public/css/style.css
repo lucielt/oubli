@@ -3,156 +3,116 @@
 	padding: 0;
 	border: 0;
 }
+html, body
+{
+    height: 100%;
+}
 body {
-	color:#fff;
+	/*min-height: 100%;*/
 	font-size: 16px;
-	/*font-family: 'Biryani', sans-serif;*/
-	font-family: 'Amaranth', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Amaranth', sans-serif;*/
+
 }
-a{
-	text-decoration: none;
-	color:cornflowerBlue;
-}
-a:hover{
-	color:blue;
-}
+/*
 a:visited {
     text-decoration: none;
 }
 a:active {
     text-decoration: underline;
-}
+}*/
 h1 {
 	color:aquamarine;
-	font-size: 100px;
+	font-size: 200px;
 	font-weight: 700;
+	letter-spacing: 2px;
 }
+
+/* ------
+MENU
+-------*/
 .menu{
-	height: 50px;
+	height: 40px;
 	width: 100%;
 	background-color: #000;
 	position: fixed;
 	bottom: 0;
-	padding-left: 40px;
+
 	z-index: 9999;
+	font-family: 'Playfair Display', serif;
+	font-size:16px;
+}
+.menu a{
+	font-size: 0.75em;
+	text-decoration: none;
+	color:cornflowerBlue;
+}
+.menu a:hover{
+	color: #fff;
 }
 .menu ul{
-	top: 15px;
-}
-ul{
+	top: 8px;
+	/*bottom: 20px;*/
 	list-style: none;
 	position: absolute;
-	bottom: 20px;
-	padding-left: 80px;
+	padding-left: 20px;
 	display: block;
 }
-li{
+.menu li{
 	display: inline-block;
 	margin-right: 20px;
 }
-.c-hamburger {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  width: 50px;
-  height: 50px;
-  font-size: 0;
-  text-indent: -9999px;
-  appearance: none;
-  box-shadow: none;
-  border-radius: none;
-  border: none;
-  cursor: pointer;
-	background-color: #000;
-  transition: background 0.3s;
-}
 
-.c-hamburger:focus {
-  outline: none;
+/* ------
+SITE
+-------*/
+.page{
+	min-height: 100vh;
+	font-family: 'Freight Disp Pro SemiBold';
+	/*font-family: 'Freight Disp Pro Light; font-family: 'Freight Disp Pro SemiBold'; font-family: 'Freight Disp Pro Medium'*/
 }
-.c-hamburger span {
-  display: block;
-  position: absolute;
-  top: 25px;
-  left: 10px;
-  right: 10px;
-  height: 3px;
-  background: white;
-}
-.c-hamburger span::before,
-.c-hamburger span::after {
-  position: absolute;
-  display: block;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: #fff;
-  content: "";
-}
-.c-hamburger span::before {
-  top: -10px;
-}
-.c-hamburger span::after {
-  bottom: -10px;
-}
-.c-hamburger--htx span {
-  transition: background 0s 0.3s;
-}
-.c-hamburger--htx span::before,
-.c-hamburger--htx span::after {
-  transition-duration: 0.3s, 0.3s;
-  transition-delay: 0.3s, 0s;
-}
-.c-hamburger--htx span::before {
-  transition-property: top, transform;
-}
-.c-hamburger--htx span::after {
-  transition-property: bottom, transform;
-}
-/* active state, i.e. menu open */
-.c-hamburger--htx.is-active {
-  background-color: #000;
-}
-
-.c-hamburger--htx.is-active span {
-  background: none;
-}
-.c-hamburger--htx.is-active span::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-.c-hamburger--htx.is-active span::after {
-  bottom: 0;
-  transform: rotate(-45deg);
-}
-.c-hamburger--htx.is-active span::before,
-.c-hamburger--htx.is-active span::after {
-  transition-delay: 0s, 0.3s;
-}
+	.gauche{
+		max-width: 25%;
+		max-height:100%;
+		float: left;
+		background-color: #456787;
+	}
+	.gauche h1{
+		font-size:4em;
+	}
+	.droite{
+		width: 75%;
+		height:100vh;
+		background-color: #fff;
+		float: left;
+		color:#000;
+	}
+		.paragraphe-premier{
+			padding: 2.5%;
+			background-color: #fff;
+		}
+		.paragraphe-deuxieme{
+			background-color: #f4f4f4;
+			padding: 2.5%;
+		}
 
 .gradient{
 	/*width: 100vh;*/
+	font-family: 'Freight Disp Pro SemiBold';
+	/*font-family: 'Freight Disp Pro Light; font-family: 'Freight Disp Pro SemiBold'; font-family: 'Freight Disp Pro Medium'*/
   height: 90vh;
 	padding: 30px;
-	background: -webkit-linear-gradient(180deg, aquamarine, cornflowerBlue); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(180deg, aquamarine, cornflowerBlue); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(180deg, aquamarine, cornflowerBlue); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(180deg, aquamarine, cornflowerBlue); /* Standard syntax */
+	background-image: url("/image/test.png");
+	background-size: cover;
+	/*background: -webkit-linear-gradient(180deg, aquamarine, cornflowerBlue);
+  background: -o-linear-gradient(180deg, aquamarine, cornflowerBlue);
+  background: -moz-linear-gradient(180deg, aquamarine, cornflowerBlue);
+  background: linear-gradient(180deg, aquamarine, cornflowerBlue); Standard syntax */
 }
 
-.invertGradient {
-  /*padding: 50px;*/
-  /*width: 100vh;*/
-  height: 80vh;
-	padding:30px;
-	position: relative;
-  background: -webkit-linear-gradient(0deg, lightSalmon, blue); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(0deg, lightSalmon, blue); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(0deg, lightSalmon, blue); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(0deg, lightSalmon, blue); /* Standard syntax */
-}
+/* ------
+EXPERIENCE
+-------*/
 #canvas {
     margin-left: auto;
     margin-right: auto;

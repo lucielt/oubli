@@ -6,8 +6,6 @@ canvas.width  = window.innerWidth;
 canvas.height = window.innerHeight;
 var ctx = canvas.getContext("2d");
 
-
-
     //var windowSize = c.height*c.width;
 
 var c2 = document.getElementById("canvas2");
