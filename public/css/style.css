@@ -10,8 +10,7 @@ html, body
 body {
 	/*min-height: 100%;*/
 	font-size: 16px;
-	font-family: 'Montserrat', sans-serif;
-	font-family: 'Amaranth', sans-serif;*/
+	font-family: 'Lato', sans-serif;
 
 }
 /*
@@ -22,46 +21,13 @@ a:active {
     text-decoration: underline;
 }*/
 h1 {
-	color:aquamarine;
-	font-size: 200px;
+	color:#000;
+	font-size: 50px;
 	font-weight: 700;
 	letter-spacing: 2px;
+	text-transform: uppercase;
 }
 
-/* ------
-MENU
--------*/
-.menu{
-	height: 40px;
-	width: 100%;
-	background-color: #000;
-	position: fixed;
-	bottom: 0;
-
-	z-index: 9999;
-	font-family: 'Playfair Display', serif;
-	font-size:16px;
-}
-.menu a{
-	font-size: 0.75em;
-	text-decoration: none;
-	color:cornflowerBlue;
-}
-.menu a:hover{
-	color: #fff;
-}
-.menu ul{
-	top: 8px;
-	/*bottom: 20px;*/
-	list-style: none;
-	position: absolute;
-	padding-left: 20px;
-	display: block;
-}
-.menu li{
-	display: inline-block;
-	margin-right: 20px;
-}
 
 /* ------
 SITE
@@ -96,20 +62,74 @@ SITE
 			padding: 2.5%;
 		}
 
-.gradient{
+.corps{
 	/*width: 100vh;*/
-	font-family: 'Freight Disp Pro SemiBold';
-	/*font-family: 'Freight Disp Pro Light; font-family: 'Freight Disp Pro SemiBold'; font-family: 'Freight Disp Pro Medium'*/
-  height: 90vh;
-	padding: 30px;
-	background-image: url("/image/test.png");
-	background-size: cover;
-	/*background: -webkit-linear-gradient(180deg, aquamarine, cornflowerBlue);
-  background: -o-linear-gradient(180deg, aquamarine, cornflowerBlue);
-  background: -moz-linear-gradient(180deg, aquamarine, cornflowerBlue);
-  background: linear-gradient(180deg, aquamarine, cornflowerBlue); Standard syntax */
+  	height: 100vh;
+	padding: 75px 25px 0 25px;
 }
-
+.milieu{
+	padding: 25px;
+	border: solid 10px #000;
+	border-bottom: none;
+	height: 100%;
+}
+.milieu h1{
+	position: fixed;
+	bottom: 0px;
+}
+.rect-bas{
+	height: 10px;
+	background-color: #000;
+	/*position: fixed;*/
+	bottom: 0px;
+	margin: 0 25px 0 25px;
+}
+.menu-accueil{
+	position: relative;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.menu-accueil ul{
+	list-style: none;
+	position: relative;
+	text-align: center;
+	height: 200px;
+}
+.menu-accueil li{
+	display: inline-block;
+	margin-right: 20px;
+	width: 25%;
+	height: 100%;
+}
+.menu-accueil a{
+	position: absolute;
+	top: 50%;
+	height: 200px;
+	margin-top: -50px;
+}
+.accueil-forme{
+	background-image: url("/image/svg/accueil.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.recherche-forme{
+	background-image: url("/image/svg/recherche.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.galerie-forme{
+	background-image: url("/image/svg/galerie.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.menu-accueil a{
+	font-size: 9pt;
+	font-weight: 900;
+	text-decoration: none;
+	position: relative;
+	color:#000;
+}
 /* ------
 EXPERIENCE
 -------*/
@@ -129,4 +149,63 @@ EXPERIENCE
     /*width:100%;
     height:100%;*/
     z-index: 1;
+}
+
+/* ------
+MENU
+-------*/
+.menu{
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size:24pt;
+}
+#projet.menu {
+		background-color: #f4ffa1;
+}
+#home.menu {
+		background-color: #7bffc3;
+}
+.menu a{
+	font-size: 0.40em;
+	text-decoration: none;
+	position: relative;
+	color:#000;
+}
+.menu a:hover{
+	color: #000;
+}
+.menu a:before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 1px;
+  bottom: -4px;
+  left: 10%;
+  background-color: #000;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+.menu a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+.menu ul{
+	list-style: none;
+	position: absolute;
+	padding-left: 25px;
+	top:-2px;
+	display: block;
+}
+.menu li{
+	display: inline-block;
+	margin-right: 20px;
 }
