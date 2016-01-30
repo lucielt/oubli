@@ -73,6 +73,24 @@ SITE
 	border-bottom: none;
 	height: 100%;
 }
+.milieu .accueil h1{
+	position: absolute;
+	bottom: 0px;
+	/* left: 45%; */
+	width: 100%;
+	text-align: center;
+	/* margin-left: -50%; */
+}
+.milieu .accueil h1 .rect-bas{
+	height: 10px;
+	background-color: #000;
+	position: relative;
+	bottom: 0px;
+	left: 50%;
+	width: 3em;
+	margin-left: -1.5em;
+	/* margin: 0 25px 0 25px; */
+}
 .milieu h1{
 	position: fixed;
 	bottom: 0px;
@@ -85,51 +103,85 @@ SITE
 	margin: 0 25px 0 25px;
 }
 .menu-accueil{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	margin-top: -90px;
+	font-size: 9pt;
+	font-weight: 900;
+	/*
 	position: relative;
-  top: 50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+	top: 50%;
+	left:50%;
+	transform: translate(-50%,-50%);*/
 }
+
+
 .menu-accueil ul{
 	list-style: none;
 	position: relative;
 	text-align: center;
 	height: 200px;
 }
+
 .menu-accueil li{
-	display: inline-block;
-	margin-right: 20px;
-	width: 25%;
-	height: 100%;
-}
-.menu-accueil a{
-	position: absolute;
-	top: 50%;
-	height: 200px;
-	margin-top: -50px;
-}
-.accueil-forme{
-	background-image: url("/image/svg/accueil.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-}
-.recherche-forme{
-	background-image: url("/image/svg/recherche.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-}
-.galerie-forme{
-	background-image: url("/image/svg/galerie.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-}
-.menu-accueil a{
-	font-size: 9pt;
-	font-weight: 900;
-	text-decoration: none;
+	display:inline-block;
 	position: relative;
+	width:24%;
+}
+.menu-accueil li a{
+	display:block;
+	position: relative;
+	width: 100%;
+	height:0;
+	padding-bottom:50%;
+	text-decoration: none;
 	color:#000;
 }
+
+.menu-accueil li svg{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.menu-accueil li svg path{
+	transition: opacity 0.8s ease-out;
+}
+
+.menu-accueil li svg polygon{
+	fill:#fff;
+	transition: fill 0.8s ease-out;
+}
+/*.menu-accueil li a:hover svg polygon{
+	fill:#fff;
+}*/
+
+.menu-accueil li a:hover svg path{
+	/*fill:#fff;*/
+	opacity: 0;
+}
+
+.menu-accueil li a .label{
+	position: absolute;
+	top:50%;
+	left: 0;
+	width: 100%;
+	margin-top:-0.5em;
+	text-align: center;
+	transition: opacity 0.6s ease-out;
+}
+.menu-accueil li a:hover .label{
+	/*color:#fff;*/
+	opacity:0;
+
+}
+
 /* ------
 EXPERIENCE
 -------*/
@@ -154,6 +206,50 @@ EXPERIENCE
 /* ------
 MENU
 -------*/
+
+.rect_anim{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-mask: url(#clipping);
+
+}
+.one, .two, .tree, .four {
+  width     : 200%;
+  height    : 200%;
+  margin    : 0 auto;
+  position  : absolute;
+}
+
+@-webkit-keyframes anim {
+  0%    { left: 0; top: -25%; }
+  50%   { left: -25%; top: -62%; }
+  100%  { left: 0; top: -100%; }
+}
+
+@-webkit-keyframes anim-two {
+  0%    { left: 0; top: -100%; }
+  50%   { left: -25%; top: -62%; }
+  100%  { left: 0; top: -25%; }
+}
+
+.one {
+  background: -webkit-repeating-radial-gradient(0% 50%, circle, transparent, transparent 3px, rgba(250, 250, 250, 0.6) 3px, rgba(100, 100, 100, 0.6) 3px, transparent 5px);
+repeating-radial-gradient(0% 50%, circle, transparent, transparent 3px, rgba(250, 250, 250, 0.6) 3px, rgba(100, 100, 100, 0.6) 3px, transparent 5px);
+  -webkit-animation: anim infinite linear 5s alternate;
+ animation: anim infinite linear 5s alternate;
+}
+
+.two {
+  background: -webkit-repeating-radial-gradient(50% 0%, circle, transparent, transparent 3px, rgba(250, 250, 250, 0.6) 3px, rgba(100, 100, 100, 0.6) 3px, transparent 5px);
+  -webkit-animation: anim-two infinite linear 7s alternate;
+}
+
+/* ------
+MENU
+-------*/
 .menu{
 	height: 50px;
 	width: 100%;
@@ -163,13 +259,15 @@ MENU
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
 	font-size:24pt;
+	overflow: hidden;
 }
 #projet.menu {
 		background-color: #f4ffa1;
 }
 #home.menu {
-		background-color: #7bffc3;
+		/*background-color: #7bffc3;*/
 }
+
 .menu a{
 	font-size: 0.40em;
 	text-decoration: none;
