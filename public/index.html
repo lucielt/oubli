@@ -5,30 +5,33 @@
 <!-- Inclure les fichiers externes-->
 <link type="text/css" rel="stylesheet" href="/css/style.css"/>
 
-<link href='https://fonts.googleapis.com/css?family=Lato:700,400,900' rel='stylesheet' type='text/css'></head>
+<link href='https://fonts.googleapis.com/css?family=Lato:700,400,900' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
 <body>
-    <div class='menu' id='home'>
+    <!--div class='menu' id='home'>
         <div class="one"></div>
         <div class="two"></div>
         <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="experience.html">Projet</a></li>
-            <li><a href="projet.html">Recherche</a></li>
-            <li><a href='/cartes'>Galerie</a></li>
+        <li><a href="index.html">Amorce</a></li>
+        <li><a href="recherche.html">Recherche</a></li>
+        <li><a href='/cartes'>E-Archive</a></li>
+        <li><a href="projet.html">Projet</a></li>
         </ul>
-    </div>
-    <div class='corps'>
+    </div-->
+    <div class='corps' id="amorce">
         <div class='milieu'>
             <div class="accueil">
-            <h1>L'oub.li
-                <div class='rect-bas'></div>
-            </h1>
-        </div>
+                <h1>L'oub.li
+                    <div class='rect-bas'></div>
+                </h1>
+            </div>
             <div class='menu-accueil'>
                 <ul>
                     <li class='accueil-forme'>
                         <a href="index.html">
-                            <span class="label">Accueil</span>
+                            <span class="what">Ce site web est présenté dans le cadre de la maitrise en recherche-création en média expérimental à l'UQAM</span>
+                            <span class="label">Amorce</span>
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 178 196.4" style="enable-background:new 0 0 178 196.4;" xml:space="preserve">
                             <style type="text/css">
@@ -40,23 +43,30 @@
                         </a>
                     </li>
                     <li class='recherche-forme'>
-                        <a href="projet.html">
-                            <span class="label">Recherche</span>
+                        <a href="recherche.html">
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
                                 <style type="text/css">
-                                    .st0{fill:#FFFFFF;}
+                                    /*.st0{fill:#FFFFFF;}*/
+                                    .st0{fill:#7BFFC3;}
                                 </style>
                                 <g>
                                     <path d="M92.6,10v8.6v10h10h8.8v7.1v10h10h8.8v7.6v10h10h8.8v7.6v10h10h8.8V186H85.4v-7.6v-10h-10h-8.8v-7.6v-10h-10h-8.8v-7.6v-10
                                     h-10h-8.8v-7.6v-10h-10H10V10H92.6 M102.6,0H0v125.8h18.8v17.6h18.8v17.6h18.8v17.6h18.8V196H178V70.8h-18.8V53.3h-18.8V35.7h-18.8
                                     V18.6h-18.8V0L102.6,0z"/>
                                 </g>
+                                <g>
+                                    <polyline class="st0" points="92.6,10 92.6,18.6 92.6,28.6 102.6,28.6 111.4,28.6 111.4,35.7 111.4,45.7 121.4,45.7 130.2,45.7
+                                    130.2,53.3 130.2,63.3 140.2,63.3 149,63.3 149,70.9 149,80.9 159,80.9 167.8,80.9 167.8,186 85.4,186 85.4,178.4 85.4,168.4
+                                    75.4,168.4 66.6,168.4 66.6,160.8 66.6,150.8 56.6,150.8 47.8,150.8 47.8,143.2 47.8,133.2 37.8,133.2 29,133.2 29,125.6 29,115.6
+                                    19,115.6 10,115.6 10,10 92.6,10 	"/>
+                                </g>
                             </svg>
+                            <span class="what">Recherche sur les motivations d'extinction de l'oubli et tentative de démonstration que la digitalisation n'y parvient pas</span>
+                            <span class="label">Recherche</span>
                         </a>
                     </li>
                     <li class='galerie-forme'>
-
                         <a href="/cartes">
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
@@ -70,23 +80,15 @@
                                     l-9.5,11.9l-6.8-7.8l-7.4,9.9L76.1,186H69v-17.7V158h-9.7H54v-15.3V133h-9.5H40v-16v-10H29.7H25V91.5V82H14.9H10V10H109 M119,0H0
                                     v92h15v25h15v26h14v25h15v28h22.1l22.4-29.7l6.6,7.5l17-21.2l29.6,43.4H178v-96h-15V74h-15V50h-14V23h-15V0L119,0z"/>
                                 </g>
-                                <defs>
-                                    <mask>
-                                        <polygon id="clipping" class="st0" points="159.3,191 127.4,144.2 109.9,166 103.2,158.5 78.6,191 64,191 64,163 49,163 49,138 35,138 35,112
-                                        20,112 20,87 5,87 5,5 114,5 114,28 129,28 129,55 143,55 143,79 158,79 158,105 173,105 173,191 	"/>
-                                    </mask>
-                                </defs>
                             </svg>
-                            <div class="rect_anim">
-                                <div class="one"></div>
-                                <div class="two"></div>
-                            </div>
-                            <span class="label">Galerie</span>
+                            <span class="what">Espace évolutif de l'archivage en ligne de la dégradation des souvenirs des uagers ayant vécu l'expérience</span>
+                            <span class="label">E-Archive</span>
                         </a>
                     </li>
                     <li class='experience-forme'>
-                        <a href="/cartes">
-                            <span class="label">Experience</span>
+                        <a href="projet.html">
+                            <span class="what">Projet de création associé à la recherche sur les formes d'oublis numérique. </span>
+                            <span class="label">Projet</span>
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
                                 <g>
@@ -101,6 +103,18 @@
 
         </div>
     </div>
-
+<script>
+$('.what').hover(function() {
+        if ($(this).hover){
+            $('.what').addClass('hover');
+        }
+        else{
+            $('.what').removeClass('hover');
+        }
+        });
+/*$('.what').hover(
+       function(){ $(this).addClass('hover') }
+)*/
+</script>
 </body>
 </html>

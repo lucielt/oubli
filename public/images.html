@@ -3,12 +3,21 @@
 <head>
 <title>L'oubli</title>
 <!-- Inclure les fichiers externes-->
-<!--<link type="text/css" rel="stylesheet" href="/css/style.css"/>-->
+<link type="text/css" rel="stylesheet" href="/css/style.css"/>
 <link href='https://fonts.googleapis.com/css?family=Domine|Montserrat+Alternates|VT323' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Asap:400,700|Amaranth:400,700|Biryani:400,200,700|Jaldi:400,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
+    <div class='menu' id='galerie'>
+        <ul>
+            <li><a href="index.html">Amorce</a></li>
+            <li><a href="recherche.html">Recherche</a></li>
+            <li><a href='/cartes'>E-Archive</a></li>
+            <li><a href="projet.html">Projet</a></li>
+        </ul>
+    </div>
+    <div class='corps'>
     <ul class="images">
     <% for(var i=0; i < cards.length; i++) { %>
        <li class="image">
@@ -18,7 +27,7 @@
        </li>
     <% } %>
     </ul>
-
+</div>
     <style type="text/css">
         .images {
             position:static;
