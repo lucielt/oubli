@@ -55,6 +55,7 @@ SITE
 	/* left: 45%; */
 	width: 100%;
 	text-align: center;
+	margin-left: -60px;
 	/* margin-left: -50%; */
 }
 .milieu .accueil h1 .rect-bas{
@@ -239,10 +240,6 @@ RECHERCHE
 	.gauche ul li a:hover{
 		color: #f4ffa1;
 	}
-	.gauche h1{
-		font-size:4em;
-
-	}
 	.droite{
 		/* width: auto; */
 		/* float: left; */
@@ -250,7 +247,7 @@ RECHERCHE
 		/* margin-left: 75px; */
 		/* margin-right: 65px; */
 		width: 80%;
-		min-height: 3000px;
+		/*min-height: 3000px;*/
 		margin: auto;
 		background-color: #fff;
 		margin-top: 70px;
@@ -271,23 +268,48 @@ RECHERCHE
 		}
 		.paragraphe h1{
 			padding: 50px 0px;
+			font-size: 4em;
+		}
+		.paragraphe .rect-bas{
+			height: 10px;
+			background-color: #000;
+			margin: 0 8.5em 0 0.5em;
 		}
 		.paragraphe h2{
 			margin-bottom: 40px;
+			font-size: 3em;
+		}
+		.paragraphe h3{
+			margin-bottom: 40px;
+			font-size: 2em;
+		}
+		.paragraphe h4{
+			font-weight: 400;
+			font-size: 1.5em;
+		}
+		.paragraphe p.quote{
+			font-family: 'Lato', sans-serif;
+			font-weight: 600;
+			  font-size: 0.9em;
+			  line-height: 0.9em.;
+			  margin-bottom: 20px;
+		}
+		.paragraphe p .info{
+			font-weight: 400;
+		  font-size: 0.7em;
+		}
+		.paragraphe p .number{
+			font-weight: 900;
+		  font-size: 1.3em;
+
 		}
 		.paragraphe p{
-			/*-webkit-column-count: 4;
-			  -moz-column-count: 4;
-			  -moz-column-gap: 3em;
-			  column-count: 4;
-			  column-gap: 3em;  Opera 11+*/
 			  font-family: 'Freight Disp Pro SemiBold';
 			  font-size: 0.9em;
 			  line-height: 1.5em;
-
 		}
 		@media all and (min-width: 1024px){
-			.paragraphe p{
+			.paragraphe p.columns{
 				-webkit-column-count: 4;
 				  -webkit-column-gap: 3em; /* Saf3, Chrome*/
 				  -moz-column-count: 4;
@@ -296,7 +318,7 @@ RECHERCHE
 				  column-gap: 3em; /* Opera 11+*/
 			}
 		}@media (max-width: 1024px) and (min-width: 800px){
-			.paragraphe p{
+			.paragraphe p.columns{
 				-webkit-column-count: 2;
 				  -webkit-column-gap: 3em; /* Saf3, Chrome*/
 				  -moz-column-count: 2;
@@ -306,20 +328,57 @@ RECHERCHE
 			}
 		}
 		@media (max-width: 800px){
-			.paragraphe p{
+			.paragraphe p.columns{
 				-webkit-column-count: 1;
 				  -moz-column-count: 1;
 				  column-count: 1;
 			}
 		}
-			.paragraphe-premier{
+			/*.paragraphe-premier{
 				padding: 2.5%;
 				background-color: #fff;
 			}
 			.paragraphe-deuxieme{
 				background-color: #f4f4f4;
 				padding: 2.5%;
+			}*/
+			.s_paragraphe{
+				width: 100%;
+				display:inline-block;
+				margin-bottom:60px;
 			}
+			.s_paragraphe:last-of-type{
+				margin-bottom:0px;
+			}
+			.s_paragraphe p{
+				margin-bottom:10px;
+			}
+			.s_paragraphe a{
+				text-decoration: none;
+			}
+			.s_paragraphe img{
+				width: 100%;
+				height: auto;
+			}
+			.s_paragraphe .one_column{
+				width: 100%;
+				height: auto;
+			}
+			.s_paragraphe .two_column{
+				width: 45%;
+				height: auto;
+				float:left;
+				margin-right: 5%;
+			}
+			.s_paragraphe .four_column{
+				width: 25%;
+				height: auto;
+				float:left;
+			}
+
+			/*.s_paragraphe .four_column:first-of-type{
+				margin-right: 0px;
+			}*/
 
 /* ------
 MENU
