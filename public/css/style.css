@@ -284,6 +284,7 @@ RECHERCHE
 			font-size: 2em;
 		}
 		.paragraphe h4{
+			margin-bottom: 30px;
 			font-weight: 400;
 			font-size: 1.5em;
 		}
@@ -293,6 +294,7 @@ RECHERCHE
 			  font-size: 0.9em;
 			  line-height: 0.9em.;
 			  margin-bottom: 20px;
+			  width: 50%;
 		}
 		.paragraphe p .info{
 			font-weight: 400;
@@ -301,6 +303,15 @@ RECHERCHE
 		.paragraphe p .number{
 			font-weight: 900;
 		  font-size: 1.3em;
+
+		}
+		.paragraphe p .bold{
+			font-family: 'Lato', sans-serif;
+			font-weight: 900;
+
+		}
+		.paragraphe p .underline{
+			text-decoration: underline;
 
 		}
 		.paragraphe p{
@@ -371,9 +382,13 @@ RECHERCHE
 				margin-right: 5%;
 			}
 			.s_paragraphe .four_column{
-				width: 25%;
+				width: 23%;
 				height: auto;
 				float:left;
+				margin-right: 2%;
+			}
+			.s_paragraphe .leftext{
+				text-align: right;
 			}
 
 			/*.s_paragraphe .four_column:first-of-type{
