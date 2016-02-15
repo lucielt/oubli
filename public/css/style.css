@@ -289,7 +289,11 @@ RECHERCHE
 		}
 		.paragraphe{
 			padding: 25px;
-			border: solid 10px #000;
+			background-color: #ffffff;
+			-webkit-box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
+		-moz-box-shadow: 0px 0px 33px 1px rgba(2234,234,234,1);
+		box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
+			/*border: solid 10px #000;*/
 			height: 100%;
 			margin: 10px 0 20px 0;
 		}
@@ -437,7 +441,8 @@ MENU
 	overflow: hidden;
 }
 #recherche.menu {
-	background-color: #f4ffa1;
+	background-color: #ffffff;
+	border-bottom: solid 1px #000;
 }
 #home.menu {
 	/*background-color: #7bffc3;*/
