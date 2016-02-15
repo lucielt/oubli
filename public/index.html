@@ -4,7 +4,7 @@
 <title>L'oubli</title>
 <!-- Inclure les fichiers externes-->
 <link type="text/css" rel="stylesheet" href="/css/style.css"/>
-
+<script src="/script/css-browser-selector.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Lato:700,400,900' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
@@ -21,11 +21,7 @@
     </div-->
     <div class='corps' id="amorce">
         <div class='milieu'>
-            <div class="accueil">
-                <h1>L'oub.li
-                    <div class='rect-bas'></div>
-                </h1>
-            </div>
+
             <div class='menu-accueil'>
                 <ul>
                     <li class='accueil-forme'>
@@ -66,6 +62,8 @@
                             <span class="label">Recherche</span>
                         </a>
                     </li>
+                </ul>
+                <ul>
                     <li class='galerie-forme'>
                         <a href="/cartes">
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -99,10 +97,16 @@
                         </a>
                     </li>
                 </ul>
+                <div class="accueil">
+                    <h1>L'oub.li
+                        <div class='rect-bas'></div>
+                    </h1>
+                </div>
             </div>
 
         </div>
     </div>
+    <canvas id="canvasGameOfLife" width="901" height="433"></canvas>
 <script>
 $('.what').hover(function() {
         if ($(this).hover){
@@ -116,5 +120,8 @@ $('.what').hover(function() {
        function(){ $(this).addClass('hover') }
 )*/
 </script>
+<script src="/script/json-sans-eval.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="/script/main.js"></script>
 </body>
 </html>

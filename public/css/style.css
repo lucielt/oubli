@@ -11,7 +11,6 @@ body {
 	/*min-height: 100%;*/
 	font-size: 16px;
 	font-family: 'Lato', sans-serif;
-
 }
 /*
 a:visited {
@@ -32,40 +31,60 @@ h1 {
 /* ------
 SITE
 -------*/
-#amorce.corps {
-		padding: 25px 25px 0 25px;
-		overflow-y: hidden;
+#canvasGameOfLife{
+	position:absolute;
+	top:0;
+    width: 100%;
+    height: 100%;
+	margin: 0;
+	padding: 0;
+	pointer-events: none;
 }
+
 .corps{
 	/*width: 100vh;*/
   	height: 100vh;
 	padding: 75px 25px 0 25px;
 }
+#amorce{
+		padding: 25px 25px 0 25px;
+		overflow-y: hidden;
+		background-image: url("/image/bkg_accueil-01.png");
+	background-size: contain;
 
+}
 .milieu{
 	padding: 25px;
-	border: solid 10px #000;
-	border-bottom: none;
+	/*border: solid 10px #000;
+	border-bottom: none;*/
 	height: 100%;
 	overflow-y: hidden;
 }
 .milieu .accueil h1{
-	position: absolute;
+	/* position: absolute;
 	bottom: 0px;
-	/* left: 45%; */
+	left: 45%;
 	width: 100%;
 	text-align: center;
-	margin-left: -60px;
-	/* margin-left: -50%; */
+	/* margin-left: -50%;*/
+	position: relative;
+	width: 100%;
+	margin-top: -327px;
+	text-align: center;
+	color: #2e2e2e;
+	margin-left: -290px;
+	z-index: 8888;
+	transform: rotate(-90deg);
+	pointer-events: none;
 }
 .milieu .accueil h1 .rect-bas{
-	height: 10px;
-	background-color: #000;
+	height: 8px;
+	background-color: #eaeaea;
 	position: relative;
 	bottom: 0px;
 	left: 50%;
 	width: 3em;
-	margin-left: -1.5em;
+	margin-left: -2.1em;
 	/* margin: 0 25px 0 25px; */
 }
 .milieu h1{
@@ -73,7 +92,7 @@ SITE
 	bottom: 0px;
 }
 .rect-bas{
-	height: 10px;
+	height: 8px;
 	background-color: #000;
 	/*position: fixed;*/
 	bottom: 0px;
@@ -81,14 +100,20 @@ SITE
 }
 .menu-accueil{
 	position: absolute;
-	width: 100%;
+	/*width: 100%;
+	left: 0;*/
+	width:576px;
+	height:384px;
 	top: 50%;
-	top: 50%;
-	left: 0;
-	width: 100%;
-	margin-top: -90px;
+	left:50%;
+	margin-top: -192px;
+	margin-left: -288px;
 	font-size: 9pt;
 	font-weight: 900;
+	background-color: #ffffff;
+	-webkit-box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
+-moz-box-shadow: 0px 0px 33px 1px rgba(2234,234,234,1);
+box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
 	/*
 	position: relative;
 	top: 50%;
@@ -99,13 +124,13 @@ SITE
 	list-style: none;
 	position: relative;
 	text-align: center;
-	height: 200px;
+	margin-top: 35px;
 }
 
 .menu-accueil li{
 	display:inline-block;
 	position: relative;
-	width:24%;
+	width:49%;
 }
 .menu-accueil li a{
 	display:block;
@@ -161,9 +186,11 @@ SITE
 	width: 50%;
 	margin-top:-4em;
 	padding: 0 25%;
-	text-align: center;
+	text-align: left;
 	line-height: 2em;
 	color:#eaeaea;
+	z-index: 9999;
+	font-weight: 400;
 	/*font-weight: 400;*/
 	transition: opacity 0.4s ease-out;
 }
@@ -172,7 +199,7 @@ SITE
 	transition: opacity 1.2s ease-in;
 }
 .menu-accueil li a:hover .what.hover{
-	-webkit-animation: anim-text 1.2s linear 3s forwards;
+	-webkit-animation: anim-text 1.2s linear 8s forwards;
 }
 @-webkit-keyframes anim-text {
 	0%    { opacity:1; }
@@ -262,7 +289,11 @@ RECHERCHE
 		}
 		.paragraphe{
 			padding: 25px;
-			border: solid 10px #000;
+			background-color: #ffffff;
+			-webkit-box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
+		-moz-box-shadow: 0px 0px 33px 1px rgba(2234,234,234,1);
+		box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
+			/*border: solid 10px #000;*/
 			height: 100%;
 			margin: 10px 0 20px 0;
 		}
@@ -410,7 +441,8 @@ MENU
 	overflow: hidden;
 }
 #recherche.menu {
-	background-color: #f4ffa1;
+	background-color: #ffffff;
+	border-bottom: solid 1px #000;
 }
 #home.menu {
 	/*background-color: #7bffc3;*/
