@@ -15,10 +15,10 @@ var Life = {
         gui: 0
     },
     // Initial state
-    initialState: '[{"70":[160]},{"71":[162]},{"72":[159,160,163,164,165]}]',
+    initialState: '[{"90":[160]},{"91":[162]},{"92":[159,160,163,164,165]},{"20":[260]},{"21":[262]},{"22":[259,260,263,264,265]}]',
     // Trail state
     trail: {
-        current: true,
+        current: false,
         schedule: false
     },
     // Grid style
@@ -34,9 +34,9 @@ var Life = {
         current: 0,
         schedule: false,
         schemes: [{
-            columns: window.innerWidth/5,
-            rows: window.innerHeight/5,
-            cellSize: 5
+            columns: window.innerWidth/4,
+            rows: window.innerHeight/4,
+            cellSize: 4
         }]
     },
 
@@ -54,6 +54,11 @@ var Life = {
             dead: 'rgba(250,250,250,0)',
             trail: ['rgba(250,250,250,0)'],
             alive: ['#000000']
+        },
+        {
+            dead: 'rgba(250,250,250,0)',
+            trail: ['rgba(250,250,250,0)'],
+            alive: ['#FFFFFF']
         }]
     },
     row: 0,
