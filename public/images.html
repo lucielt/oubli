@@ -4,12 +4,13 @@
 <title>L'oubli</title>
 <!-- Inclure les fichiers externes-->
 <link type="text/css" rel="stylesheet" href="/css/style.css"/>
+<link type="text/css" rel="stylesheet" href="/css/font.css"/>
 <link href='https://fonts.googleapis.com/css?family=Domine|Montserrat+Alternates|VT323' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Asap:400,700|Amaranth:400,700|Biryani:400,200,700|Jaldi:400,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
-    <div class='menu' id='galerie'>
+    <div class='menu' id='recherche'>
         <ul>
             <li><a href="index.html">Amorce</a></li>
             <li><a href="recherche.html">Recherche</a></li>
@@ -17,9 +18,21 @@
             <li><a href="projet.html">Projet</a></li>
         </ul>
     </div>
-    <div class='corps'>
+    <div class='corps gallerie'>
     <ul class="images">
     <% for(var i=0; i < cards.length; i++) { %>
+       <li class="image">
+           <p><img src="/image/<%= cards[i]._id %>" /></p>
+           <span>
+           <h4><%= cards[i].name %></h4>
+           <p><%= cards[i].phrase %></p>
+       </span>
+       </li>
+       <li class="image">
+           <h4><%= cards[i].name %></h4>
+           <p><%= cards[i].phrase %></p>
+           <p><img src="/image/<%= cards[i]._id %>" /></p>
+       </li>
        <li class="image">
            <h4><%= cards[i].name %></h4>
            <p><%= cards[i].phrase %></p>
@@ -29,9 +42,18 @@
     </ul>
 </div>
     <style type="text/css">
+    .corps.gallerie{
+        position: absolute;
+        top: 50px;
+        text-align: center;
+        width: 100%;
+    }
         .images {
             position:static;
             color:#000;
+            /*text-align: center;*/
+            max-width: inherit;
+            margin: 0 auto;
         }
 
         .images,.image {
@@ -40,9 +62,23 @@
 
         .image {
             float:left;
-            width:33%;
+            width: 25%;
+            margin:5%;
+            padding: 25px;
+            background-color: #ffffff;
+        	-webkit-box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
+        	-moz-box-shadow: 0px 0px 33px 1px rgba(2234, 234, 234, 1);
+        	box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
         }
-
+        .image span{
+            top: 40px;
+            position: relative;
+            float:right;
+            width: 75%;
+            background-color: #fff;
+        }
+        .image h4{
+        }
         img {
             display:block;
             width:100%;
