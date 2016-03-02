@@ -59,14 +59,11 @@ var Life = {
             dead: 'rgba(250,250,250,0)',
             trail: ['rgba(250,250,250,0)'],
             alive: ['#FFFFFF']
-<<<<<<< HEAD
-=======
         },
         {
             dead: 'rgba(250,250,250,0)',
             trail: ['rgba(250,250,250,0)'],
             alive: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9']
->>>>>>> develop
         }]
     },
     row: 0,

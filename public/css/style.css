@@ -42,7 +42,7 @@ h1 {
 /* ------
 ACCUEIL
 -------*/
-<<<<<<< HEAD
+
 #canvasGameOfLife{
 	position:absolute;
 	top:0;
@@ -98,8 +98,8 @@ ACCUEIL
 	width: 3em;
 	margin-left: -2.1em;
 	/* margin: 0 25px 0 25px; */
-=======
-
+}
+/*
 #canvasGameOfLife {
     position: absolute;
     top: 0;
@@ -110,35 +110,33 @@ ACCUEIL
     pointer-events: none;
 }
 .corps {
-    /*width: 100vh;*/
+    /*width: 100vh;
     height: 100vh;
-    /*padding: 75px 25px 0 25px;*/
+    /*padding: 75px 25px 0 25px;
 }
 #search{
 	overflow-y: hidden;
 }
 #amorce {
-    /*padding: 25px 25px 0 25px;*/
+    /*padding: 25px 25px 0 25px;
     overflow-y: hidden;
     background-image: url("/image/bkg_accueil-01.png");
     background-size: contain;
->>>>>>> develop
 }
 .milieu {
     padding: 25px;
     /*border: solid 10px #000;
-	border-bottom: none;*/
+	border-bottom: none;
     height: 100%;
     overflow-y: hidden;
 }
-<<<<<<< HEAD
 .rect-bas{
 	height: 8px;
 	background-color: #000;
-	/*position: fixed;*/
+	/*position: fixed;
 	bottom: 0px;
 	margin: 0 25px 0 25px;
-}
+}*/
 .menu-accueil{
 	position: absolute;
 	/*width: 100%;
@@ -155,8 +153,7 @@ ACCUEIL
 	-webkit-box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
 -moz-box-shadow: 0px 0px 33px 1px rgba(2234,234,234,1);
 box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
-	/*
-=======
+}
 .milieu .accueil h1 {
     /* position: absolute;
 	bottom: 0px;
@@ -227,7 +224,6 @@ box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
 	left:50%;
 	transform: translate(-50%,-50%);*/
 }
-<<<<<<< HEAD
 .menu-accueil ul{
 	list-style: none;
 	position: relative;
@@ -301,7 +297,7 @@ box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
 	font-weight: 400;
 	/*font-weight: 400;*/
 	transition: opacity 0.4s ease-out;
-=======
+}
 .menu-accueil ul {
     list-style: none;
     position: relative;
@@ -321,7 +317,6 @@ box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
     padding-bottom: 50%;
     text-decoration: none;
     color: #2e2e2e;
->>>>>>> develop
 }
 .menu-accueil li svg {
     position: absolute;
@@ -330,10 +325,9 @@ box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
     width: 100%;
     height: 100%;
 }
-<<<<<<< HEAD
 .menu-accueil li a:hover .what.hover{
 	-webkit-animation: anim-text 1.2s linear 8s forwards;
-=======
+}
 .menu-accueil li svg path {
     fill: #2e2e2e;
     transition: opacity 0.8s ease-out;
@@ -389,7 +383,6 @@ box-shadow: 0px 0px 33px 1px rgba(234,234,234,1);
 }
 .menu-accueil li a:hover .what.hover {
     -webkit-animation: anim-text 1.2s linear 8s forwards;
->>>>>>> develop
 }
 @-webkit-keyframes anim-text {
     0% {
@@ -681,6 +674,10 @@ RECHERCHE
     opacity: 0;
 }
 .paragraphe {
+    font-variant-ligatures: discretionary-ligatures;
+    -moz-font-feature-settings: "dlig";
+    -webkit-font-feature-settings: "dlig";
+    font-feature-settings: "dlig";
 	padding: 25px;
 	background-color: #ffffff;
 	-webkit-box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
