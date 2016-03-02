@@ -1,9 +1,9 @@
 #include <CapacitiveSensor.h>
 String times;
 // 10 megohm resistor between pins 4 & 2, pin 2 is sensor pin, add wire, foil
-const int SENSOR_POWER = 7;
+const int SENSOR_POWER = 2;
 const int SENSOR_DELAY = 10;
-CapacitiveSensor sensor0 = CapacitiveSensor(SENSOR_POWER, 2);
+CapacitiveSensor sensor0 = CapacitiveSensor(SENSOR_POWER, 7);
 CapacitiveSensor sensor1 = CapacitiveSensor(SENSOR_POWER, 3);
 CapacitiveSensor sensor2 = CapacitiveSensor(SENSOR_POWER, 4);
 CapacitiveSensor sensor3 = CapacitiveSensor(SENSOR_POWER, 5);
@@ -29,7 +29,7 @@ void loop(){
 
     for (int i=0; i < 5; i = i+1){
       if (analog[i]>100) {
-         Serial.println(String(i));
+          Serial.println(String(i));
       }
     }
   delay(5);
