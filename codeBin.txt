@@ -1,137 +1,244 @@
+//// indexScript.js - 06mars2016
+
+// Const
+
+// ------ CANVAS
+var canvas = document.getElementById("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var ctx = canvas.getContext("2d");
+
+//var windowSize = c.height*c.width;
+
+var c2 = document.getElementById("canvas2");
+c2.width = canvas.width;
+c2.height = canvas.height;
+var ctx2 = c2.getContext("2d");
+
+// ------ AUDIO
+var audio = document.getElementById("prout");
+
+// ------ IMG
+var img = new Image();
+img.src = 'bkg.png';
+
+var img2 = new Image(),
+    imgData;
+img2.src = 'rose.png';
+
+// ----------------------------------------------------------------------------
+
+function draw() {
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx2.drawImage(img2, 0, 0, canvas.width, canvas.height);
+    }
+}
+
+draw();
+
+var socket = io.connect('http://localhost:8080');
+//var x, y, button;           // readings from the server
+
+//sx=x de l'image source, x=x de la destination
+var sensors = [{
+    data: '0',
+    color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
+    centerX: 0,
+    centerY: 200,
+    radius: 50,
+    touches: 'Þ'
+}, {
+    data: '1',
+    color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
+    centerX: 800,
+    centerY: 50,
+    radius: 100,
+    touches: 'À'
+}, {
+    data: '2',
+    color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
+    centerX: 5000,
+    centerY: 150,
+    radius: 100,
+    touches: '3'
+}, {
+    data: '3',
+    color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
+    centerX: 250,
+    centerY: 400,
+    radius: 5,
+    touches: '5'
+}, {
+    data: '4',
+    color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
+    centerX: 300,
+    centerY: 500,
+    radius: 10,
+    touches: '8'
+}, ];
+
+var angStep = 30;
+var lastx = null;
+var lasty = null;
+var lastcpx = null;
+var lastcpy = null;
+var bezierInt = false;
+var x,
+    y,
+    cpx,
+    cpy,
+    ang,
+    radius,
+    centerx,
+    centery,
+    color;
+
+$(document).keydown(function(e) {
+    var s = String.fromCharCode(e.which);
+    console.log(s);
+    for (i = 0; i < sensors.length; i++) {
+        if (s == sensors[i].touches){
+            radius = sensors[i].radius;
+            centerx = sensors[i].centerX;
+            centery = sensors[i].centerY;
+            color = sensors[i].color[Math.floor((Math.random() * 5) + 1)];
+            //console.log("Nom de la touche ="+sensors[i].touches);
+            drawForm();
+        }
+        //var touche = sensors[i];
+        /*if (touche.touches.indexOf(e.which) !== -1) {
+            console.log("Nom de la touche ="+touche);
+            break;
+        }*/
+
+    }
+});
+
+function drawForm() {
+    console.log('je suis la');
+    ctx2.beginPath();
+    var startStep = (Math.random() * 360);
+    //var angleStep = 5;
+    radius += 0.5;
+    for (ang = startStep; ang <= 360 + startStep; ang += angStep) {
+        var rad = ang * Math.PI / 180;
+        var noise = (Math.random() * 200) + 1;
+        x = centerx + (radius * Math.cos(rad));
+        y = centery + (radius * Math.sin(rad));
+        cpx = centerx + ((radius + noise) * Math.cos(rad));
+        cpy = centery + ((radius + noise) * Math.sin(rad));
+        cpx2 = centerx + ((radius - (noise / 3)) * Math.cos(rad));
+        cpy2 = centery + ((radius - (noise / 3)) * Math.sin(rad));
+        if (lastx === null) {
+            ctx2.moveTo(x, y);
+            bezierInt = true;
+        } else if (bezierInt === false) {
+            //ctx.lineTo(x,y);
+            ctx2.bezierCurveTo(lastcpx, lastcpy, cpx, cpy, x, y);
+            bezierInt = true;
+        } else if (bezierInt === true) {
+            //ctx.lineTo(x,y);
+            ctx2.bezierCurveTo(lastcpx2, lastcpy2, cpx2, cpy2, x, y);
+            bezierInt = false;
+        }
+        lastx = x;
+        lasty = y;
+        lastcpx = cpx;
+        lastcpy = cpy;
+        lastcpx2 = cpx2;
+        lastcpy2 = cpy2;
+    }
+    //ctx.globalAlpha = Math.random();
+    ctx2.globalAlpha = 0.5;
+    ctx2.strokeStyle = color;
+    var pattern = ctx2.createPattern(img2, "repeat");
+    ctx2.fillStyle = pattern;
+    console.log(ctx2.strokeStyle);
+    ctx2.lineWidth = Math.random() * 5;
+    //ctx2.stroke();
+    ctx2.fill();
+}
+
 /*
-/*  CapSlider.ino
- *  Paul Badger 6-2012
- *  Demo sketch for the CapSlider class
- *  Requires a resistive bridge of some form, between two wires
- *  The resistive bridge is read capacitively
- *  Adding some small (20-40 pf) caps at the pins helps stability and jitter.
+// when new data comes in the websocket, read it:
+socket.on('sensor', function(data) {
+      console.log(data);
+      var i = parseFloat(data);
+      var radius = sensors[i].radius;
+      var centerx = sensors[i].centerX;
+      var centery = sensors[i].centerY;
+      //console.log(typeof i);
+      //console.log(sensors[i].data);
+      //ctx.globalCompositeOperation = sensors[i].color;
+    function drawForm(){
+        ctx2.beginPath();
+        var startStep = (Math.random()*360);
+        //var angleStep = 5;
+        radius += 0.5;
+        for(ang = startStep; ang <= 360 + startStep; ang += angStep){
+            var rad = ang * Math.PI / 180;
+            var noise = (Math.random() * 200)+1;
+            x = centerx + (radius * Math.cos(rad));
+            y = centery + (radius * Math.sin(rad));
+            cpx = centerx + ((radius+noise) * Math.cos(rad));
+            cpy = centery + ((radius+noise) * Math.sin(rad));
+            cpx2 = centerx + ((radius-(noise/3)) * Math.cos(rad));
+            cpy2 = centery + ((radius-(noise/3)) * Math.sin(rad));
+            if(lastx === null){
+                ctx2.moveTo(x,y);
+                bezierInt = true;
+            }
+            else if (bezierInt === false){
+                //ctx.lineTo(x,y);
+                ctx2.bezierCurveTo(lastcpx, lastcpy, cpx, cpy, x, y);
+                bezierInt = true;
+                }
+                else if (bezierInt === true) {
+                    //ctx.lineTo(x,y);
+                    ctx2.bezierCurveTo(lastcpx2, lastcpy2, cpx2, cpy2, x, y);
+                    bezierInt = false;
+                }
+                lastx = x;
+                lasty = y;
+                lastcpx = cpx;
+                lastcpy = cpy;
+                lastcpx2 = cpx2;
+                lastcpy2 = cpy2;
+                }
+                //ctx.globalAlpha = Math.random();
+                ctx2.globalAlpha = 0.5;
+                ctx2.strokeStyle = sensors[i].color[Math.floor((Math.random() * 5)+1)];
+                var pattern = ctx2.createPattern(img2, "repeat");
+                ctx2.fillStyle = pattern;
+                  console.log(ctx2.strokeStyle);
+                ctx2.lineWidth = Math.random() * 5;
+                //ctx2.stroke();
+                ctx2.fill();
+                }
+                drawForm();
 
+                /*function drawCircle() {
+                    var j = Math.floor((Math.random() * 4) + 1);
+                    var k = Math.floor((Math.random() * 3) + 1);
 
- #include <CapSlider.h>
+                  ctx2.beginPath();
+                  var x = (sensors[i].x)+100; // x coordinate
+                  var y = (sensors[i].y)+100; // y coordinate
+                  var startAngle = 0; // Starting point on circle
+                  var endAngle = Math.PI+(Math.PI*k)/2; // End point on circle
+                  var anticlockwise = j%2==0 ? false : true; // clockwise or anticlockwise
 
-// requires a resistive slider setup between send and receive pins - see the docs
-// use any pins you like
-CapSlider slider_4_2 = CapSlider(4,2);
+                  ctx2.arc(x, y, radius, startAngle, endAngle, anticlockwise);
 
-int potVal;
-
-void setup()
-{
-    Serial.begin(9600);
-    Serial.println("start");
-}
-
-void loop()
-{   // The readSlider() method is designed to return values in between about 15 and 85 depending on how the slider is wired.
-    // You can either live with these values or map them to a larger range (as below).
-    // Because the library calibrates the first time through the readSlider() function - keep your hands off
-    // the snesor while the chip boots.
-    // Once the the readSlider() method is called the first time, there is no further calibration.
-    // A chip reset will be required to re-calibrate the slider.
-
-    // A capacitive slider will not work just like a slide pot since it is necessary to see if a user has actually touched
-    // the slider, before changing parameters that have been hooked up to the slider.
-    // You can query the class variable "total" to see what the "touched" value is and make decisions based upon that.
-    // The "smooth" function in the Arduino Playground might be useful for taking out jitter.
-
-    long start = millis();
-
-    int total = map(slider_4_2.readSlider(30),14,81,0,100);  // adjust map input to returned values for ends of slider
-    total = constrain(total, 0, 100);                          // constrain endpoints
-
-    Serial.print(millis() - start);             // check on performance in milliseconds
-    Serial.print("\t");                         // tab character for debug windown spacing
-    Serial.print(total);                        // print sensor output 1
-    Serial.print("\t");                         // tab character for debug windown spacing
-    Serial.print(slider_4_2.pressure);
-
-    if (slider_4_2.pressure > 550){           // adjust per your slider / also per sample param in readSlider()
-        potVal = total;
-    }
-
-    Serial.print("\t pot val = ");
-    Serial.println(potVal);
-
-    delay(50);                                  // arbitrary delay to limit data to serial por
-}*/
-
-
----------- CODE INITIAL 3 pins ------------------------------------------------
-/*******************************************************************************
-* CapSense Slider
-*
-* Calculates the slider value.
-*
-* Format:
-*   <timestamp>\t<value>\n
-*******************************************************************************/
-#include <CapacitiveSensor.h>
-
-String times;
-const int SENSOR_POWER = 4;
-const int SENSOR_DELAY = 10;
-CapacitiveSensor sensor0 = CapacitiveSensor(SENSOR_POWER, 2);
-CapacitiveSensor sensor1 = CapacitiveSensor(SENSOR_POWER, 3);
-CapacitiveSensor sensor2 = CapacitiveSensor(SENSOR_POWER, 6);
-
-void setup()
-{
-   Serial.begin(9600);
-}
-
-void loop()
-{
-  // Send time
-  times = String(micros());
-  //Serial.print(times);
-  //Serial.print("\t");
-  float analog[3];
-  // Calculate slider value
-  analog[0] = sensor0.capacitiveSensor(SENSOR_DELAY);
-  analog[1] = sensor1.capacitiveSensor(SENSOR_DELAY);
-  analog[2] = sensor2.capacitiveSensor(SENSOR_DELAY);
-  float sum = analog[0] + analog[1] + analog[2] ;
-
-
-  if(sum > 100) {
-
-    for (int i=0; i <= 2; i++){
-
-      if (analog[i]>100) {
-        Serial.print("analog");
-         Serial.print("\t");
-         Serial.print(i);
-         Serial.print("\n");
-         Serial.print(analog[i]);
-         Serial.print("\n");
-      }
-    }
-    /* Show debug output
-      Serial.print("analog1");
-     Serial.print("\n");
-      Serial.print(analog1);
-     Serial.print("\n");
-     Serial.print("analog2");
-     Serial.print("\n");
-     Serial.print(analog2);
-     Serial.print("\n");
-     Serial.print("analog3");
-     Serial.print("\n");
-     Serial.print(analog3);
-     Serial.print("\n");*/
-
-    // Calculate value
-    //float diff = analog2 - analog1;
-    //float sliderValue = diff / sum + 0.5;
-
-    // Print slider value
-    //Serial.print("sliderValue");
-    //Serial.print("\n");
-    //Serial.print(sliderValue);
-    //Serial.print("\n");
-    //Serial.println();
-  } else {
-    //Serial.println("Not touched!");
-  }
-  delay(100);
-}
+                  if (j>1){
+                  ctx2.fillStyle = sensors[i].color;
+                    ctx2.fill();
+                  } else {
+                      ctx2.fillStroke = sensors[i].color;
+                    ctx2.stroke();
+                  }
+                  radius= radius+0.1;
+            }
+            drawCircle();
+});*/
