@@ -45,37 +45,100 @@ var sensors = [{
     centerX: 0,
     centerY: 200,
     radius: 50,
-    touches: 'Þ'
+    touches: 'Þ',
+    nbRow:2
 }, {
     data: '1',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
     centerX: 800,
     centerY: 50,
     radius: 100,
-    touches: 'À'
+    touches: 'À',
+    nbRow:2
 }, {
     data: '2',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-    centerX: 5000,
+    centerX: 500,
     centerY: 150,
     radius: 100,
-    touches: '3'
+    touches: '3',
+    nbRow:2
 }, {
     data: '3',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
     centerX: 250,
     centerY: 400,
     radius: 5,
-    touches: '5'
+    touches: '5',
+    nbRow:2
 }, {
     data: '4',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
     centerX: 300,
     centerY: 500,
     radius: 10,
-    touches: '8'
+    touches: '8',
+    nbRow:2
 }, ];
 
+var nbCell,
+    color,
+    centerx,
+    centery,
+    cellWidth = 4,
+    pas=0;
+
+
+$(document).keydown(function(e) {
+    var s = String.fromCharCode(e.which);
+    console.log(s);
+    for (i = 0; i < sensors.length; i++) {
+        if (s == sensors[i].touches){
+            //radius = sensors[i].radius;
+            centerx = sensors[i].centerX;
+            centery = sensors[i].centerY;
+            color = sensors[i].color[Math.floor((Math.random() * 5) + 1)];
+            nbCell = sensors[i].nbRow;
+            //console.log("Nom de la touche ="+sensors[i].touches);
+            //drawForm();
+            drawSquare();
+            sensors[i].nbRow += 2;
+            pas += 1;
+            console.log("nbRow" + nbCell);
+        }
+    }
+});
+
+function drawSquare(){
+    for (var row = 0; row < nbCell; row ++){
+        for (var column = 0; column < nbCell; column ++){
+            // coordinates of the top-left corner
+            var x = (centerx - (cellWidth*pas)) + column * 4;
+            var y = (centery - (cellWidth*pas)) + row * 4;
+            console.log("X " + x + " Y " + y);
+
+            if (row%2 == 0){
+                if (column%2 == 0){
+                    ctx2.fillStyle = color;
+                }
+                else {
+                    ctx2.fillStyle = "white";
+                }
+            } else{
+                if (column%2 == 0){
+                    ctx2.fillStyle = "white";
+                }
+                else {
+                    ctx2.fillStyle = "rgba(0,0,0,0)";
+                    console.log(ctx2.fillStyle);
+                }
+            }
+            ctx2.fillRect(x, y, cellWidth, cellWidth);
+        }
+    }
+}
+
+/*
 var angStep = 30;
 var lastx = null;
 var lasty = null;
@@ -104,12 +167,6 @@ $(document).keydown(function(e) {
             //console.log("Nom de la touche ="+sensors[i].touches);
             drawForm();
         }
-        //var touche = sensors[i];
-        /*if (touche.touches.indexOf(e.which) !== -1) {
-            console.log("Nom de la touche ="+touche);
-            break;
-        }*/
-
     }
 });
 
@@ -157,7 +214,7 @@ function drawForm() {
     //ctx2.stroke();
     ctx2.fill();
 }
-
+*/
 /*
 // when new data comes in the websocket, read it:
 socket.on('sensor', function(data) {
