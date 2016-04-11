@@ -27,13 +27,11 @@ var audio = document.getElementById("prout");
 
 // ----------------------------------------------------------------------------
 
-function draw() {
-    img.onload = function() {
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img2, 0, 0, canvas.width, canvas.height);
-    }
-}
-draw();
+
+img.onload = function() {
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img2, 0, 0, canvas.width, canvas.height);
+};
 
 var socket = io.connect('http://localhost:8080');
 //var x, y, button;           // readings from the server
@@ -42,8 +40,10 @@ var socket = io.connect('http://localhost:8080');
 var sensors = [{
     data: '0',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-    centerX: (canvas2.width / 2)-200,
-    centerY: canvas2.height / 2,
+    pointX: [0, 77, 84, 88, 91, 108, 126, 129, 134, 0],
+    pointY: [164, 217, 253, 263, 300, 326, 329, 374, 384, 384],
+    centerX: 0,
+    centerY: 250,
     width: 10,
     height: 10,
     pas : 20,
@@ -53,8 +53,10 @@ var sensors = [{
 }, {
     data: '1',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-    centerX: (canvas2.width / 2)+200,
-    centerY: canvas2.height / 2,
+    pointX: [110, 165, 186, 177, 183, 200, 223, 256, 285, 285, 273, 234, 218, 106, 125, 171, 165, 142],
+    pointY: [0, 0, 40, 49, 71, 87, 98, 99, 83, 115, 138, 158, 160, 174, 131, 85, 67, 42],
+    centerX: 186,
+    centerY: 86,
     width: 10,
     height: 10,
     pas : 20,
@@ -64,8 +66,10 @@ var sensors = [{
 }, {
     data: '2',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-    centerX: canvas2.width / 2,
-    centerY: canvas2.height / 2,
+    pointX: [221, 543, 536, 576, 576, 502, 451, 400, 340, 336, 285, 265, 225, 189, 186, 201],
+    pointY: [0, 0, 22, 0, 154, 158, 190, 183, 114, 55, 74, 87, 91, 68, 51, 33],
+    centerX: 437,
+    centerY: 85,
     width: 10,
     height: 10,
     pas : 30,
@@ -75,8 +79,10 @@ var sensors = [{
 }, {
     data: '3',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-    centerX: canvas2.width / 2,
-    centerY: (canvas2.height / 2)-200,
+    pointX: [374, 393, 440, 462, 497, 534, 576, 576, 538, 523, 482, 472, 464, 458, 433, 448, 441, 441, 355, 360, 350, 346, 352],
+    pointY: [185, 192, 200, 197, 175, 171, 200, 384, 373, 373, 336, 338, 317, 318, 288, 210, 206, 214, 339, 211, 292, 258, 205],
+    centerX: 475,
+    centerY: 267,
     width: 10,
     height: 10,
     pas : 40,
@@ -86,8 +92,10 @@ var sensors = [{
 }, {
     data: '4',
     color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-    centerX: canvas2.width / 2,
-    centerY: (canvas2.height / 2)+200,
+    pointX: [336, 336, 325, 322, 301, 301, 246, 219, 215, 191, 167, 145, 133, 125, 134, 141, 134, 138],
+    pointY: [384, 351, 337, 324, 306, 299, 274, 294, 303, 299, 294, 307, 310, 318, 329, 339, 352, 384],
+    centerX: 234,
+    centerY: 349,
     width: 10,
     height: 10,
     pas : 50,
@@ -106,6 +114,12 @@ var sensors = [{
         color,
         xInit,
         yInit,
+        pointXinit,
+        pointYinit,
+        pointX,
+        pointY,
+        decalagePointX = (window.innerWidth-canvas.width)/2,
+        decalagePointY = (window.innerHeight-canvas.height)/2,
         width,
         height,
         xDraw = xInit-(width/2),
@@ -129,6 +143,10 @@ $(document).keydown(function(e) {
                 width = sensors[i].width;
                 height = sensors[i].height;
                 pas = sensors[i].pas;
+                pointXinit = sensors[i].pointX[0];
+                pointYinit = sensors[i].pointY[0];
+                pointX = sensors[i].pointX;
+                pointY = sensors[i].pointY;
                 color = getRandomColor();
                 //color = sensors[i].color[Math.floor((Math.random() * 5) + 1)];
                 /*nbCell = sensors[i].nbRow;
@@ -180,21 +198,34 @@ function drawColors() {
         }
     }
     imageData = ctx2.putImageData(imageData, xDraw, yDraw);
-    ctx2.globalCompositeOperation = "overlay";
     ctx2.save();
     ctx2.beginPath();
-    ctx2.arc(xInit, yInit, width/2, 0, 2 * Math.PI);
+    //ctx2.arc(xInit, yInit, width/2, 0, 2 * Math.PI);
+    ctx2.moveTo(pointXinit, pointYinit);
+    for (j=1; j< pointXinit.length; j++){
+        ctx2.lineTo(pointXinit[j], pointYinit[j]);
+    }
     ctx2.closePath();
     ctx2.clip();
     ctx2.drawImage(img2, 0, 0, canvas2.width, canvas2.height);
     ctx2.restore();
     //ctx2.globalCompositeOperation = "screen";
+    ctx2.globalCompositeOperation = "overlay";
     ctx2.shadowBlur=5;
     ctx2.shadowColor="rgba(200,200,200,100)";
     ctx2.fillStyle = color;
     ctx2.beginPath();
-    ctx2.arc(xInit, yInit, width/2, 0, 2 * Math.PI);
+    //ctx2.arc(xInit, yInit, width/2, 0, 2 * Math.PI);
+    ctx2.moveTo(pointXinit, pointYinit);
+    for (j=1; j< pointX.length; j++){
+        ctx2.lineTo(pointX[j], pointY[j]);
+        console.log("pointX", pointX[j]);
+        console.log("pointY", pointY[j]);
+    }
     ctx2.closePath();
+    /*ctx2.beginPath();
+    ctx2.arc(xInit, yInit, width/2, 0, 2 * Math.PI);
+    ctx2.closePath();*/
     ctx2.fill();
     xDraw = xInit-(width/2);
     yDraw = yInit-(height/2);
