@@ -18,7 +18,7 @@ var ctx3 = canvas3.getContext("2d");
 
 // ------ IMG
 var img = new Image();
-img.src = 'bkg.png';
+img.src = 'bkg.jpg';
 
 var img2 = new Image();
 img2.src = 'rose.png';
@@ -254,7 +254,8 @@ function drawColors() {
     }
     //ctx3.closePath();
     ctx2.clip();
-    ctx2.drawImage(img3, 0, 0, canvas2.width, canvas2.height);
+    ctx2.drawImage(img, 0, 0, canvas2.width, canvas2.height);
+    ctx2.drawImage(img2, 0, 0, canvas2.width, canvas2.height);
     ctx2.restore();
 }
 function getRandomColor() {

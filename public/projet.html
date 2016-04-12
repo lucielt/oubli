@@ -5,7 +5,9 @@
 <!-- Inclure les fichiers externes-->
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <link type="text/css" rel="stylesheet" href="/css/style.css"/>
-
+<link type="text/css" rel="stylesheet" href="/css/font.css"/>
+<script src="https://use.typekit.net/zur6qxn.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body>
     <div class='menu' id='recherche'>
@@ -18,9 +20,25 @@
     </div>
     <div class='corps' id='corps-projet'>
     <!--canvas id="canvasGameOfLife" width="901" height="433"></canvas-->
-    <canvas id="canvas"></canvas>
-    <canvas id="canvas2"></canvas>
-    <canvas id="canvas3"></canvas>
+        <div class='exp'>
+            <div class='sub-exp'>
+                <h2>De :</h2>
+                <p>Lucie Le Touze</br>1675 av. Bennett</p>
+            </div>
+        </div><!--
+    --><div class="canvas-wrapper">
+            <div class="sub-canvas-wrapper">
+                <canvas  id="canvas"></canvas>
+                <canvas  id="canvas2"></canvas>
+                <canvas  id="canvas3"></canvas>
+            </div>
+        </div><!--
+    --><div class='dest'>
+            <div class='sub-dest'>
+                <h2>À :</h2>
+                <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
+            </div>
+        </div>
     <audio id="prout">
         <source src="/AnimusVoxTheGlitchMob.mp3" type="audio/mpeg">
     </audio>

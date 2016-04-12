@@ -51,12 +51,6 @@ ACCUEIL
     height: 100vh;
     /*padding: 75px 25px 0 25px;*/
 }
-.corps {
-    background-image: url('');
-    /*width: 100vh;*/
-    height: 100vh;
-    /*padding: 75px 25px 0 25px;*/
-}
 #search{
 	overflow-y: hidden;
 }
@@ -66,13 +60,7 @@ ACCUEIL
     background-image: url("/image/bkg_accueil-01.png");
     background-size: contain;
 }
-#corps-projet{
-    /*padding: 25px 25px 0 25px;*/
-    overflow-y: hidden;
-    background-image: url("/image/bkg-projet.jpg");
-    background-position: center;
-    background-size: cover;
-}
+
 .milieu {
     padding: 25px;
     /*border: solid 10px #000;
@@ -244,26 +232,80 @@ ACCUEIL
 /* ------
 EXPERIENCE
 -------*/
-
+#corps-projet{
+    /*padding: 25px 25px 0 25px;*/
+    overflow-y: hidden;
+    /*background-image: url("/image/bkg-projet.jpg");*/
+    background-position: center;
+    background-size: cover;
+}
+#corps-projet .canvas-wrapper, .exp, .dest{
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'audimatregular';
+}
+#corps-projet h2{
+    margin-bottom: 10px;
+}
+#corps-projet p{
+    font-size: 0.8em;
+}
+.exp{
+    width: 15%;
+    background-color: #FFDDFF;
+}
+.sub-exp{
+    transform: rotate(-90deg);
+}
+.canvas-wrapper{
+    width: 70%;
+    height: 100vh;
+    text-align: center;
+}
+.dest{
+    width: 15%;
+    background-color: #DDFFFF;
+}
+.sub-dest{
+    transform: rotate(90deg);
+}
+.sub-canvas-wrapper{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 576px;
+    min-height: 384px;
+    -webkit-box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
+    -moz-box-shadow: 0px 0px 33px 1px rgba(2234, 234, 234, 1);
+    box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
+    z-index: 0;
+    text-align: center;
+    margin: auto;
+}
 #canvas {
     position: absolute;
     min-width: 576px;
     min-height: 384px;
+    top:0;
+    left:0;
+    /*
+    position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -192px;
     margin-left: -288px;
     /*width:100%;
     height:100%;*/
-    -webkit-box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
-    -moz-box-shadow: 0px 0px 33px 1px rgba(2234, 234, 234, 1);
-    box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
-    z-index: 0;
+
 }
 #canvas2 {
     position: absolute;
     min-width: 576px;
     min-height: 384px;
+    top:0;
+    left:0;
+    /*
+    position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -192px;
@@ -276,6 +318,10 @@ EXPERIENCE
     position: absolute;
     min-width: 576px;
     min-height: 384px;
+    top:0;
+    left:0;
+    /*
+    position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -192px;
