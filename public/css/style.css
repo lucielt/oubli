@@ -251,10 +251,16 @@ EXPERIENCE
     font-size: 0.8em;
 }
 .exp{
+    position: relative;
+    min-height: 384px;
     width: 15%;
-    background-color: #FFDDFF;
+    /*background-color: #FFDDFF;*/
 }
 .sub-exp{
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    max-height: 50%;
     transform: rotate(-90deg);
 }
 .canvas-wrapper{
@@ -262,19 +268,26 @@ EXPERIENCE
     height: 100vh;
     text-align: center;
 }
-.dest{
-    width: 15%;
-    background-color: #DDFFFF;
-}
-.sub-dest{
-    transform: rotate(90deg);
-}
-.sub-canvas-wrapper{
+.canvas-subwrapper{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    text-align: center;
+}
+.canvas-wrapper p{
+    /*margin-top: 0.5em;
+    text-align: left;
+    position: relative;
+    top: 50%;*/
+    position: absolute;
+    background-color: #ffddff;
+}
+.sub-canvas-wrapper{
+    /*position: relative;
+    top: 50%;
+    transform: translateY(-50%);*/
     max-width: 576px;
-    min-height: 384px;
+    max-height: 384px;
     -webkit-box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
     -moz-box-shadow: 0px 0px 33px 1px rgba(2234, 234, 234, 1);
     box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
@@ -282,12 +295,48 @@ EXPERIENCE
     text-align: center;
     margin: auto;
 }
-#canvas {
-    position: absolute;
-    min-width: 576px;
+.dest{
+    position: relative;
     min-height: 384px;
-    top:0;
-    left:0;
+    width: 15%;
+    /*background-color: #DDFFFF;*/
+}
+.sub-dest{
+    max-height: 50%;
+    position: absolute;
+    top: 45px;
+    left: -40px;
+    transform: rotate(90deg);
+}
+.sub-capture{
+    max-height: 50%;
+    position: absolute;
+    bottom: 0;
+}
+.sub-capture img{
+    height: 50px;
+    width:50px;
+}
+
+#canvas {
+    position: relative;
+    top: 0px;
+    left: 0;
+    z-index: 0;
+    /*position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -192px;
+    margin-left: -288px;
+    /*width:100%;
+    height:100%;*/
+
+}
+#canvas2 {
+    position: relative;
+    top: -388px;
+    left: 0;
+    z-index: 1;
     /*
     position: absolute;
     top: 50%;
@@ -298,28 +347,11 @@ EXPERIENCE
     height:100%;*/
 
 }
-#canvas2 {
-    position: absolute;
-    min-width: 576px;
-    min-height: 384px;
-    top:0;
-    left:0;
-    /*
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -192px;
-    margin-left: -288px;
-    /*width:100%;
-    height:100%;*/
-    z-index: 1;
-}
 #canvas3 {
-    position: absolute;
-    min-width: 576px;
-    min-height: 384px;
-    top:0;
-    left:0;
+    position: relative;
+    top: -776px;
+    left: 0;
+    z-index: 99999;
     /*
     position: absolute;
     top: 50%;
@@ -328,7 +360,6 @@ EXPERIENCE
     margin-left: -288px;
     /*width:100%;
     height:100%;*/
-    z-index: 99999;
 }
 /* ------
 RECHERCHE
