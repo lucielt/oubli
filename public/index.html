@@ -20,15 +20,15 @@
         <li><a href="projet.html">Projet</a></li>
         </ul>
     </div-->
-    <div class='corps' id="amorce">
-        <div class='milieu'>
+    <div class="vertical_home vertical_home_left"><div class="line"></div>O<br>U<br>B<br>L<br>I</div>
 
+    <div class='corps' id="amorce">
+        <canvas id="canvasGameOfLife" width="901" height="433"></canvas>
+        <div class='milieu'>
             <div class='menu-accueil'>
                 <ul>
                     <li class='accueil-forme'>
                         <a href="index.html">
-                            <span class="what">Ce site web est présenté dans le cadre de la maitrise en recherche-création en média expérimental à l'UQAM</span>
-                            <span class="label">Amorce</span>
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 178 196.4" style="enable-background:new 0 0 178 196.4;" xml:space="preserve">
                             <style type="text/css">
@@ -37,6 +37,8 @@
                             <path d="M61.2,0L0,39.2v103.2h19v13h21v14h21v13h20v14h97V73.8L61.2,0L61.2,0z M61.2,11.9L168,79.4v107.1H91v-4.4v-9.6H80.8H71v-3.3
                             v-9.7H60.9H50v-4.2v-9.8H39.9H29v-3.2v-9.8H19h-9V44.7L61.2,11.9"/>
                             </svg>
+                            <span class="what">Ce site web est présenté dans le cadre de la maitrise en recherche-création en média expérimental à l'UQAM</span>
+                            <span class="label">Qui? Quoi?</span>
                         </a>
                     </li>
                     <li class='recherche-forme'>
@@ -46,25 +48,32 @@
                                 <style type="text/css">
                                     /*.st0{fill:#FFFFFF;}*/
                                     .st0{fill:#7BFFC3;}
+                                    .st1{fill:url(#MyGradient);}
                                 </style>
+                                <defs>
+                                    <linearGradient id="MyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="5%" stop-color="#e2e2e2" />
+                                        <stop offset="95%" stop-color="#f2f2f2" />
+                                    </linearGradient>
+                                </defs>
                                 <g>
                                     <path d="M92.6,10v8.6v10h10h8.8v7.1v10h10h8.8v7.6v10h10h8.8v7.6v10h10h8.8V186H85.4v-7.6v-10h-10h-8.8v-7.6v-10h-10h-8.8v-7.6v-10
                                     h-10h-8.8v-7.6v-10h-10H10V10H92.6 M102.6,0H0v125.8h18.8v17.6h18.8v17.6h18.8v17.6h18.8V196H178V70.8h-18.8V53.3h-18.8V35.7h-18.8
                                     V18.6h-18.8V0L102.6,0z"/>
                                 </g>
                                 <g>
-                                    <polyline class="st0" points="92.6,10 92.6,18.6 92.6,28.6 102.6,28.6 111.4,28.6 111.4,35.7 111.4,45.7 121.4,45.7 130.2,45.7
+                                    <polyline class="st1" points="92.6,10 92.6,18.6 92.6,28.6 102.6,28.6 111.4,28.6 111.4,35.7 111.4,45.7 121.4,45.7 130.2,45.7
                                     130.2,53.3 130.2,63.3 140.2,63.3 149,63.3 149,70.9 149,80.9 159,80.9 167.8,80.9 167.8,186 85.4,186 85.4,178.4 85.4,168.4
                                     75.4,168.4 66.6,168.4 66.6,160.8 66.6,150.8 56.6,150.8 47.8,150.8 47.8,143.2 47.8,133.2 37.8,133.2 29,133.2 29,125.6 29,115.6
                                     19,115.6 10,115.6 10,10 92.6,10 	"/>
                                 </g>
                             </svg>
                             <span class="what">Recherche sur les motivations d'extinction de l'oubli et tentative de démonstration que la digitalisation n'y parvient pas</span>
-                            <span class="label">Recherche</span>
+                            <span class="label">Comment?</span>
                         </a>
                     </li>
-                </ul>
-                <ul>
+                <!--/ul>
+                <ul-->
                     <li class='galerie-forme'>
                         <a href="/cartes">
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -86,8 +95,6 @@
                     </li>
                     <li class='experience-forme'>
                         <a href="projet.html">
-                            <span class="what">Projet de création associé à la recherche sur les formes d'oublis numérique. </span>
-                            <span class="label">Projet</span>
                             <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
                                 <g>
@@ -95,20 +102,22 @@
                                     h-27V52h-35V25H81V0L81,0z"/>
                                 </g>
                             </svg>
+                            <span class="what">Projet de création associé à la recherche sur les formes d'oublis numérique. </span>
+                            <span class="label">Projet</span>
                         </a>
                     </li>
                 </ul>
-                <div class="accueil">
+                <!--div class="accueil">
                     <h1><a href="">L'oub.li
                         <div class='rect-bas'></div>
                         </a>
                     </h1>
-                </div>
+                </div-->
             </div>
 
         </div>
     </div>
-    <canvas id="canvasGameOfLife" width="901" height="433"></canvas>
+    <!--canvas id="canvasGameOfLife" width="901" height="433"></canvas-->
 <script>
 $('.what').hover(function() {
         if ($(this).hover){

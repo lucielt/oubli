@@ -18,7 +18,7 @@ var ctx3 = canvas3.getContext("2d");
 
 // ------ IMG
 var img = new Image();
-img.src = 'bkg.jpg';
+img.src = '/image/000.jpg';
 
 var img2 = new Image();
 img2.src = 'rose.png';

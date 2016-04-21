@@ -10,14 +10,20 @@
 
 </head>
 <body>
-    <div class='menu' id='recherche'>
+    <!--div class='menu' id='recherche'>
         <ul>
             <li><a href="index.html">Amorce</a></li>
             <li><a href="recherche.html">Recherche</a></li>
             <li><a href='/cartes'>E-Archive</a></li>
             <li><a href="projet.html">Projet</a></li>
         </ul>
+    </div-->
+    <div class='menu' id='projet'>
+        <ul>
+            <li><a href="index.html">demi-tour</a></li>
+        </ul>
     </div>
+    <div class="vertical_home vertical_home_left"><div class="line"></div>G<br>A<br>L<br>E<br>R<br>I<br>E</div>
     <div class='corps gallerie'>
     <ul class="images">
     <% for(var i=0; i < cards.length; i++) { %>
@@ -65,7 +71,8 @@
         }
 
         .image {
-            float:left;
+            /*float:left;*/
+            display: inline-block;
             width: 25%;
             margin:5%;
             padding: 25px;
