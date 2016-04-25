@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>L'oubli - projet</title>
-<!-- Inclure les fichiers externes-->
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<link type="text/css" rel="stylesheet" href="/css/style.css"/>
-<link type="text/css" rel="stylesheet" href="/css/font.css"/>
-<script src="https://use.typekit.net/zur6qxn.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <title>L'oubli - projet</title>
+    <!-- Inclure les fichiers externes-->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/css/font.css" />
+    <script src="https://use.typekit.net/zur6qxn.js"></script>
+    <script>
+        try {
+            Typekit.load({
+                async: true
+            });
+        } catch (e) {}
+    </script>
 </head>
+
 <body>
     <!--div class='menu' id='recherche'>
         <ul>
@@ -23,48 +31,66 @@
             <li><a href="index.html">retour</a></li>
         </ul>
     </div>
-    <div class="vertical_home vertical_home_left"><div class="line"></div>P<br>R<br>O<br>J<br>E<br>T</div>
-    <div class='corps' id='corps-projet'>
-        <!--p>Bienvenue au royaume des cactus, vous etes invité à nous poser toutes les questions que vous souhaitez. Alllooooollloooollloooooooloooooooolololololooooooooolloooooo</p-->
-    <!--canvas id="canvasGameOfLife" width="901" height="433"></canvas-->
-        <div class='right-exp'>
-            <div class='sub-exp'>
-                <h2>De :</h2>
-                <p>Lucie Le Touze</br>1675 av. Bennett</p>
-            </div>
-            <div class='sub-dest'>
-                <h2>À :</h2>
-                <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
-            </div>
-        </div><!--
-    --><div class="canvas-wrapper">
-            <div class="canvas-subwrapper">
-                <div class="sub-canvas-wrapper">
-                    <canvas  id="canvas"></canvas>
-                    <canvas  id="canvas2"></canvas>
-                    <canvas  id="canvas3"></canvas>
-                    <div class="info">
-                        <div class="vertical_info"><div class="line"></div><a>capture</a></div>
+    <div class="vertical_home vertical_home_left">
+        <div class="line"></div>
+        P<br>R<br>O<br>J<br>E<br>T
+    </div>
+    <!--div class='corps' id='corps-projet'-->
+    <div class='corps' id='amorce'>
+        <div class='milieu'>
+            <div class='menu-accueil'>
+                <!--p>Bienvenue au royaume des cactus, vous etes invité à nous poser toutes les questions que vous souhaitez. Alllooooollloooollloooooooloooooooolololololooooooooolloooooo</p-->
+                <!--canvas id="canvasGameOfLife" width="901" height="433"></canvas-->
+                <div class='canvas-right'>
+                    <!--div class='expeditor'>
+                        <div class="text">
+                            <h2>De :</h2>
+                            <p>Lucie Le Touze</br>1675 av. Bennett</p>
+                        </div>
+                    </div>
+                    <div class='recipient'>
+                        <div class="text">
+                            <h2>À :</h2>
+                            <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
+                        </div>
+                    </div-->
+                </div><!--
+                --><div class="canvas-wrapper">
+                    <div class="canvas-subwrapper">
+                        <!--div class="sub-canvas-wrapper"-->
+                            <canvas id="canvas"></canvas>
+                            <canvas id="canvas2"></canvas>
+                            <canvas id="canvas3"></canvas>
+                            <div class="capture">
+                                <div class="vertical_capture">
+                                    <div class="line"></div><a>capture</a></div>
+                            </div>
+                            <div class="info">
+                                <div class="vertical_info">
+                                    <div class="line"></div><a>info</a></div>
+                            </div>
+                        <!--/div-->
+                    </div>
+                </div><!--
+                --><div class='canvas-left'>
+                    <div class='expeditor'>
+                        <div class="text">
+                            <h2>De :</h2>
+                            <p>Lucie Le Touze</br>1675 av. Bennett</p>
+                        </div>
+                    </div>
+                    <div class='recipient'>
+                        <div class="text">
+                            <h2>À :</h2>
+                            <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
+                        </div>
                     </div>
                 </div>
+                <audio id="prout">
+                    <source src="/AnimusVoxTheGlitchMob.mp3" type="audio/mpeg">
+                </audio>
             </div>
-        </div><!--
-    --><div class='left-dest'>
-            <div class='sub-dest-text'>
-                <p>Bienvenue au royaume des cactus, vous etes invité à nous poser toutes les questions que vous souhaitez.puis toi ca vas tu bien????????Alllooooollloooo allloooooooloooooooo alololololooooooooolloooooo</p>
-            </div>
-            <!--ddiv class='sub-dest'>
-                <h2>À :</h2>
-                <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
-            </div-->
-            <!--div class='sub-capture'>
-                <h2>À :</h2>
-                <img src="/image/31794.png">
-            </div-->
         </div>
-    <audio id="prout">
-        <source src="/AnimusVoxTheGlitchMob.mp3" type="audio/mpeg">
-    </audio>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -75,4 +101,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- src="/script/main.js"></script-->
 </body>
+
 </html>

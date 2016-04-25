@@ -62,13 +62,8 @@ ACCUEIL
     background-size: contain;*/
 }
 .milieu {
-    padding: 25px;
-    /*border: solid 10px #000;
-	border-bottom: none;
-    height: 100%;
-    overflow-y: hidden;*/
     width: 100%;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     margin: auto;
     vertical-align: middle;
     position: absolute;
@@ -130,7 +125,7 @@ ACCUEIL
     /*width: 100%;
 	left: 0;*/
     width: 70%;
-    height: 60%;
+    height: 70vh;
     font-size: 11pt;
     font-weight: 900;
     background-color: #ffffff;
@@ -142,6 +137,8 @@ ACCUEIL
     list-style: none;
     position: relative;
     text-align: center;
+    top : 50%;
+    transform: translateY(-50%);
     /*margin-top: 35px;*/
 }
 .menu-accueil li {
@@ -252,7 +249,7 @@ EXPERIENCE
     background-position: center;
     background-size: cover;
 }
-#corps-projet .canvas-wrapper, .right-exp, .left-dest {
+#corps-projet .canvas-wrapper, .canvas-right, .canvas-left {
     display: inline-block;
     vertical-align: middle;
     font-family: 'audimatregular';
@@ -263,29 +260,119 @@ EXPERIENCE
 #corps-projet p {
     font-size: 0.8em;
 }
-.right-exp {
+.canvas-right {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 10%;
+    /*
     position: relative;
     min-height: 384px;
-    width: 25%;
+    width: 25%;*/
     /*background-color: #FFDDFF;*/
 }
-.sub-exp {
+.canvas-left {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 10%;
+    color:#e2e2e2;
+    /*background-color: #DDFFFF;*/
+}
+.expeditor {
+    height: 50%;
+    /*
     position: absolute;
     bottom: 10px;
     right: 0;
     max-height: 50%;
-    transform: rotate(-90deg);
+    transform: rotate(-90deg);*/
+}
+.expeditor .text{
+    position: absolute;
+top: 0;
+left: 0;
+transform-origin: 0% 0%;
+transform: translate(4em, 0%) rotate(90deg);
+}
+.recipient {
+    height: 50%;
+    /*
+    max-height: 50%;
+    position: absolute;
+    top: 45px;
+    right : -40px;
+    transform: rotate(90deg);*/
+}
+.recipient .text{
+    position: absolute;
+        bottom: 15%;
+        left: 0;
+        transform-origin: 0% 100%;
+        transform: translate(4em, 0%) rotate(-90deg);
+}
+.text p{
+font-family: audimatregular;
+font-size: 13px;
+font-weight: 400;
 }
 .canvas-wrapper {
-    width: 50%;
-    height: 100vh;
-    text-align: center;
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+    vertical-align: middle;
 }
 .canvas-subwrapper {
     position: relative;
+    height : 85%;
+    /*
     top: 50%;
     transform: translateY(-50%);
-    text-align: center;
+    text-align: center;*/
+}
+#canvas {
+    /*
+    position: relative;
+    top: 0px;
+    left: 0;
+    z-index: 0;*/
+    /*margin-top: -192px;
+    margin-left: -288px;
+    width:100%;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+width: 100%;
+    background-color: #ffddcc;
+    z-index: 0;
+}
+#canvas2 {
+    /*
+    position: relative;
+    top: -388px;
+    left: 0;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+width: 100%;
+background-color: #ddffcc;
+    z-index: 1;
+}
+#canvas3 {
+    /*
+    position: relative;
+    top: -776px;
+    left: 0;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+width: 100%;
+    background-color: #ccddff;
+    z-index: 2;
+
 }
 .canvas-wrapper p {
     /*margin-top: 0.5em;
@@ -295,10 +382,8 @@ EXPERIENCE
     position: absolute;
     background-color: #ffddff;
 }
+/*
 .sub-canvas-wrapper {
-    /*position: relative;
-    top: 50%;
-    transform: translateY(-50%);*/
     max-width: 576px;
     max-height: 384px;
     -webkit-box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
@@ -307,77 +392,8 @@ EXPERIENCE
     z-index: 0;
     text-align: center;
     margin: auto;
-}
-.left-dest {
-    position: relative;
-    min-height: 384px;
-    width: 25%;
-    /*background-color: #DDFFFF;*/
-}
-.sub-dest-text {
-    position: absolute;
-    bottom: 0;
-    left: 60px;
-    transform: rotate(-90deg);
-    transform-origin: 0% 100%;
-}
-.sub-dest {
-    max-height: 50%;
-    position: absolute;
-    top: 45px;
-    right : -40px;
-    transform: rotate(90deg);
-}
-.sub-capture {
-    max-height: 50%;
-    position: absolute;
-    bottom: 0;
-}
-.sub-capture img {
-    height: 50px;
-    width: 50px;
-}
-#canvas {
-    position: relative;
-    top: 0px;
-    left: 0;
-    z-index: 0;
-    /*position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -192px;
-    margin-left: -288px;
-    /*width:100%;
-    height:100%;*/
-}
-#canvas2 {
-    position: relative;
-    top: -388px;
-    left: 0;
-    z-index: 1;
-    /*
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -192px;
-    margin-left: -288px;
-    /*width:100%;
-    height:100%;*/
-}
-#canvas3 {
-    position: relative;
-    top: -776px;
-    left: 0;
-    z-index: 2;
-    /*
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -192px;
-    margin-left: -288px;
-    /*width:100%;
-    height:100%;*/
-}
+}*/
+
 
 /* ------
 RECHERCHE
@@ -733,7 +749,7 @@ MENU
     /*background: -webkit-linear-gradient(to left, rgba(0,110, 255, 0.6) , #fff); /* Chrome 10-25, Safari 5.1-6 --- #006EFF*/
     /*background: linear-gradient(to left, rgba(0,110, 255, 0.6) , #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.menu a {
+.menu a, .vertical_capture a, .vertical_info a {
     font-size: 0.45em;
     text-decoration: none;
     position: relative;
@@ -743,10 +759,10 @@ MENU
     color: #000;
     letter-spacing: 2px;
 }
-.menu a:hover {
+.menu a:hover, .vertical_capture a:hover, .vertical_info a:hover {
     color: #000;
 }
-.menu a:before {
+.menu a:before, .vertical_capture a:before, .vertical_info a:before {
     content: "";
     position: absolute;
     width: 80%;
@@ -760,7 +776,7 @@ MENU
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
-.menu a:hover:before {
+.menu a:hover:before, .vertical_capture a:hover:before, .vertical_info a:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
@@ -813,6 +829,7 @@ MENU
     -o-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
 }
+/*
 .info {
     width: 576px;
     height: 384px;
@@ -820,18 +837,27 @@ MENU
     top: -1164px;
     left: 0;
     z-index: 3;
+}*/
+.capture, .info {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
 }
-.vertical_info {
+.vertical_capture {
     font-family: 'audimatregular';
     color: #000;
     font-size: 17px;
     position: absolute;
-    bottom: -50px;
+    /*bottom: -50px;*/
+    bottom: -65px;
     right: 50px;
     text-align: center;
     line-height: 1;
 }
-.vertical_info .line {
+.vertical_capture .line {
     position: relative;
     width: 1px;
     height: 70px;
@@ -844,7 +870,7 @@ MENU
     -o-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.vertical_info a {
+.vertical_capture a {
     position: absolute;
     -moz-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
@@ -852,6 +878,36 @@ MENU
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     left: -15px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+.vertical_info {
+    font-family: 'audimatregular';
+    color: #000;
+    font-size: 17px;
+    position: absolute;
+    /*bottom: -50px;*/
+    top: 50px;
+    right: -35px;
+    vertical-align: middle;
+    line-height: 1;
+}
+.vertical_info .line {
+    position: relative;
+    width: 70px;
+    height: 1px;
+    background: #000;
+    margin: 15 0px 15px;
+    -webkit-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    -ms-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.vertical_info a {
+    position: absolute;
+    right: -40px;
+    top: -7px;
     font-size: 13px;
     letter-spacing: 1.5px;
 }
