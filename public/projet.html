@@ -37,30 +37,11 @@
     </div>
     <!--div class='corps' id='corps-projet'-->
     <div class='corps' id='amorce'>
-        <!--div class="milieu-back-100">
-            <div class="milieu-back-95"></div>
-            <div class="milieu-back-90"></div>
-            <div class="milieu-back-85"></div>
-            <div class="milieu-back-80"></div>
-            <div class="milieu-back-75"></div>
-        </div-->
         <div class='milieu'>
             <div class='menu-accueil'>
                 <!--p>Bienvenue au royaume des cactus, vous etes invité à nous poser toutes les questions que vous souhaitez. Alllooooollloooollloooooooloooooooolololololooooooooolloooooo</p-->
                 <!--canvas id="canvasGameOfLife" width="901" height="433"></canvas-->
                 <div class='canvas-right'>
-                    <!--div class='expeditor'>
-                        <div class="text">
-                            <h2>De :</h2>
-                            <p>Lucie Le Touze</br>1675 av. Bennett</p>
-                        </div>
-                    </div>
-                    <div class='recipient'>
-                        <div class="text">
-                            <h2>À :</h2>
-                            <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
-                        </div>
-                    </div-->
                 </div><!--
                 --><div class="canvas-wrapper">
                     <div class="canvas-subwrapper">
@@ -68,9 +49,10 @@
                             <canvas id="canvas"></canvas>
                             <canvas id="canvas2"></canvas>
                             <canvas id="canvas3"></canvas>
-                            <div id="info">
+                            <div id="canvas-info">
                                 <div class="info-container">
                                         <div class="text-right">
+                                            <div class="text-right-bkg"></div>
                                             <div class="exp">
                                                 <div class="text">
                                                     <p>Lucie L.T.</p>
@@ -84,9 +66,9 @@
                                             </div>
                                         </div><!--
                                         --><div class="image-left">
-                                            <div class="apercu">
+                                            <!--div class="apercu">
                                                 <img alt="apercu" src="/image/000.jpg">
-                                            </div>
+                                            </div-->
                                             <!--div class="rec">
                                                 <div class="text">
                                                     <h2>À :</h2>
@@ -96,13 +78,35 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="capture">
-                                <div class="vertical_capture">
-                                    <div class="line"></div><a>capture</a></div>
+                            <div id="canvas-capture">
+                                <div class="info-container">
+                                    <div class="text-right">
+                                        <div class="text-right-bkg"></div>
+                                        <div class="message" id="message-form">
+                                            <form action="/save" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="image"/>
+                                                <p>Nom: </br>
+                                                <input type="text" name="name"/></p>
+                                                <p>Phrase: </p>
+                                                <p><input type="text" name="phrase"/></p>
+                                                <p><input type="submit" value="Sauvegarder"/></p>
+                                            </form>
+                                        </div>
+                                    </div><!--
+                                    --><div class="image-left">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="info">
+                            <div class="capture" id="capture-button-div">
+                                <div class="vertical_capture">
+                                    <div class="line canvas-line"></div><a id="capture-button">capture</a>
+                                </div>
+                                <span class="close heavy pointy" id="close-capture"></span>
+                            </div>
+                            <div class="info" id="info-button-div">
+                                <span class="close heavy pointy" id="close-info"></span>
                                 <div class="vertical_info">
-                                    <div class="line"></div><a>info</a></div>
+                                    <div class="line canvas-line"></div><a id="info-button">info</a></div>
                             </div>
                         <!--/div-->
                     </div>
@@ -131,9 +135,10 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="/indexScript.js"></script>
     <script src="/script/json-sans-eval.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/codes.js"></script>
+    <script type="text/javascript" src="/indexScript.js"></script>
     <!-- src="/script/main.js"></script-->
 </body>
 

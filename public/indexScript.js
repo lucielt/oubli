@@ -1,19 +1,20 @@
+
 // Const
 
 // ------ CANVAS
 var canvas = document.getElementById("canvas");
-//canvas.width = 576;
-//canvas.height = 384;
+canvas.width = 576;
+canvas.height = 384;
 var ctx = canvas.getContext("2d");
 
 var canvas2 = document.getElementById("canvas2");
-//canvas2.width = canvas.width;
-//canvas2.height = canvas.height;
+canvas2.width = canvas.width;
+canvas2.height = canvas.height;
 var ctx2 = canvas2.getContext("2d");
 
 var canvas3 = document.getElementById("canvas3");
-//canvas3.width = canvas.width;
-//canvas3.height = canvas.height;
+canvas3.width = canvas.width;
+canvas3.height = canvas.height;
 var ctx3 = canvas3.getContext("2d");
 
 // ------ IMG
@@ -179,8 +180,10 @@ $(document).keydown(function(e) {
                 sensors[i].height += 0.5;
                 xDraw = xInit-(width/2);
                 yDraw = yInit-(height/2);
-                console.log("xDraw", xDraw ,"yDraw", yDraw);
+                //console.log("xDraw", xDraw ,"yDraw", yDraw);
                 //draw();
+                ctx3.drawImage(canvas,0,0);
+                ctx3.drawImage(canvas2,0,0);
             }
         }
     //}, 1000 );
@@ -266,6 +269,9 @@ function getRandomColor() {
     }
     return color;
 }
+
+
+/*
 function draw(){
     var imgPointX =[0, 110, 142, 165, 171, 125, 106, 218, 234, 273, 285, 285, 256, 223, 200, 183, 177, 186, 165, 221, 201, 186, 189, 225, 265, 285, 336, 340, 400, 451, 502, 576, 576, 534, 497, 462, 440, 393, 374, 352, 346, 350, 360, 355, 441, 441, 448, 433, 458, 464, 472, 482, 523, 538, 576, 336, 336, 325, 322, 301, 301, 246, 219, 215, 191, 167, 145, 133, 125, 134, 141, 134, 138, 134, 129, 126, 108, 91, 88, 84, 77, 0];
     var imgPointY = [0, 0, 42, 67, 85, 131, 174, 160, 158, 138, 115, 83, 99, 98, 87, 71, 49, 40, 0, 0, 33, 51, 68, 91, 87, 74, 55, 114, 183, 190, 158, 154, 200, 171, 175, 197, 200, 192, 185, 205, 258, 292, 321, 339, 214, 206, 210, 288, 318, 317, 338, 336, 373, 373, 384, 384, 351, 337, 324, 306, 299, 274, 294, 303, 299, 294, 307, 310, 318, 329, 339, 352, 384, 384, 374, 329, 326, 300, 263, 253, 217, 164];
@@ -284,7 +290,7 @@ function draw(){
     ctx3.drawImage(img2, 0, 0, canvas2.width, canvas2.height);
 }
 
-/*function drawSquare(){
+function drawSquare(){
     for (var row = 0; row < nbCell; row ++){
         for (var column = 0; column < nbCell; column ++){
             // coordinates of the top-left corner
@@ -312,3 +318,64 @@ function draw(){
         }
     }
 }*/
+// Const
+
+
+$('#info-button').on('click', function()
+{
+        $('#canvas-info').show();
+        $('#capture-button-div').hide();
+        //$('.canvas-line').hide();
+        //$('#close-info').show();
+        $('.canvas-line').css( "background-color","transparent" );
+        $('#info-button-div .close.heavy').addClass('changed');
+});
+
+$('#capture-button').on('click', function()
+{
+    $(':input','#message-form').not(':submit')
+    .val('');
+    /*console.log("Je suis egal a "+$('#message-form input:hidden').val());*/
+    var dataURL = canvas.toDataURL('image/png');
+    $('#message-form form input[name=image]').val(dataURL);
+        $('#canvas-capture').show();
+        $('#info-button-div').hide();
+        //$('.canvas-line').hide();
+        //$('#close-capture').show();
+        $('.canvas-line').css( "background-color","transparent" );
+        $('#capture-button-div .close.heavy').addClass('changed');
+});
+$('.close').on('click', function()
+{
+        $('#canvas-info').hide();
+        $('#canvas-capture').hide();
+        $('#info-button-div').show();
+        $('#capture-button-div').show();
+        //$('.canvas-line').show();
+        //$('#close-info').hide();
+        //$('#close-capture').hide();
+        $('.canvas-line').css( "background-color","#2e2e2e" );
+        $('#capture-button-div .close.heavy, #info-button-div .close.heavy').removeClass('changed');
+});
+$('#message-form form').on('submit', function(e)
+{
+    e.preventDefault();
+    var $form = $(e.currentTarget);
+    var url = $form.attr('action');
+
+    if(!$form.find('input[name=name]').val().length)
+    {
+        alert('vide');
+        return;
+    }
+
+    var data = {};
+    $.each($form.serializeArray(), function(key, value)
+    {
+        data[value.name] = value.value;
+    });
+    $.post(url, data, function(data)
+    {
+        console.log(data.url);
+    }, 'json');
+});

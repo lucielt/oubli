@@ -17,7 +17,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 //Configuration de express
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }))
 app.use(bodyParser.json())
 app.use(express.static('public'));
 app.use('/', router);
@@ -35,12 +35,7 @@ var Card = mongoose.model('Card', {
 
 //Formulaire test pour enregistrer une image
 app.get('/test', function(req, res) {
-    res.send('<form action="/save" method="post" enctype="multipart/form-data">'
-        + '<p>Nom: <input type="text" name="name"/></p>'
-        + '<p>Phrase: <input type="text" name="phrase"/></p>'
-        + '<p>Image: <input type="file" name="image"/></p>'
-        + '<p><input type="submit" value="Upload"/></p>'
-        + '</form>');
+    res.send();
 });
 
 //Afficher toutes les images
@@ -72,13 +67,42 @@ router.get('/image/:id', function(req, res) {
             res.send('error');
             return;
         }
+        console.log(card.image)
         res.set('Content-Type', 'image/png');
         res.send(card.image);
     });
 });
 
+app.post('/save', function(req, res)
+{
+    var image = req.body.image;
+    var name = req.body.name;
+    var phrase = req.body.phrase;
+
+    var imageBase64 = image.split(',')[1];
+    var imageBuffer = new Buffer(imageBase64, 'base64');
+
+    var card = new Card({
+        name: name,
+        phrase: phrase,
+        image: imageBuffer
+    });
+    card.save(function (err, card)
+    {
+        if (err){
+            console.log('ERROR');
+            return;
+        }
+        console.log('Saved');
+        // affiche la page merci.html
+        res.send({
+            'url': req.hostname+':'+Config.port+'/image/'+card.id
+        });
+    });
+});
+
 //Enregistrer une image
-app.post('/save', upload.single('image'), function(req, res)
+app.post('/upload', upload.single('image'), function(req, res)
 {
     var name = req.body.name;
     var phrase = req.body.phrase;
