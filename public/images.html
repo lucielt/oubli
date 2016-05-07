@@ -23,42 +23,44 @@
     </div>
     <div class="vertical_home vertical_home_left"><div class="line"></div>G<br>A<br>L<br>E<br>R<br>I<br>E</div>
     <div class='corps' id='galerie'>
-    <ul class="images">
-    <% for(var i=0; i < cards.length; i++) { %>
-       <li class="image">
-           <p><img src="/image/<%= cards[i]._id %>" /></p>
-            <div class="image-info-container"></div>
-            <div class="image-text-right">
-                <div class="text-right-bkg"></div>
-                <div class="message">
-                    <div class="text">
-                        <h4><%= cards[i].name %></h4>
-                        <p><%= cards[i].phrase %></p>
+        <div class="images">
+            <ul class="ul-container">
+            <% for(var i=0; i < cards.length; i++) { %>
+               <li class="image">
+                   <p><img src="/image/<%= cards[i]._id %>" /></p>
+                    <div class="image-info-container"></div>
+                    <div class="image-text-right">
+                        <div class="text-right-bkg"></div>
+                        <div class="message">
+                            <div class="text">
+                                <h4><%= cards[i].name %></h4>
+                                <p><%= cards[i].phrase %></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-       </li>
-       <li class="image">
-           <p><img src="/image/<%= cards[i]._id %>" /></p>
-            <div class="image-info-container"></div>
-            <div class="image-text-right">
-                <div class="text-right-bkg"></div>
-                <div class="message">
-                    <div class="text">
-                        <h4><%= cards[i].name %></h4>
-                        <p><%= cards[i].phrase %></p>
+               </li>
+               <li class="image">
+                   <p><img src="/image/<%= cards[i]._id %>" /></p>
+                    <div class="image-info-container"></div>
+                    <div class="image-text-right">
+                        <div class="text-right-bkg"></div>
+                        <div class="message">
+                            <div class="text">
+                                <h4><%= cards[i].name %></h4>
+                                <p><%= cards[i].phrase %></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+               </li>
+            <% } %>
+            </ul>
+        </div>
+        <div class="bottom-div">
+            <div id="loadMore">
+                <p><a>encore plus</a></p>
             </div>
-       </li>
-    <% } %>
-    </ul>
-    <div class="bottom-div">
-        <div id="loadMore">
-            <p><a>encore plus</a></p>
         </div>
     </div>
-</div>
     <style type="text/css">
         /*.images {
             position: static;
@@ -78,9 +80,10 @@
             margin: auto;
             top: 50%;
             transform: translateY(-50%);
-            width: 80%;
+            width: 100%;
             font-size: 0;
             overflow-y: auto;
+            right:50px;
         }
         .images::-webkit-scrollbar {
           width: 3px;
@@ -117,18 +120,20 @@
         .images,.image {
             list-style:none;
         }
-
+        .ul-container{
+            width:80%;
+            margin: auto;
+            position:relative;
+            right:-50px;
+        }
         .image {
             position: relative;
             display: none;
             /*width: 44%;
             margin:3%;*/
             width: 23%;
-            margin: 6% 4.4% 6% 4.4%;
+            margin: 0% 4.4% 6% 4.4%;
             overflow: hidden;
-            /*-webkit-box-shadow: 0px 0px 30px 1px rgba(200, 200, 200, 1);
-            -moz-box-shadow: 0px 0px 30px 1px rgba(200, 200, 200, 1);
-            box-shadow: 0px 0px 30px 1px rgba(200, 200, 200, 1);*/
             -webkit-transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
             -moz-transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
             -ms-transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -170,7 +175,7 @@
             right:-100%;
             width: 100%;
             height: 100%;
-            color: #fff;
+            color: #2e2e2e;
             font-size: 24px;
             padding-left: 50px;
             opacity:0;
@@ -190,7 +195,9 @@
             width: 100%;
             height: 100%;
             position: absolute;
-            background-image: linear-gradient(to bottom left, #00c9ff 0%, #92fe9d 50%, #c2c2c2 100%);
+        /*    background-image: linear-gradient(to bottom left, #00c9ff 0%, #92fe9d 50%, #c2c2c2 100%);
+            */
+            background-color: #fff;
             color: black;
             left: 0px;
             top: 0px;
@@ -222,7 +229,21 @@
         img {
             display:block;
             width:100%;
+            opacity: 1;
+            filter:blur(none);
+            -webkit-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+            -moz-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+            -ms-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+            -o-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        /*.image:hover img {
+            opacity: 0;
+        }*/
+        .image:hover img {
+	-webkit-filter: blur(5px);
+	filter: blur(5px);
+}
         .bottom-div{
             height: 70px;
             width: 100%;
