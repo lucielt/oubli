@@ -38,12 +38,20 @@ app.get('/test', function(req, res) {
     res.send();
 });
 
-//Afficher toutes les images
-app.get('/cartes', function(req, res) {
+
+app.get('/images/page/:count/:id', function(req, res) {
     //Requête à la base de données
-    Card.find({
-        //Peut mettre des paramètres de requête à la base de données
-    }).exec(function(err, cards)
+    var count = parseInt(req.params.count);
+    var id = req.params.id+'';
+    var params = id !== '-1' || !id.length ? {
+        _id: { $gt: id }
+    }:{};
+
+    Card.find(params)
+    .sort('_id')
+    .limit(count)
+    .select('_id name phrase')
+    .exec(function(err, cards)
     {
         if(err)
         {
@@ -51,10 +59,8 @@ app.get('/cartes', function(req, res) {
             return;
         }
         // affiche la page images.html
-        res.render('images', {
-            cards: cards,
-            test: ['allo','Bonjour']
-        });
+        res.set('Content-Type', 'application/json');
+        res.send(cards);
     });
 });
 
@@ -67,7 +73,6 @@ router.get('/image/:id', function(req, res) {
             res.send('error');
             return;
         }
-        console.log(card.image)
         res.set('Content-Type', 'image/png');
         res.send(card.image);
     });
