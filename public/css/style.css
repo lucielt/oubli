@@ -330,7 +330,8 @@ GALERIE
     color: black;
     left: 0px;
     top: 0px;
-    opacity: 0.8;
+    /*opacity: 0.8;*/
+    opacity: 1;
     /* box-sizing: border-box; */
     margin-left: 50px;
 }
@@ -342,6 +343,40 @@ GALERIE
     font-size: 0.5em;
     position: absolute;
     top: 0;
+}
+.image-text-right .message {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.cross-container{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.image-text-right .cross-container:hover {
+    cursor: pointer;
+}
+#cross {
+    background: black;
+    height: 50px;
+    position: relative;
+    width: 1px;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#cross:after {
+    background: black;
+    content: "";
+    height: 1px;
+    left: -25px;
+    position: absolute;
+    top: 25px;
+    width: 50px;
 }
 .image span{
     top: 40px;

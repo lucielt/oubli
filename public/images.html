@@ -5,7 +5,7 @@
 <!-- Inclure les fichiers externes-->
 <link type="text/css" rel="stylesheet" href="/css/style.css"/>
 <link type="text/css" rel="stylesheet" href="/css/font.css"/>
-
+<link href="/dist/css/lightbox.css" rel="stylesheet">
 </head>
 <body>
     <div class='menu' id='return'>
@@ -34,26 +34,37 @@
             <% for(var i=0; i < cards.length; i++) { %>
                <li class="image">
                    <% console.log(i, cards[i]._id); %>
+                   <!--a class="example-image-link" href="/image/<%= cards[i]._id %>" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                       <img class="example-image" src="/image/<%= cards[i]._id %>" alt=""/>
+                   </a-->
                    <p><img src="/image/<%= cards[i]._id %>" /></p>
                     <div class="image-info-container"></div>
                     <div class="image-text-right">
-                        <div class="text-right-bkg"></div>
-                        <div class="message">
-                            <div class="text">
-                                <h4><%= cards[i].name %></h4>
-                                <p><%= cards[i].phrase %></p>
+                    <div class="text-right-bkg"></div>
+                        <a class="example-image-link" href="/image/<%= cards[i]._id %>" data-lightbox="example-set<%= cards[i]._id %>" data-title="<%= cards[i].name %>" data-description="<%= cards[i].phrase %>">
+                            <div class="message">
+                                <div class="cross-container">
+                                    <div id="cross">
+                                    </div>
+                                </div>
+                                    <!--div class="text">
+                                        <h4><%= cards[i].name %></h4>
+                                        <p><%= cards[i].phrase %></p>
+                                    </div-->
                             </div>
-                        </div>
-                    </div>
+                        </a>
                </li>
             <% } %>
             </ul>
         </div>
     </script>
+    <style type="stylesheet">
 
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.min.js"></script>
+    <script src="../dist/js/lightbox.js"></script>
     <!--script type="text/javascript">
 
         var pageIds = [-1];

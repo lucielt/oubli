@@ -150,7 +150,7 @@ if (url == '/projet.html') {
     })();
     $(document).keydown(function(e) {
         var s = String.fromCharCode(e.which);
-        console.log(s);
+        //console.log(s);
         //delay(function(){
         for (i = 0; i < sensors.length; i++) {
             if (s == sensors[i].touches) {
@@ -346,7 +346,7 @@ if (url == '/projet.html') {
         $(':input', '#message-form').not(':submit')
             .val('');
         /*console.log("Je suis egal a "+$('#message-form input:hidden').val());*/
-        var dataURL = canvas3.toDataURL('image/png');
+        var dataURL = canvas.toDataURL('image/png');
         $('#message-form form input[name=image]').val(dataURL);
         $('#canvas-capture, #message-form').show();
         $('#info-button-div, #message-save').hide();
@@ -382,6 +382,7 @@ if (url == '/projet.html') {
         var data = {};
         $.each($form.serializeArray(), function(key, value) {
             data[value.name] = value.value;
+            //console.log(data[value.name]);
         });
         $.post(url, data, function(data) {
             console.log(data.url);
