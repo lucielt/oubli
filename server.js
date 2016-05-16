@@ -8,6 +8,7 @@ var io = require('socket.io')(server);
 var multer  = require('multer');
 var upload = multer();
 var router = express.Router();
+var _ = require('lodash');
 
 server.listen(Config.port);
 
@@ -73,8 +74,42 @@ router.get('/image/:id', function(req, res) {
             res.send('error');
             return;
         }
+
         res.set('Content-Type', 'image/png');
         res.send(card.image);
+    });
+});
+
+router.get('/change/:id', function(req, res) {
+    Card.findById(req.params.id, function(err, card)
+    {
+        if(err)
+        {
+            res.send('error');
+            return;
+        }
+
+        var letters = 'abcdefghijklmnopqrstuvwxyz';
+        var phrase = card.phrase.split('');
+        var name = card.name.split('');
+        var letterIndex = Math.floor(Math.random() * letters.length);
+        var phraseIndex = Math.floor(Math.random() * phrase.length);
+        phrase[phraseIndex] = letters.charAt(letterIndex);
+        card.phrase = phrase.join('');
+        var nameIndex = Math.floor(Math.random() * name.length);
+        name[nameIndex] = letters.charAt(letterIndex);
+        card.name = name.join('');
+
+        card.save(function (err, card)
+        {
+            if (err){
+                console.log('ERROR');
+                res.send('ERROR');
+                return;
+            }
+
+            res.send(_.omit(card, ['image']));
+        });
     });
 });
 

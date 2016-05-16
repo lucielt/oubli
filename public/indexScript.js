@@ -1,10 +1,67 @@
+/*if ($(window).scrollTop() == $(document).height() - $(window).height()){
+    alert('Hello World');
+}*/
 var url = location.pathname;
 console.log(url);
-if (url == '/projet.html') {
-    /*if ($(window).scrollTop() == $(document).height() - $(window).height()){
-        alert('Hello World');
-    }*/
 
+if (url == '/projet.html') {
+    /* -----------------------------------------
+    CANVAS // RESIZE
+    */
+    function resize() {
+    var videoWidth = canvas.width;
+    var videoHeight = canvas.height;
+    var videoRatio = videoWidth/videoHeight;
+
+    /*var viewWidth = window.innerWidth;
+    var viewHeight = window.innerHeight;*/
+    var viewWidth = $( '.canvas-subwrapper' ).width();
+    var viewHeight = $( '.canvas-subwrapper' ).height();
+    var viewRatio = viewWidth/viewHeight;
+
+    var width = 0,
+        height = 0,
+        top = 0,
+        left = 0;
+    /*if(videoRatio > viewRatio) {
+      height = viewHeight;
+      width = viewHeight * videoRatio;
+      top = 0;
+      left = -((width - viewWidth)/2);
+    } else {
+      width = viewWidth;
+      height = viewWidth / videoRatio;
+      left = 0;
+      top = -((height - viewHeight)/2);
+    }*/
+      width = viewWidth;
+      height = viewWidth / videoRatio;
+      left = 0;
+      top = -((height - viewHeight)/2);
+
+    width = Math.round(width);
+    height = Math.round(height);
+    var x = Math.round(left);
+    var y = Math.round(top);
+
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      //canvas.style.top = y + 'px';
+      canvas.style.left = x + 'px';
+
+      canvas2.style.width = width + 'px';
+      canvas2.style.height = height + 'px';
+      canvas2.style.left = x + 'px';
+      canvas3.style.width = width + 'px';
+      canvas3.style.height = height + 'px';
+      canvas3.style.left = x + 'px';
+      $( '.canvas-subwrapper' ).css("height", canvas.style.height);
+    }
+
+        window.onresize = resize;
+    /* -----------------------------------------
+    ----------------------------------------- */
+    
     // ------ CANVAS
     var canvas = document.getElementById("canvas");
     canvas.width = 576;
@@ -37,8 +94,8 @@ if (url == '/projet.html') {
 
     // ----------------------------------------------------------------------------
 
-
     img.onload = function() {
+        resize();
         ctx.fillStyle = "white";
         ctx.rect(0, 0, canvas.width, canvas.height);
         ctx.fill();
@@ -349,7 +406,7 @@ if (url == '/projet.html') {
         var dataURL = canvas.toDataURL('image/png');
         $('#message-form form input[name=image]').val(dataURL);
         $('#canvas-capture, #message-form').show();
-        $('#info-button-div, #message-save').hide();
+        $('#info-button-div, #message-save, .camera-icon').hide();
         $('.canvas-line').css("background-color", "transparent");
         $('#capture-button-div .close.heavy, .vertical_capture').addClass('changed');
         $('#capture-button a').disable(true);
@@ -360,7 +417,7 @@ if (url == '/projet.html') {
     $('.close').on('click', function() {
         $('#canvas-info, #canvas-capture').hide();
         //$('#canvas-capture').hide();
-        $('#info-button-div, #capture-button-div').show();
+        $('#info-button-div, #capture-button-div, .camera-icon').show();
         //$('#capture-button-div').show();
         $('.canvas-line').css("background-color", "#2e2e2e");
         $('#capture-button-div .close.heavy, #info-button-div .close.heavy, .vertical_capture, .vertical_info').removeClass('changed');
@@ -395,7 +452,7 @@ if (url == '/projet.html') {
             var pagesImagesLoaded = [];
             var pageIndex = 0;
             var imagesPerPage = 6;
-            var imagesTemplate;
+            var imagesTemplate, imageTemplate;
             var lastPageReached = false;
 
             /**
@@ -404,11 +461,19 @@ if (url == '/projet.html') {
             var showPage = function(data)
             {
                 console.log('Ajoute la nouvelle page.');
-                var html = imagesTemplate({
-                    cards: data
-                });
-                var $imagesPage = $(html);
+                var imagesHtml = imagesTemplate({});
+                var $imagesPage = $(imagesHtml);
                 $('.images-container').append($imagesPage);
+                var $list = $imagesPage.find('.ul-container');
+                var imageHtml, $image;
+                for(var i = 0, l = data.length; i < l; i++)
+                {
+                    imageHtml = imageTemplate({
+                        card: data[i]
+                    });
+                    $image = $(imageHtml);
+                    $list.append($image);
+                }
             };
 
             /**
@@ -614,6 +679,7 @@ if (url == '/projet.html') {
             $(function()
             {
                 imagesTemplate = _.template($('#imagesTemplate').html());
+                imageTemplate = _.template($('#imageTemplate').html());
 
                 $('#loadMore a').on('click', function(e)
                 {
@@ -627,6 +693,27 @@ if (url == '/projet.html') {
                     e.preventDefault();
 
                     prevPage();
+                });
+
+                $('.images-container').on('click', '.image-link', function(e)
+                {
+                    e.preventDefault();
+
+                    var id = $(e.currentTarget).data('id');
+                    var $list = $(e.currentTarget).parents('.ul-container');
+
+                    //Appel au serveur pour faire le changement aléatoire
+                    $.getJSON('/change/'+id, function(data)
+                    {
+                        //Créer un nouvel élément avec le template et les nouvelles données
+                        var imageHtml = imageTemplate({
+                            card: data
+                        });
+                        imageHtml = $(imageHtml).html();
+
+                        //Remplate l'élément actuel avec le nouveau html généré avec les nouvelles données
+                        $list.find('li.image[data-id="'+data._id+'"]').html(imageHtml);
+                    });
                 });
 
                 //On charge la première page

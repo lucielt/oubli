@@ -518,31 +518,21 @@ font-weight: 400;
 }
 .canvas-subwrapper {
     position: relative;
-    height : 85%;
+    /*height : 85%;*/
+    top: 50%;
+    transform: translateY(-50%);
 }
 #canvas {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
     z-index: 0;
 }
 #canvas2 {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
+       z-index: 1;
 }
 #canvas3 {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
+       z-index: 2;
 
 }
 #canvas-info, #canvas-capture {
@@ -851,6 +841,11 @@ transform:rotate(45deg);
     right: 50px;
     text-align: center;
     line-height: 1;
+    -webkit-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    -ms-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .vertical_capture .line {
     position: relative;
@@ -859,23 +854,39 @@ transform:rotate(45deg);
     background:  #2e2e2e;
     margin: 0 10px 30px;
     top: 0;
-    -webkit-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
-    -moz-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
-    -ms-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
-    -o-transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: all .9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .vertical_capture a {
-    position: absolute;
+    /*position: absolute;
     -moz-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     left: -15px;
+    letter-spacing: 1.5px;*/
     font-size: 13px;
-    letter-spacing: 1.5px;
     cursor:pointer;
+}
+/*.vertical_capture.changed a:hover:before, .vertical_info.changed a:hover:before {
+    visibility: hidden;
+}*/
+.vertical_capture.changed a:hover, .vertical_info.changed a:hover, .vertical_info.changed a:hover .camera-icon{
+    visibility: hidden;
+}
+.vertical_capture a svg {
+    position: absolute;
+    left: -2px;
+    bottom: -10px;
+    width: 25px;
+}
+.vertical_capture a:hover svg rect{
+    fill:#000;
+}
+.vertical_capture a svg .camera-lens{
+    fill:#FFFFFF;
+}
+.vertical_capture a:hover svg .camera-lens{
+    fill:#ffffff;
 }
 .vertical_info {
     font-family: 'audimatregular';
@@ -1265,10 +1276,10 @@ MENU
     color: #000;
     letter-spacing: 2px;
 }
-.menu a:hover, .vertical_capture a:hover, .vertical_info a:hover, #loadMore a:hover, #loadLess a:hover{
+.menu a:hover, .vertical_info a:hover, #loadMore a:hover, #loadLess a:hover{
     color: #000;
 }
-.menu a:before, .vertical_capture a:before, .vertical_info a:before, #loadMore a:before, #loadLess a:before {
+.menu a:before, .vertical_info a:before, #loadMore a:before, #loadLess a:before {
     content: "";
     position: absolute;
     width: 80%;
@@ -1282,13 +1293,10 @@ MENU
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
-.menu a:hover:before, .vertical_capture a:hover:before, .vertical_info a:hover:before, #loadMore a:hover:before, #loadLess a:hover:before {
+.menu a:hover:before, .vertical_info a:hover:before, #loadMore a:hover:before, #loadLess a:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
-}
-.vertical_capture.changed a:hover:before, .vertical_info.changed a:hover:before {
-    visibility: hidden;
 }
 .menu ul {
     list-style: none;
