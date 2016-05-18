@@ -39,11 +39,16 @@
     <div class='corps'>
         <div class='milieu'>
             <div class='menu-accueil'>
-                <!--p>Bienvenue au royaume des cactus, vous etes invité à nous poser toutes les questions que vous souhaitez. Alllooooollloooollloooooooloooooooolololololooooooooolloooooo</p-->
-                <!--canvas id="canvasGameOfLife" width="901" height="433"></canvas-->
                 <div class='canvas-right'>
                 </div><!--
                 --><div class="canvas-wrapper">
+                    <div class="identify">
+                        <form class="identifyUser">
+                            <p>Entrer votre numéro de carte </p>
+                            <p><input type="text" name="idUser"/></p>
+                            <button type="submit" style="display:none;"></button>
+                        </form>
+                    </div>
                     <div class="canvas-subwrapper">
                         <!--div class="sub-canvas-wrapper"-->
                             <canvas id="canvas"></canvas>
@@ -107,23 +112,11 @@
                             </div>
                             <div class="capture" id="capture-button-div">
                                 <div class="vertical_capture">
-                                    <!--div class="line canvas-line"></div><a id="capture-button">capture</a-->
                                     <div class="line canvas-line"></div>
                                     <a id="capture-button">
                                         <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 130 135" style="enable-background:new 0 0 130 135;" class="camera-icon" xml:space="preserve">
                                             <style type="text/css">
-                                            /*@keyframes fill {
-                                                0% {
-                                                fill: #FFFFFF;
-                                                }
-                                                50% {
-                                                fill: #000000;
-                                                }
-                                                100% {
-                                                fill: #FFFFFF;
-                                                }
-                                            }*/
                                             .st0{fill:#FFFFFF;
                                                   animation-name: fill;
                                                   animation-duration: 3s;
@@ -152,10 +145,10 @@
                             <div class="info" id="info-button-div">
                                 <span class="close heavy pointy" id="close-info"></span>
                                 <div class="vertical_info">
-                                    <div class="line canvas-line"></div><a id="info-button">info</a></div>
+                                    <div class="line canvas-line"></div><a id="info-button">info</a>
+                                </div>
                             </div>
-                        <!--/div-->
-                    </div>
+                        </div>
                 </div><!--
                 --><div class='canvas-left'>
                     <!--div class='expeditor'>
@@ -177,14 +170,16 @@
             </div>
         </div>
     </div>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/script/json-sans-eval.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="/codes.js"></script>
-    <script type="text/javascript" src="/indexScript.js"></script>
+    <script type="text/javascript" src="/script/codes.js"></script>
+    <script type="text/javascript" src="/script/utils.js"></script>
+    <script type="text/javascript" src="/script/projet.js"></script>
+    <script>
+
     <!-- src="/script/main.js"></script-->
 </body>
 

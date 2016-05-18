@@ -296,6 +296,20 @@ GALERIE
     -o-transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.image-info-container.thumbnail{
+    border: 30px solid #f2f2f2;
+}
+.image-info-container.thumbnail .message{
+    height:100%;
+}
+.image-info-container.thumbnail .message svg{
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
 .image-text-right{
     box-sizing: border-box;
     position: absolute;
@@ -348,35 +362,6 @@ GALERIE
     position: absolute;
     width: 100%;
     height: 100%;
-}
-.cross-container{
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.image-text-right .cross-container:hover {
-    cursor: pointer;
-}
-#cross {
-    background: black;
-    height: 50px;
-    position: relative;
-    width: 1px;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-#cross:after {
-    background: black;
-    content: "";
-    height: 1px;
-    left: -25px;
-    position: absolute;
-    top: 25px;
-    width: 50px;
 }
 .image span{
     top: 40px;
@@ -516,7 +501,30 @@ font-weight: 400;
     height: 100%;
     vertical-align: middle;
 }
+.identify{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.identify p{
+    font-family: audimatRegular;
+    letter-spacing: 3px;
+    text-align: center;
+}
+.identify input{
+    padding-top: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family: audimatBold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 2em;
+}
 .canvas-subwrapper {
+    display:none;
     position: relative;
     /*height : 85%;*/
     top: 50%;
@@ -614,48 +622,8 @@ font-weight: 400;
 .info-container h2{
     padding-bottom: 15px;
 }
+
 .text-right, .image-left {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 50%;
-    height: 100%;
-    vertical-align: top;
-}
-.text-right {
-    position: absolute;
-    top: 0;
-    color: #fff;
-    font-size: 24px;
-    padding: 30px;
-}
-.text-right .text-right-bkg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-image: linear-gradient(to bottom left, #00c9ff 0%, #92fe9d 50%, #c2c2c2 100%);
-    color: black;
-    left: 0;
-    top: 0px;
-    opacity: 0.8;
-}
-.text-right .text-right-bkg:before {
-    background-image: linear-gradient(to bottom left, #c2e59c 0%, #64b3f4 100%);
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    animation: gradientMove 5s infinite;
-    width: 100%;
-}
-.text-right .exp, .text-right .message {
-    position: relative;
-}
-.text-right .text {
-    padding-bottom: 30px;
-}.text-right, .image-left {
     box-sizing: border-box;
     display: inline-block;
     width: 50%;
