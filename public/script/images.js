@@ -4,6 +4,9 @@ var pageIndex = 0;
 var imagesPerPage = 6;
 var imagesTemplate, imageTemplate;
 var lastPageReached = false;
+var timeline = new TimelineMax({
+    paused: true
+});
 
 /**
  * Ajoute un éléments .images avec des données d'une page
@@ -35,9 +38,9 @@ var switchPage = function ()
     var $imagesPages = $('.images-container .images');
     var $imagesPage = $imagesPages.filter(':last');
     var pagesCount = $imagesPages.length;
-    var timeline = new TimelineMax({
+    /*var timeline = new TimelineMax({
         paused: true
-    });
+    });*/
 
     //S'il y a plus de 2 éléments .images de présent, on enlève les anciennes images
     if(pagesCount > 1)
@@ -49,6 +52,7 @@ var switchPage = function ()
                 $imagesPages.eq(0).remove();
             }
         }, 0.1);
+        console.log("page count < 1");
     }
 
     //Afficher les nouvelles images
@@ -59,7 +63,7 @@ var switchPage = function ()
         alpha: 1,
         scale: 1
     }, 0.1);
-
+    console.log("Afficher les nouvelles images");
     /**
      * Animation des liens Plus et moins
      */
@@ -120,11 +124,16 @@ var switchPage = function ()
 var loadPage = function(id, cb)
 {
     //Afficher le loading
-    TweenMax.fromTo($('#loading'), 0.2, {
-        alpha: 0
-    }, {
+    TweenMax.to($('#loading'), 0.1, {
         alpha: 1
     });
+    /*
+    TweenMax.fromTo($('#loading'), 0.1, {
+        alpha:0
+    }, {
+        alpha:1
+    });
+    */
 
     //Si aucun arguments est fourni à la fonction
     if(typeof(id) === 'undefined')
@@ -142,10 +151,9 @@ var loadPage = function(id, cb)
     //Chargement ajax
     $.getJSON('/images/page/'+imagesPerPage+'/'+id, function(data)
     {
-        var tweenLoading = TweenMax.to($('#loading'), 0.2, {
-            alpha: 0
-        });
-
+        /*var tweenLoading = TweenMax.to($('#loading'), 0.2, {
+            opacity:0
+        });*/
         //S'il y a des données, ont les ajoutes.
         if(data.length)
         {
@@ -277,3 +285,27 @@ $(function()
     });
 
 });
+
+/// HERE IS THE CHANGE !!!!
+var loaderAnim = function ()
+{
+    console.log("je suis la");
+    var path = document.querySelector('#loading path');
+var length = path.getTotalLength();
+console.log("length " + length);
+// Clear any previous transition
+path.style.transition = path.style.WebkitTransition ='none';
+
+// Set up the starting positions
+path.style.strokeDasharray = length + ' ' + length;
+path.style.strokeDashoffset = length;
+// Trigger a layout so styles are calculated & the browser
+// picks up the starting position before animating
+path.getBoundingClientRect();
+// Define our transition
+path.style.transition = path.style.WebkitTransition =
+  'stroke-dashoffset 2s ease-in-out';
+// Go!
+path.style.strokeDashoffset = '0';
+};
+loaderAnim();

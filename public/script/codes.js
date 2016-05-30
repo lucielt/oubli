@@ -1,8 +1,9 @@
 var cards = [{
 
     idInit:'louis-claude0000',
-    bckg: '/image/000.jpg',
+    bckg: '/image/cartes/louis_claude.png',
     image: '/rose.png',
+    dataURL : [],
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -68,30 +69,68 @@ var cards = [{
         radius: 10,
         touches: '8',
         nbRow: 2
-    }, ]
+    }, ],
+    imgPointX : [0, 110, 142, 165, 171, 125, 106, 218, 234, 273, 285, 285, 256, 223, 200, 183, 177, 186, 165, 221, 201, 186, 189, 225, 265, 285, 336, 340, 400, 451, 502, 576, 576, 534, 497, 462, 440, 393, 374, 352, 346, 350, 360, 355, 441, 441, 448, 433, 458, 464, 472, 482, 523, 538, 576, 336, 336, 325, 322, 301, 301, 246, 219, 215, 191, 167, 145, 133, 125, 134, 141, 134, 138, 134, 129, 126, 108, 91, 88, 84, 77, 0],
+    imgPointY : [0, 0, 42, 67, 85, 131, 174, 160, 158, 138, 115, 83, 99, 98, 87, 71, 49, 40, 0, 0, 33, 51, 68, 91, 87, 74, 55, 114, 183, 190, 158, 154, 200, 171, 175, 197, 200, 192, 185, 205, 258, 292, 321, 339, 214, 206, 210, 288, 318, 317, 338, 336, 373, 373, 384, 384, 351, 337, 324, 306, 299, 274, 294, 303, 299, 294, 307, 310, 318, 329, 339, 352, 384, 384, 374, 329, 326, 300, 263, 253, 217, 164],
 
 }, {
 
-    'DANNY0001': {
-        image: 'http:/nfklsjdlfksjd'
-    }
+    idInit:'danny0001',
+    bckg: '/image/cartes/danny.png',
+    image: '/rose.png'
 
 }, {
 
-    'MUM-AND-DAD-0002': {
-        image: 'http:/nfklsjdlfksjd'
-    }
+    idInit:'adrien0002',
+    bckg: '/image/cartes/adrien.png',
+    image: '/rose.png'
 
 }, {
 
-    'ADRI0003': {
-        image: 'http:/nfklsjdlfksjd'
-    }
+    idInit:'parents0003',
+    bckg: '/image/cartes/papa_et_maman.png',
+    image: '/rose.png'
 
 }, {
 
-    'LOUIS-CLAUDE0004': {
-        image: 'http:/nfklsjdlfksjd'
-    }
+    idInit:'mamour0004',
+    bckg: '/image/cartes/david.png',
+    image: '/rose.png'
+
+}, {
+
+    idInit:'cynthia0005',
+    bckg: '/image/cartes/cynthia.png',
+    image: '/rose.png'
+
+}, {
+
+    idInit:'lulu0006',
+    bckg: '/image/cartes/lulu.png',
+    image: '/rose.png'
+
+}, {
+
+    idInit:'xuan0007',
+    bckg: '/image/cartes/xuan.png',
+    image: '/rose.png'
+
+}, {
+
+    idInit:'noemie0008',
+    bckg: '/image/cartes/noemie.png',
+    image: '/rose.png'
+
+}, {
+
+    idInit:'louis0009',
+    bckg: '/image/cartes/louis.png',
+    image: '/rose.png'
+
+}, {
+
+    idInit:'mamour0010',
+    bckg: '/image/cartes/louis_claude.png',
+    image: '/rose.png'
 
 },];

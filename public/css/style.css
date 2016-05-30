@@ -242,6 +242,22 @@ transition: opacity 0.6s ease-out;
 /* ------
 GALERIE
 -------*/
+.loader{
+    width: 5%;
+    height: 10%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loader svg{
+    /*width: 90%;
+    height: auto;*/
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
 .images-container {
     position:absolute;
     top:0px;
