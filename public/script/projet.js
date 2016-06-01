@@ -1,4 +1,9 @@
 var currentCard;
+
+var UPDATE_SENSOR_THROTTLE_DELAY = 100;
+var SAVE_SNAPSHOT_THROTTLE_DELAY = 5000;
+var GLITCH_DELAY = 1000;
+
 /* -----------------------------------------
 CANVAS // RESIZE
 */
@@ -49,43 +54,60 @@ window.onresize = resize;
 var canvas = document.getElementById("canvas");
 canvas.width = 576;
 canvas.height = 384;
-var ctx = canvas.getContext("2d");
+var contextMask = canvas.getContext("2d");
 
 var canvas2 = document.getElementById("canvas2");
 canvas2.width = canvas.width;
 canvas2.height = canvas.height;
-var ctx2 = canvas2.getContext("2d");
+var contextBackground = canvas2.getContext("2d");
 
 var canvas3 = document.getElementById("canvas3");
 canvas3.width = canvas.width;
 canvas3.height = canvas.height;
-var ctx3 = canvas3.getContext("2d");
-var img, img2, cardKeyboardEnabled = false;
+var contextRender = canvas3.getContext("2d");
+;
+var img, img2, img_Masque, cardKeyboardEnabled = false;
 function drawImage()
 {
-    // ------ IMG
-    img = document.createElement('img');
-    img.onload = function() {
+    //S'il y a un snapshot, on le dessine
+    if(currentCard.snapshot)
+    {
         resize();
-        ctx.fillStyle = "white";
-        ctx.rect(0, 0, canvas.width, canvas.height);
-        ctx.fill();
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        //Appliquer le masque
+        img = currentCard.snapshot;
+        contextBackground.drawImage(img, 0, 0, canvas.width, canvas.height);
+    }
+    //Sinon on dessine les données de codes.js
+    else
+    {
+        // ------ IMG
+        img = document.createElement('img');
+        img.onload = function() {
+            resize();
+            contextBackground.fillStyle = "white";
+            contextBackground.rect(0, 0, canvas.width, canvas.height);
+            contextBackground.fill();
+            //Appliquer le masque
+            contextBackground.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        img2.src = currentCard.image;
-    };
-    img.src = currentCard.bckg;
+            img_Masque.src = currentCard.masque;
+        };
+        img.src = currentCard.bckg;
+    }
 
-    img2 = document.createElement('img');
-    img2.onload = function() {
-        ctx.drawImage(img2, 0, 0, canvas.width, canvas.height);
-    };
+    img_Masque = document.createElement('img');
+    img_Masque.onload = function() {
+        contextMask.drawImage(img_Masque, 0, 0, canvas.width, canvas.height);
+        /// change composite mode to use that shape
+        contextMask.globalCompositeOperation = 'source-in';
+        /// draw the image to be clipped
+        contextMask.drawImage(img, 0, 0, canvas.width, canvas.height);
+    }
+    img_Masque.src = currentCard.masque;
 
     var audio = document.getElementById("prout");
 
 }
-
-var socket = io.connect('http://localhost:8080');
 
 /*var nbCell,
     color,
@@ -121,6 +143,19 @@ var delay = (function() {
     };
 })();
 
+var firstRender = true;
+function updateRenderCanvas()
+{
+    contextRender.drawImage(canvas, 0, 0);
+    contextRender.drawImage(canvas2, 0, 0);
+
+    if(!firstRender)
+    {
+        //saveSnapshotThrottled();
+    }
+    firstRender = false;
+}
+
 /**
  * Expérience - Ce qu'il se passe quand signal de la carte est reçu
  */
@@ -128,160 +163,220 @@ $(document).keydown(function(e)
 {
     if (!cardKeyboardEnabled)
     {
-        return
+        return;
     }
     var s = String.fromCharCode(e.which);
+    if(!s.length)
+    {
+        return;
+    }
     //console.log(s);
     //delay(function(){
     var sensors = currentCard.sensors;
-    for (i = 0; i < sensors.length; i++)
+    var sensorsCount = sensors.length;
+    for (i = 0; i < sensorsCount; i++)
     {
         if (s !== sensors[i].touches)
         {
             continue;
         }
-        //drawSquare();
-        //radius = sensors[i].radius;
-        xInit = sensors[i].centerX;
-        yInit = sensors[i].centerY;
-        width = sensors[i].width;
-        height = sensors[i].height;
-        pas = sensors[i].pas;
-        pointXinit = sensors[i].pointX[0];
-        pointYinit = sensors[i].pointY[0];
-        pointX = sensors[i].pointX;
-        pointY = sensors[i].pointY;
-        color = getRandomColor();
-        //color = sensors[i].color[Math.floor((Math.random() * 5) + 1)];
-        //console.log("Nom de la touche ="+sensors[i].touches);
-        //drawForm();
-        /*drawSquare();
-        sensors[i].nbRow += 2;
-        pas2 += 1;
-        nbCell = sensors[i].nbRow;
-        console.log("nbRow" + nbCell);*/
-        //xInit = window.innerWidth / 2;
-        //yInit = window.innerHeight / 2;
-        xDraw = xInit - (width / 2);
-        yDraw = yInit - (height / 2);
-        drawColors();
-        sensors[i].pas = pas * Math.pow(0.9, (1 / 16) * pas);
-        sensors[i].width += 0.5;
-        sensors[i].height += 0.5;
-        xDraw = xInit - (width / 2);
-        yDraw = yInit - (height / 2);
-        //console.log("xDraw", xDraw ,"yDraw", yDraw);
-        //draw();
-        ctx3.drawImage(canvas, 0, 0);
-        ctx3.drawImage(canvas2, 0, 0);
+        updateFromSensorThrottled(sensors[i]);
     }
         //}, 1000 );
 
 });
+
+function updateFromSensor(sensor)
+{
+    //drawSquare();
+    //radius = sensor.radius;
+    xInit = sensor.centerX;
+    yInit = sensor.centerY;
+    width = sensor.width;
+    height = sensor.height;
+    pas = sensor.pas;
+    pointXinit = sensor.pointX[0];
+    pointYinit = sensor.pointY[0];
+    pointX = sensor.pointX;
+    pointY = sensor.pointY;
+    color = getRandomColor();
+    xDraw = xInit - (width / 2);
+    yDraw = yInit - (height / 2);
+
+    drawColors();
+    sensor.pas = pas * Math.pow(0.9, (1 / 16) * pas);
+    sensor.width += 0.5;
+    sensor.height += 0.5;
+    xDraw = xInit - (width / 2);
+    yDraw = yInit - (height / 2);
+
+    updateRenderCanvas();
+}
+
+var updateFromSensorThrottled = _.throttle(updateFromSensor, UPDATE_SENSOR_THROTTLE_DELAY);
+
+
+/**
+ * Function exécutée lors de l'appuit sur le boutton info
+ */
+function glitchBkg()
+{
+
+
+    colorRatio = Math.floor(Math.random() * 4) + 2;
+
+    coordonateX = Math.floor(Math.random() * 301) + 200;
+    coordonateY = (Math.floor(Math.random() * 201) + 10);
+    generativeWidth = Math.floor(Math.random() * 101) + 100;
+    generativeHeight = Math.floor(Math.random() * 101) + 100;
+
+
+    //console.log(data);
+    if(Math.random() <0.20){
+        console.log("je glitch");
+        var imageDataMask = contextMask.getImageData(coordonateX, coordonateY , generativeWidth, generativeHeight);
+        var imageDataBackground = contextBackground.getImageData(coordonateX, coordonateY , generativeWidth, generativeHeight);
+        var dataMask = imageDataMask.data;
+        var dataBackground = imageDataBackground.data;
+        for(h = 0; h < canvas.height; h++) {
+            for(w = 0; w < canvas.width; w++) {
+                if(dataMask[3+w*4+(canvas.width*4)*h] !== 0)
+                {
+                    dataMask[0+w*4+(canvas.width*4)*h] = dataMask[0+w*colorRatio+(canvas.width*4)*h];
+                    dataMask[1+w*4+(canvas.width*4)*h] = dataMask[1+w*4+(canvas.width*4)*h];
+                    dataMask[2+w*4+(canvas.width*4)*h] = dataMask[2+w*colorRatio+(canvas.width*4)*h];
+                    dataMask[3+w*4+(canvas.width*4)*h] = dataMask[3+w*4+(canvas.width*4)*h];
+                }
+                else {
+                    dataBackground[0+w*4+(canvas.width*4)*h] = dataBackground[0+w*colorRatio+(canvas.width*4)*h];
+                    dataBackground[1+w*4+(canvas.width*4)*h] = dataBackground[1+w*4+(canvas.width*4)*h];
+                    dataBackground[2+w*4+(canvas.width*4)*h] = dataBackground[2+w*colorRatio+(canvas.width*4)*h];
+                    dataBackground[3+w*4+(canvas.width*4)*h] = dataBackground[3+w*4+(canvas.width*4)*h];
+                }
+            }
+        }
+
+        contextMask.putImageData(imageDataMask,coordonateX,coordonateY);
+        contextBackground.putImageData(imageDataBackground,coordonateX,coordonateY);
+    }
+
+    updateRenderCanvas();
+
+    window.setTimeout(glitchBkg,GLITCH_DELAY);
+}
 /**
  * Function exécutée lors de l'appuit sur le boutton info
  */
 function drawColors() {
-    imageData = ctx2.createImageData(width, height);
+    imageData = contextBackground.getImageData(xDraw, yDraw, width, height);
     //pos = 0; // index position into imagedata array
     for (y = 0; y < height; y++) {
         for (x = 0; x < width; x++) {
             index = (x + (y * imageData.width)) * 4;
             // calculate sine based on distance
-            /*x2 = x;
-            y2 = y;*/
             d = Math.sqrt(Math.pow(x, 3) + Math.pow(y, 3));
             t = Math.sin(d / pas);
             // calculate RGB values based on sine
             r = 105 + t * (Math.floor(Math.random() * 255));
             g = 103 + t * (Math.floor(Math.random() * 255));
             b = 100 + t * (Math.floor(Math.random() * 255));
-            if (Math.pow((x + xDraw) - xInit, 2) + Math.pow((y + yDraw) - yInit, 2) < Math.pow((width / 2), 2)) {
+            if (Math.pow((x + xDraw) - xInit, 2) + Math.pow((y + yDraw) - yInit, 2) < Math.pow((width / 2), 2))
+            {
+                imageData.data[index + 0] = r;
+                imageData.data[index + 1] = g;
+                imageData.data[index + 2] = b + 50;
                 imageData.data[index + 3] = 255;
-            } else {
-                imageData.data[index + 3] = 0;
             }
-            imageData.data[index + 0] = r;
-            imageData.data[index + 1] = g;
-            imageData.data[index + 2] = b + 50;
-            //imageData.data[index + 3] = a;
+
         }
     }
-    imageData = ctx2.putImageData(imageData, xDraw, yDraw);
-    ctx2.save();
-    ctx2.beginPath();
-    ctx2.arc(xInit, yInit, width / 2, 0, 2 * Math.PI);
-    /*ctx2.moveTo(pointXinit, pointYinit);
-    for (j=1; j< pointXinit.length; j++){
-        ctx2.lineTo(pointXinit[j], pointYinit[j]);
-    }*/
-    ctx2.closePath();
-    ctx2.clip();
-    ctx2.drawImage(img2, 0, 0, canvas2.width, canvas2.height);
-    ctx2.restore();
-    //ctx2.globalCompositeOperation = "screen";
-    ctx2.globalCompositeOperation = "overlay";
-    ctx2.shadowBlur = 5;
-    ctx2.shadowColor = "rgba(200,200,200,100)";
-    ctx2.fillStyle = color;
-    ctx2.beginPath();
-    ctx2.arc(xInit, yInit, width / 2, 0, 2 * Math.PI);
-    /*ctx2.moveTo(pointXinit, pointYinit);
-    for (j=1; j< pointX.length; j++){
-        ctx2.lineTo(pointX[j], pointY[j]);
-    }*/
-    ctx2.closePath();
-    /*ctx2.beginPath();
-    ctx2.arc(xInit, yInit, width/2, 0, 2 * Math.PI);
-    ctx2.closePath();*/
-    ctx2.fill();
+    imageData = contextBackground.putImageData(imageData, xDraw, yDraw);
+    contextBackground.save();
+    contextBackground.globalCompositeOperation = "overlay";
+
+    // dessine un rond de couleur d'opacité réduite pour re-coloré la détérioration
+    contextBackground.fillStyle = color;
+    contextBackground.beginPath();
+    contextBackground.arc(xInit, yInit, width / 2, 0, 2 * Math.PI);
+    contextBackground.closePath();
+    contextBackground.fill();
+    // incrémente la position de dessin pour que la transformation soit centré
     xDraw = xInit - (width / 2);
     yDraw = yInit - (height / 2);
-    /*var imgPointX = [0, 110, 142, 165, 171, 125, 106, 218, 234, 273, 285, 285, 256, 223, 200, 183, 177, 186, 165, 221, 201, 186, 189, 225, 265, 285, 336, 340, 400, 451, 502, 576, 576, 534, 497, 462, 440, 393, 374, 352, 346, 350, 360, 355, 441, 441, 448, 433, 458, 464, 472, 482, 523, 538, 576, 336, 336, 325, 322, 301, 301, 246, 219, 215, 191, 167, 145, 133, 125, 134, 141, 134, 138, 134, 129, 126, 108, 91, 88, 84, 77, 0];
-    var imgPointY = [0, 0, 42, 67, 85, 131, 174, 160, 158, 138, 115, 83, 99, 98, 87, 71, 49, 40, 0, 0, 33, 51, 68, 91, 87, 74, 55, 114, 183, 190, 158, 154, 200, 171, 175, 197, 200, 192, 185, 205, 258, 292, 321, 339, 214, 206, 210, 288, 318, 317, 338, 336, 373, 373, 384, 384, 351, 337, 324, 306, 299, 274, 294, 303, 299, 294, 307, 310, 318, 329, 339, 352, 384, 384, 374, 329, 326, 300, 263, 253, 217, 164];
-*/
-    var imgPointX = currentCard.imgPointX;
-    var imgPointY = currentCard.imgPointY;
-    var long = imgPointX.length;
-    ctx2.save();
-    ctx2.globalCompositeOperation = "normal";
-    ctx2.beginPath();
-    ctx2.moveTo(imgPointX[0], imgPointY[0]);
-    for (j = 1; j < long; j++) {
-        ctx2.lineTo(imgPointX[j], imgPointY[j]);
-        //console.log("jesuisla", imgPointX[j], imgPointY[j]);
-    }
-    //ctx3.closePath();
-    ctx2.clip();
-    ctx2.drawImage(img, 0, 0, canvas2.width, canvas2.height);
-    ctx2.drawImage(img2, 0, 0, canvas2.width, canvas2.height);
-    ctx2.restore();
 }
+
+var savingSnapshot = false;
+var saveOnComplete = false;
+function saveSnapshot()
+{
+    if(!currentCard)
+    {
+        return;
+    }
+    if(savingSnapshot)
+    {
+        saveOnComplete = true;
+        return;
+    }
+
+    console.log('Saving snapshot...');
+
+    savingSnapshot = true;
+    saveOnComplete = false;
+    $.post('/snapshots/'+currentCard.idInit, {
+        image: canvas3.toDataURL('image/png')
+    }, function(data)
+    {
+        savingSnapshot = false;
+        console.log(data);
+        if(saveOnComplete)
+        {
+            saveSnapshot();
+        }
+    }, 'json');
+}
+var saveSnapshotThrottled = _.throttle(saveSnapshot, SAVE_SNAPSHOT_THROTTLE_DELAY);
 
 $(function()
 {
-    $('.identifyUser').on('submit',function(e){
-        e.preventDefault();
-
-        var $form = $(e.currentTarget);
-        var id = $form.find('input[name=idUser]').val();
-        //alert(id);
-        console.log(id);
+    function showCard(id, snapshot)
+    {
         //delay(function(){
         for (j = 0; j < cards.length; j++) {
-            console.log(cards.lenght);
+            //console.log(cards.lenght);
             if (id == cards[j].idInit) {
                 $('.identify').css('display', "none");
                 $('.canvas-subwrapper').css('display', "block");
                 currentCard = cards[j];
+                if(snapshot)
+                {
+                    currentCard.snapshot = snapshot;
+                }
                 drawImage();
+                glitchBkg();
                 cardKeyboardEnabled = true;
 
             } else {
                 $(':input', '.identifyUser').val('');
             }
         }
+    }
 
+    $('.identifyUser').on('submit',function(e){
+        e.preventDefault();
+
+        var $form = $(e.currentTarget);
+        var id = $form.find('input[name=idUser]').val();
+        var img = document.createElement('img');
+        img.onerror = function()
+        {
+            showCard(id, null);
+        };
+        img.onload = function()
+        {
+            showCard(id, img.naturalWidth ? img:null);
+        };
+        img.src = '/snapshots/'+id+'.png';
     });
 
     /**
@@ -303,7 +398,7 @@ $(function()
         cardKeyboardEnabled = false;
         $(':input', '#message-form').not(':submit').val('');
         /*console.log("Je suis egal a "+$('#message-form input:hidden').val());*/
-        var dataURL = canvas.toDataURL('image/png');
+        var dataURL = canvas3.toDataURL('image/png');
         $('#message-form form input[name=image]').val(dataURL);
         $('#canvas-capture, #message-form').show();
         $('#info-button-div, #message-save, .camera-icon').hide();

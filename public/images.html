@@ -16,14 +16,14 @@
     <div class="vertical_home vertical_home_left"><div class="line"></div>G<br>A<br>L<br>E<br>R<br>I<br>E</div>
     <div class='corps' id='galerie'>
         <div id="loading" class="loader">
-        <svg version="1.0" id="loaderSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
-        <style type="text/css">
-        .loaderPath{fill:none;stroke:#000;stroke-width:5;stroke-alignment:inner;stroke-miterlimit:0}
-        .st1{fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:10;}
-        </style>
-            <path class="loaderPath" d="M119,0H0v92h15v25h15v26h14v25h15v28h23.1l22.4-30.2l6.6,7.2l17-20.8l29.6,43.8H178v-96h-15V74h-15V50h-14V23h-15V0L119,0z"/>
-        </svg>
+            <svg version="1.0" id="loaderSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
+                <style type="text/css">
+                .loaderPath{fill:none;stroke:#000;stroke-width:5;stroke-alignment:inner;stroke-miterlimit:0}
+                .st1{fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:10;}
+                </style>
+                    <path class="loaderPath" d="M119,0H0v92h15v25h15v26h14v25h15v28h23.1l22.4-30.2l6.6,7.2l17-20.8l29.6,43.8H178v-96h-15V74h-15V50h-14V23h-15V0L119,0z"/>
+            </svg>
         <!--svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
             <style type="text/css">
@@ -61,25 +61,22 @@
     </script>
     <script type="text/template" id="imageTemplate">
         <li class="image" data-id="<%= card._id %>">
-            <!--a class="example-image-link" href="/image/<%= card._id %>" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                <img class="example-image" src="/image/<%= card._id %>" alt=""/>
-            </a-->
-            <p><img src="/image/<%= card._id %>" /></p>
+            <p><img src="/cards/<%= card._id %>.png" /></p>
              <div class="image-info-container thumbnail">
-                 <a class="image-link" href="/image/<%= card._id %>" data-lightbox="example-set<%= card._id %>" data-title="<%= card.name %>" data-description="<%= card.phrase %>" data-id="<%= card._id %>">
+                 <a class="image-link" href="/cards/<%= card._id %>.png" data-lightbox="example-set<%= card._id %>" data-title="<%= card.name %>" data-description="<%= card.phrase %>" data-id="<%= card._id %>">
                      <div class="message">
                     <!--svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178 196"><title>loupe</title><path d="M158,150V127H136V104H119V26l-18,0,0.44-26H18V26H0v76H18v25H91v23h24v23h21v23h43V150H158Zm11,36H146V163H125V140H101V117H28V92H10V36H28V10H91.1L90.95,25.83l-0.1,10.1L101,36l8,0v78h17v23h22v23h21v26Z"/><polygon points="64 36 54 36 54 59 28 59 28 69 54 69 54 92 64 92 64 69 91 69 91 59 64 59 64 36"/></svg-->
                     <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     	 viewBox="0 0 150.9 150.9" style="enable-background:new 0 0 150.9 150.9;" xml:space="preserve">
-                    <style type="text/css">
-                    	.st0{fill:none;stroke:#2e2e2e;/*stroke-miterlimit:10;*/stroke-width:4px}
-                    </style>
-                    <circle class="st0" cx="56.1" cy="56.1" r="55.6"/>
-                    <line class="st0" x1="95.7" y1="95.7" x2="150.5" y2="150.5"/>
-                    <g>
-                    	<line class="st0" x1="56" y1="33.8" x2="56" y2="78.8"/>
-                    	<line class="st0" x1="33.5" y1="56.3" x2="78.5" y2="56.3"/>
-                    </g>
+                        <style type="text/css">
+                        	.st0{fill:none;stroke:#2e2e2e;/*stroke-miterlimit:10;*/stroke-width:4px}
+                        </style>
+                        <circle class="st0" cx="56.1" cy="56.1" r="55.6"/>
+                        <line class="st0" x1="95.7" y1="95.7" x2="150.5" y2="150.5"/>
+                        <g>
+                        	<line class="st0" x1="56" y1="33.8" x2="56" y2="78.8"/>
+                        	<line class="st0" x1="33.5" y1="56.3" x2="78.5" y2="56.3"/>
+                        </g>
                     </svg>
                              <!--div class="text">
                                  <h4><%= card.name %></h4>

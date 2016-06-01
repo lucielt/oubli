@@ -18,14 +18,6 @@
 </head>
 
 <body>
-    <!--div class='menu' id='recherche'>
-        <ul>
-            <li><a href="index.html">Amorce</a></li>
-            <li><a href="recherche.html">Recherche</a></li>
-            <li><a href='/cartes'>E-Archive</a></li>
-            <li><a href="projet.html">Projet</a></li>
-        </ul>
-    </div-->
     <div class='menu' id='return'>
         <ul>
             <li><a href="index.html">retour</a></li>
@@ -51,9 +43,9 @@
                     </div>
                     <div class="canvas-subwrapper">
                         <!--div class="sub-canvas-wrapper"-->
-                            <canvas id="canvas"></canvas>
-                            <canvas id="canvas2"></canvas>
-                            <canvas id="canvas3"></canvas>
+                            <canvas id="canvas" class="canvas canvas-mask"></canvas>
+                            <canvas id="canvas2" class="canvas canvas-background"></canvas>
+                            <canvas id="canvas3" class="canvas canvas-render"></canvas>
                             <div id="canvas-info">
                                 <div class="info-container">
                                         <div class="text-right">
@@ -71,15 +63,6 @@
                                             </div>
                                         </div><!--
                                         --><div class="image-left">
-                                            <!--div class="apercu">
-                                                <img alt="apercu" src="/image/000.jpg">
-                                            </div-->
-                                            <!--div class="rec">
-                                                <div class="text">
-                                                    <h2>À :</h2>
-                                                    <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
-                                                </div>
-                                            </div-->
                                         </div>
                                 </div>
                             </div>
@@ -96,7 +79,7 @@
                                             </div>
                                         </div>
                                         <div class="message" id="message-form">
-                                            <form action="/save" method="post" enctype="multipart/form-data">
+                                            <form action="/cards" method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="image"/>
                                                 <p>Nom: </br>
                                                 <input type="text" name="name"/></p>
@@ -170,11 +153,9 @@
             </div>
         </div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/script/json-sans-eval.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.min.js"></script>
+    <script src="/script/json-sans-eval.js"></script>
     <script type="text/javascript" src="/script/codes.js"></script>
     <script type="text/javascript" src="/script/utils.js"></script>
     <script type="text/javascript" src="/script/projet.js"></script>

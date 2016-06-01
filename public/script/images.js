@@ -4,9 +4,9 @@ var pageIndex = 0;
 var imagesPerPage = 6;
 var imagesTemplate, imageTemplate;
 var lastPageReached = false;
-var timeline = new TimelineMax({
+/*var timeline = new TimelineMax({
     paused: true
-});
+});*/
 
 /**
  * Ajoute un éléments .images avec des données d'une page
@@ -38,15 +38,19 @@ var switchPage = function ()
     var $imagesPages = $('.images-container .images');
     var $imagesPage = $imagesPages.filter(':last');
     var pagesCount = $imagesPages.length;
-    /*var timeline = new TimelineMax({
+    var timeline = new TimelineMax({
         paused: true
-    });*/
+    });
+
+    timeline.to($('#loading'), 0.1, {
+        autoAlpha: 0
+    });
 
     //S'il y a plus de 2 éléments .images de présent, on enlève les anciennes images
     if(pagesCount > 1)
     {
         timeline.staggerTo($imagesPages.eq(0).find('.image').toArray(), 0.2, {
-            alpha: 0,
+            autoAlpha: 0,
             onComplete: function()
             {
                 $imagesPages.eq(0).remove();
@@ -57,10 +61,10 @@ var switchPage = function ()
 
     //Afficher les nouvelles images
     timeline.staggerFromTo($imagesPages.eq(pagesCount-1).find('.image').toArray(), 0.2, {
-        alpha: 0,
+        autoAlpha: 0,
         scale: 0.2
     }, {
-        alpha: 1,
+        autoAlpha: 1,
         scale: 1
     }, 0.1);
     console.log("Afficher les nouvelles images");
@@ -71,27 +75,27 @@ var switchPage = function ()
     if (pageIndex === 0)
     {
         timeline.to($('#loadLess p'), 0.2, {
-            alpha: 0
+            autoAlpha: 0
         }, 0);
         timeline.to($('#loadMore p'), 0.2, {
-            alpha: 1
+            autoAlpha: 1
         }, 0);
     }
     //Si on a attein la fin
     else if(pageIndex === pagesData.length-1 && lastPageReached)
     {
         timeline.to($('#loadMore p'), 0.2, {
-            alpha: 0
+            autoAlpha: 0
         }, 0);
         timeline.to($('#loadLess p'), 0.2, {
-            alpha: 1
+            autoAlpha: 1
         }, 0);
     }
     //On s'assure que les 2 liens sont visibles si on est dans le milieu
     else
     {
         timeline.to($('#loadMore p, #loadLess p'), 0.2, {
-            alpha: 1
+            autoAlpha: 1
         }, 0);
     }
 
@@ -125,7 +129,7 @@ var loadPage = function(id, cb)
 {
     //Afficher le loading
     TweenMax.to($('#loading'), 0.1, {
-        alpha: 1
+        autoAlpha: 1
     });
     /*
     TweenMax.fromTo($('#loading'), 0.1, {
@@ -149,19 +153,18 @@ var loadPage = function(id, cb)
     }
 
     //Chargement ajax
-    $.getJSON('/images/page/'+imagesPerPage+'/'+id, function(data)
+    $.getJSON('/cards/'+imagesPerPage+'/'+id, function(data)
     {
-        /*var tweenLoading = TweenMax.to($('#loading'), 0.2, {
-            opacity:0
-        });*/
+        var items = data.items;
+
         //S'il y a des données, ont les ajoutes.
-        if(data.length)
+        if(items.length)
         {
-            pagesData.push(data);
+            pagesData.push(items);
         }
 
         //Si on a atteint la fin de toutes les pages, ont le stock.
-        if(data.length < imagesPerPage || !data.length)
+        if(data.lastPage || items.length < imagesPerPage || !items.length)
         {
             lastPageReached = true;
         }
@@ -169,7 +172,7 @@ var loadPage = function(id, cb)
         //On appelle le callback s'il est présent
         if(typeof(cb) !== 'undefined')
         {
-            cb(data);
+            cb(items);
         }
     });
 };
@@ -261,7 +264,7 @@ $(function()
         var $list = $(e.currentTarget).parents('.ul-container');
 
         //Appel au serveur pour faire le changement aléatoire
-        $.getJSON('/change/'+id, function(data)
+        $.getJSON('/cards/'+id+'/change', function(data)
         {
             //Créer un nouvel élément avec le template et les nouvelles données
             var imageHtml = imageTemplate({

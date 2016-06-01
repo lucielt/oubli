@@ -546,19 +546,22 @@ font-weight: 400;
     top: 50%;
     transform: translateY(-50%);
 }
-#canvas {
+.canvas {
     position: absolute;
-    z-index: 0;
 }
-#canvas2 {
-    position: absolute;
-       z-index: 1;
-}
-#canvas3 {
-    position: absolute;
-       z-index: 2;
 
+.canvas-background {
+    z-index: 2;
 }
+
+.canvas-mask {
+    z-index: 3;
+}
+
+.canvas-render {
+    opacity:0;
+}
+
 #canvas-info, #canvas-capture {
     position: absolute;
     top: 0;
@@ -630,7 +633,7 @@ font-weight: 400;
      -webkit-border-image: -webkit-linear-gradient(top right, #00c9ff 0%, #92fe9d 50%, #c2c2c2 100%); */
     /* border-image: linear-gradient(to bottom left, #00c9ff 0%, #92fe9d 50%, #c2c2c2 100%); */
     /* border-image-slice: 1; */
-    background-image: url("/image/000.jpg");
+    /*background-image: url("/image/000.jpg");*/
     background-size: cover;
     background-position-y: 50%;
 }

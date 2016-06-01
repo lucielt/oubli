@@ -9,8 +9,13 @@ var multer  = require('multer');
 var upload = multer();
 var router = express.Router();
 var _ = require('lodash');
+var debug = require('debug');
+var debugServer = debug('server');
 
-server.listen(Config.port);
+server.listen(Config.port, function()
+{
+    debugServer('Server listening on port '+Config.port);
+});
 
 //Configuration du système de template
 app.set('views', 'public');
@@ -34,13 +39,116 @@ var Card = mongoose.model('Card', {
     image: Buffer
 });
 
-//Formulaire test pour enregistrer une image
-app.get('/test', function(req, res) {
-    res.send();
+var Snapshot = mongoose.model('Snapshot', {
+    code: String,
+    image: Buffer
 });
 
+/**
+ * Snapshot
+ */
+//Enregistrement du snapshot
+app.post('/snapshots/:code', function(req, res)
+{
+    var image = req.body.image;
+    var code = req.params.code.toLowerCase();
 
-app.get('/images/page/:count/:id', function(req, res) {
+    var imageBase64 = image.split(',')[1];
+    var imageBuffer = new Buffer(imageBase64, 'base64');
+
+    debugServer('Saving snapshot for '+code+'...');
+
+    Snapshot.findOne({
+        code: code
+    })
+    .exec(function(err, snapshot)
+    {
+        //Si le snapshot n'existe pas, on en créé un nouveau
+        if(err || !snapshot)
+        {
+            debugServer('Snapshot not found for '+code+'.');
+            snapshot = new Snapshot({
+                code: code,
+                image: imageBuffer
+            });
+        }
+        //Sinon, on update seulement l'image
+        else
+        {
+            debugServer('Snapshot found for '+code+'.');
+            snapshot.image = imageBuffer
+        }
+
+        //On enregistre
+        snapshot.save(function (err, card)
+        {
+            if (err)
+            {
+                res.send({
+                    'success': false
+                });
+                return;
+            }
+
+            debugServer('Snapshot saved for '+code+'.');
+
+            res.send({
+                'success': true
+            });
+        });
+    });
+});
+
+app.get('/snapshots/:code/delete', function(req, res)
+{
+    var code = req.params.code.toLowerCase();
+
+    debugServer('Deleting snapshot for '+code+'...');
+
+    Snapshot.findOne({
+        code: code
+    })
+    .remove(function(err, snapshot)
+    {
+        if(err)
+        {
+            res.send('NOT FOUND');
+            return
+        }
+
+        debugServer('Snapshot deleted for '+code+'.');
+
+        res.send('OK');
+    });
+});
+
+//Récupère un snapshot s'il y en a un
+app.get('/snapshots/:code.png', function(req, res)
+{
+    var code = req.params.code.toLowerCase();
+
+    Snapshot.findOne({
+        code: code
+    })
+    .exec(function(err, snapshot)
+    {
+        if(err || !snapshot)
+        {
+            res.status(500).send('ERROR');
+            return;
+        }
+
+        res.set('Content-Type', 'image/png');
+        res.send(snapshot.image);
+    });
+});
+
+/**
+ * Cards
+ */
+//Obtenir les images par page
+app.get('/cards/:count/:id', function(req, res)
+{
     //Requête à la base de données
     var count = parseInt(req.params.count);
     var id = req.params.id+'';
@@ -48,30 +156,39 @@ app.get('/images/page/:count/:id', function(req, res) {
         _id: { $gt: id }
     }:{};
 
+    debugServer('Requesting cards from id '+id+' with '+count+' results...');
+
     Card.find(params)
     .sort('_id')
-    .limit(count)
+    .limit(count+1)
     .select('_id name phrase')
     .exec(function(err, cards)
     {
         if(err)
         {
-            res.send('error');
+            res.status(500).send('error');
             return;
         }
+
+        debugServer('Requested '+cards.length+' card(s).');
+
         // affiche la page images.html
         res.set('Content-Type', 'application/json');
-        res.send(cards);
+        res.send({
+            lastPage: cards.length < (count+1) ? true:false,
+            items: cards.slice(0, count)
+        });
     });
 });
 
 //Pour afficher une image
-router.get('/image/:id', function(req, res) {
+router.get('/cards/:id.png', function(req, res)
+{
     Card.findById(req.params.id, function(err, card)
     {
         if(err)
         {
-            res.send('error');
+            res.status(500).send('error');
             return;
         }
 
@@ -80,12 +197,13 @@ router.get('/image/:id', function(req, res) {
     });
 });
 
-router.get('/change/:id', function(req, res) {
+router.get('/cards/:id/change', function(req, res)
+{
     Card.findById(req.params.id, function(err, card)
     {
         if(err)
         {
-            res.send('error');
+            res.status(500).send('error');
             return;
         }
 
@@ -103,8 +221,7 @@ router.get('/change/:id', function(req, res) {
         card.save(function (err, card)
         {
             if (err){
-                console.log('ERROR');
-                res.send('ERROR');
+                res.status(500).send('ERROR');
                 return;
             }
 
@@ -113,11 +230,13 @@ router.get('/change/:id', function(req, res) {
     });
 });
 
-app.post('/save', function(req, res)
+app.post('/cards', function(req, res)
 {
     var image = req.body.image;
     var name = req.body.name;
     var phrase = req.body.phrase;
+
+    debugServer('Saving cards for '+name+'...');
 
     var imageBase64 = image.split(',')[1];
     var imageBuffer = new Buffer(imageBase64, 'base64');
@@ -129,38 +248,20 @@ app.post('/save', function(req, res)
     });
     card.save(function (err, card)
     {
-        if (err){
-            console.log('ERROR');
+        if (err)
+        {
+            res.status(500).send({
+                'success': false
+            });
             return;
         }
-        console.log('Saved');
-        // affiche la page merci.html
+
+        debugServer('Cards saved for '+name+'.');
+
         res.send({
+            'success': true,
             'url': req.hostname+':'+Config.port+'/image/'+card.id
         });
-    });
-});
-
-//Enregistrer une image
-app.post('/upload', upload.single('image'), function(req, res)
-{
-    var name = req.body.name;
-    var phrase = req.body.phrase;
-
-    var card = new Card({
-        name: name,
-        phrase: phrase,
-        image: req.file.buffer
-    });
-    card.save(function (err)
-    {
-        if (err){
-            console.log('ERROR');
-            return;
-        }
-        console.log('Saved');
-        // affiche la page merci.html
-        res.render('merci');
     });
 });
 
