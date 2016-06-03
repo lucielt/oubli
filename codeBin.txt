@@ -598,3 +598,6 @@ function drawSquare(){
         }
     }
 }*/
+
+
+ffmpeg -i FirstAidKit_MySilverLining.m4a -codec:a libmp3lame -qscale:a 2 FirstAidKit_MySilverLining.mp3

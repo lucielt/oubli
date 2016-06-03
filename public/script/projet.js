@@ -2,7 +2,8 @@ var currentCard;
 
 var UPDATE_SENSOR_THROTTLE_DELAY = 100;
 var SAVE_SNAPSHOT_THROTTLE_DELAY = 5000;
-var GLITCH_DELAY = 1000;
+var GLITCH_DELAY = 10000;
+var AUDIO_SENSORGLITCH_DELAY = 500;
 
 /* -----------------------------------------
 CANVAS // RESIZE
@@ -65,10 +66,21 @@ var canvas3 = document.getElementById("canvas3");
 canvas3.width = canvas.width;
 canvas3.height = canvas.height;
 var contextRender = canvas3.getContext("2d");
-;
+
 var img, img2, img_Masque, cardKeyboardEnabled = false;
+
+var audio_ambiance = document.getElementById("audio_ambiance");
+var audio_sensorGlitch = document.getElementById("audio_sensorGlitch");
+var audio_bckgGlitch = document.getElementById("audio_bckgGlitch");
+
 function drawImage()
 {
+    audio_ambiance.src = currentCard.sound;
+    audio_ambiance.addEventListener('canplaythrough', function() {
+        audio_ambiance.loop = true;
+        audio_ambiance.volume = 0.5;
+        audio_ambiance.play();
+    }, false);
     //S'il y a un snapshot, on le dessine
     if(currentCard.snapshot)
     {
@@ -104,36 +116,18 @@ function drawImage()
         contextMask.drawImage(img, 0, 0, canvas.width, canvas.height);
     }
     img_Masque.src = currentCard.masque;
-
-    var audio = document.getElementById("prout");
-
 }
 
-/*var nbCell,
-    color,
-    centerx,
-    centery,
-    cellWidth = 4,
-    pas=0;*/
 
 var pas,
-    pas2,
-    nbCell,
-    cellWidth = 4,
     color,
     xInit,
     yInit,
-    pointXinit,
-    pointYinit,
-    pointX,
-    pointY;
-
-    var decalagePointX = (window.innerWidth - canvas.width) / 2,
-    decalagePointY = (window.innerHeight - canvas.height) / 2,
     width,
     height,
-    xDraw = xInit - (width / 2),
-    yDraw = yInit - (height / 2);
+    xDraw,
+    yDraw;
+
 
 var delay = (function() {
     var timer = 0;
@@ -146,8 +140,8 @@ var delay = (function() {
 var firstRender = true;
 function updateRenderCanvas()
 {
-    contextRender.drawImage(canvas, 0, 0);
     contextRender.drawImage(canvas2, 0, 0);
+    contextRender.drawImage(canvas, 0, 0);
 
     if(!firstRender)
     {
@@ -188,27 +182,24 @@ $(document).keydown(function(e)
 
 function updateFromSensor(sensor)
 {
-    //drawSquare();
-    //radius = sensor.radius;
+
     xInit = sensor.centerX;
     yInit = sensor.centerY;
     width = sensor.width;
     height = sensor.height;
     pas = sensor.pas;
-    pointXinit = sensor.pointX[0];
-    pointYinit = sensor.pointY[0];
-    pointX = sensor.pointX;
-    pointY = sensor.pointY;
     color = getRandomColor();
     xDraw = xInit - (width / 2);
     yDraw = yInit - (height / 2);
 
-    drawColors();
+    glitchSensor();
     sensor.pas = pas * Math.pow(0.9, (1 / 16) * pas);
     sensor.width += 0.5;
     sensor.height += 0.5;
     xDraw = xInit - (width / 2);
     yDraw = yInit - (height / 2);
+
+    pause_audio_sensorGlitch_debounce();
 
     updateRenderCanvas();
 }
@@ -217,23 +208,29 @@ var updateFromSensorThrottled = _.throttle(updateFromSensor, UPDATE_SENSOR_THROT
 
 
 /**
- * Function exécutée lors de l'appuit sur le boutton info
+ * Function exécutée random sur le background
  */
 function glitchBkg()
 {
 
-
     colorRatio = Math.floor(Math.random() * 4) + 2;
 
+    generativeWidth = Math.floor(Math.random() * ((100-50)+1) + 50);
+    generativeHeight = Math.floor(Math.random() * ((100-50)+1) + 50);
+    coordonateX = Math.floor(Math.random() * ((576-generativeWidth)+1) + 0);
+    coordonateY = Math.floor(Math.random() * ((384-generativeHeight)+1) + 0);
+    /*
+    Math.floor(Math.random() * ((y-x)+1) + x);
     coordonateX = Math.floor(Math.random() * 301) + 200;
     coordonateY = (Math.floor(Math.random() * 201) + 10);
     generativeWidth = Math.floor(Math.random() * 101) + 100;
-    generativeHeight = Math.floor(Math.random() * 101) + 100;
+    generativeHeight = Math.floor(Math.random() * 101) + 100;*/
 
 
     //console.log(data);
     if(Math.random() <0.20){
         console.log("je glitch");
+        audio_bckgGlitch.play();
         var imageDataMask = contextMask.getImageData(coordonateX, coordonateY , generativeWidth, generativeHeight);
         var imageDataBackground = contextBackground.getImageData(coordonateX, coordonateY , generativeWidth, generativeHeight);
         var dataMask = imageDataMask.data;
@@ -258,6 +255,7 @@ function glitchBkg()
 
         contextMask.putImageData(imageDataMask,coordonateX,coordonateY);
         contextBackground.putImageData(imageDataBackground,coordonateX,coordonateY);
+        audio_bckgGlitch.pause();
     }
 
     updateRenderCanvas();
@@ -265,9 +263,10 @@ function glitchBkg()
     window.setTimeout(glitchBkg,GLITCH_DELAY);
 }
 /**
- * Function exécutée lors de l'appuit sur le boutton info
+ * Function exécutée lors de l'appuit sur un sensor
  */
-function drawColors() {
+function glitchSensor() {
+    audio_sensorGlitch.play();
     imageData = contextBackground.getImageData(xDraw, yDraw, width, height);
     //pos = 0; // index position into imagedata array
     for (y = 0; y < height; y++) {
@@ -305,6 +304,20 @@ function drawColors() {
     yDraw = yInit - (height / 2);
 }
 
+/**
+ * Function exécutée lors de l'appuit sur le boutton info
+ */
+function pause_audio_sensorGlitch()
+{
+    audio_sensorGlitch.pause();
+}
+
+var pause_audio_sensorGlitch_debounce = _.debounce(pause_audio_sensorGlitch, AUDIO_SENSORGLITCH_DELAY);
+
+/**
+ * Function de capture de l'image en cours
+
+ */
 var savingSnapshot = false;
 var saveOnComplete = false;
 function saveSnapshot()
@@ -388,6 +401,8 @@ $(function()
         $('#canvas-info').show();
         $('#capture-button-div').hide();
         $('.canvas-line').css("background-color", "transparent");
+        document.getElementById('info-container').style.background = 'url('+img+')';
+        document.getElementById("message_au_destinataire").innerHTML = currentCard.message;
         $('#info-button-div .close.heavy, .vertical_info').addClass('changed');
     });
 
@@ -398,6 +413,7 @@ $(function()
         cardKeyboardEnabled = false;
         $(':input', '#message-form').not(':submit').val('');
         /*console.log("Je suis egal a "+$('#message-form input:hidden').val());*/
+        updateRenderCanvas();
         var dataURL = canvas3.toDataURL('image/png');
         $('#message-form form input[name=image]').val(dataURL);
         $('#canvas-capture, #message-form').show();

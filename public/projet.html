@@ -47,7 +47,7 @@
                             <canvas id="canvas2" class="canvas canvas-background"></canvas>
                             <canvas id="canvas3" class="canvas canvas-render"></canvas>
                             <div id="canvas-info">
-                                <div class="info-container">
+                                <div class="info-container" id="info-container">
                                         <div class="text-right">
                                             <div class="text-right-bkg"></div>
                                             <div class="exp">
@@ -58,7 +58,7 @@
                                             <div class="message">
                                                 <div class="text">
                                                     <h2>Voulait te dire . . .</h2>
-                                                    <p>Lucie Le Touze</br>1675 av. Bennett</p>
+                                                    <p id="message_au_destinataire"></p>
                                                 </div>
                                             </div>
                                         </div><!--
@@ -147,8 +147,12 @@
                         </div>
                     </div-->
                 </div>
-                <audio id="prout">
-                    <source src="/AnimusVoxTheGlitchMob.mp3" type="audio/mpeg">
+                <audio id="audio_ambiance"></audio>
+                <audio id="audio_sensorGlitch">
+                    <source src="/sound/sensor_glitch.mp3" type="audio/mp3">
+                </audio>
+                <audio id="audio_bckgGlitch">
+                    <source src="/sound/bckg_glitch2.mp3" type="audio/mp3">
                 </audio>
             </div>
         </div>
