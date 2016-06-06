@@ -5,88 +5,96 @@
 <!-- Inclure les fichiers externes-->
 <link type="text/css" rel="stylesheet" href="/css/style.css"/>
 <link type="text/css" rel="stylesheet" href="/css/font.css"/>
-<link href='https://fonts.googleapis.com/css?family=Domine|Montserrat+Alternates|VT323' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Asap:400,700|Amaranth:400,700|Biryani:400,200,700|Jaldi:400,700' rel='stylesheet' type='text/css'>
-
+<link href="/vendor/lightbox/css/lightbox.css" rel="stylesheet">
 </head>
 <body>
-    <div class='menu' id='recherche'>
+    <div class='menu' id='return'>
         <ul>
-            <li><a href="index.html">Amorce</a></li>
-            <li><a href="recherche.html">Recherche</a></li>
-            <li><a href='/cartes'>E-Archive</a></li>
-            <li><a href="projet.html">Projet</a></li>
+            <li><a href="index.html">retour</a></li>
         </ul>
     </div>
-    <div class='corps gallerie'>
-    <ul class="images">
-    <% for(var i=0; i < cards.length; i++) { %>
-       <li class="image">
-           <p><img src="/image/<%= cards[i]._id %>" /></p>
-           <span>
-               <h4><%= cards[i].name %></h4>
-               <p><%= cards[i].phrase %></p>
-            </span>
-       </li>
-       <li class="image">
-           <p><img src="/image/<%= cards[i]._id %>" /></p>
-           <span>
-               <h4><%= cards[i].name %></h4>
-               <p><%= cards[i].phrase %></p>
-            </span>
-       </li>
-       <li class="image">
-           <p><img src="/image/<%= cards[i]._id %>" /></p>
-           <span>
-               <h4><%= cards[i].name %></h4>
-               <p><%= cards[i].phrase %></p>
-            </span>
-       </li>
-    <% } %>
-    </ul>
-</div>
-    <style type="text/css">
-    .corps.gallerie{
-        position: absolute;
-        top: 50px;
-        text-align: center;
-        width: 100%;
-    }
-        .images {
-            position:static;
-            color:#000;
-            /*text-align: center;*/
-            max-width: inherit;
-            margin: 0 auto;
-        }
+    <div class="vertical_home vertical_home_left"><div class="line"></div>G<br>A<br>L<br>E<br>R<br>I<br>E</div>
+    <div class='corps' id='galerie'>
+        <div id="loading" class="loader">
+            <svg version="1.0" id="loaderSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
+                <style type="text/css">
+                .loaderPath{fill:none;stroke:#000;stroke-width:5;stroke-alignment:inner;stroke-miterlimit:0}
+                .st1{fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:10;}
+                </style>
+                    <path class="loaderPath" d="M119,0H0v92h15v25h15v26h14v25h15v28h23.1l22.4-30.2l6.6,7.2l17-20.8l29.6,43.8H178v-96h-15V74h-15V50h-14V23h-15V0L119,0z"/>
+            </svg>
+        <!--svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
+            <style type="text/css">
+            .st0{fill:#FFFFFF;}
+            .st1{fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:10;}
+            </style>
+            <g>
+            <polygon class="st0" points="163,100 163,74 148,74 148,50 134,50 134,23 119,23 119,0 0,0 0,92 15,92 15,117 30,117 30,143
+            44,143 44,168 59,168 59,196 81.1,196 103.5,166.3 11
+            0.1,173.8 127.1,152.6 156.6,196 178,196 178,100 	"/>
+                <g>
+                    <path class="st1" d="M119,0H0v92h15v25h15v26h14v25h15v28h23.1l22.4-30.2l6.6,7.2l17-20.8l29.6,43.8H178v-96h-15V74h-15V50h-14V23h-15V0L119,0
+                	z"/>
+                </g>
+            </g>
+        </svg-->
+        </div>
+        <div class="images-container"></div>
+        <div class="bottom-div">
+            <div id="loadLess">
+                <p style="opacity:0;"><a>moins</a></p>
+            </div>
+            <div class="vertical_line">
+                <div class="line"></div>
+            </div>
+            <div id="loadMore">
+                <p><a>plus</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/template" id="imagesTemplate">
+        <div class="images">
+            <ul class="ul-container"></ul>
+        </div>
+    </script>
+    <script type="text/template" id="imageTemplate">
+        <li class="image" data-id="<%= card._id %>">
+            <p><img src="/cards/<%= card._id %>.png" /></p>
+             <div class="image-info-container thumbnail">
+                 <a class="image-link" href="/cards/<%= card._id %>.png" data-lightbox="example-set<%= card._id %>" data-title="<%= card.name %>" data-description="<%= card.phrase %>" data-id="<%= card._id %>">
+                     <div class="message">
+                    <!--svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178 196"><title>loupe</title><path d="M158,150V127H136V104H119V26l-18,0,0.44-26H18V26H0v76H18v25H91v23h24v23h21v23h43V150H158Zm11,36H146V163H125V140H101V117H28V92H10V36H28V10H91.1L90.95,25.83l-0.1,10.1L101,36l8,0v78h17v23h22v23h21v26Z"/><polygon points="64 36 54 36 54 59 28 59 28 69 54 69 54 92 64 92 64 69 91 69 91 59 64 59 64 36"/></svg-->
+                    <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    	 viewBox="0 0 150.9 150.9" style="enable-background:new 0 0 150.9 150.9;" xml:space="preserve">
+                        <style type="text/css">
+                        	.st0{fill:none;stroke:#2e2e2e;/*stroke-miterlimit:10;*/stroke-width:4px}
+                        </style>
+                        <circle class="st0" cx="56.1" cy="56.1" r="55.6"/>
+                        <line class="st0" x1="95.7" y1="95.7" x2="150.5" y2="150.5"/>
+                        <g>
+                        	<line class="st0" x1="56" y1="33.8" x2="56" y2="78.8"/>
+                        	<line class="st0" x1="33.5" y1="56.3" x2="78.5" y2="56.3"/>
+                        </g>
+                    </svg>
+                             <!--div class="text">
+                                 <h4><%= card.name %></h4>
+                                 <p><%= card.phrase %></p>
+                             </div-->
+                     </div>
+                 </a>
+             </div>
+        </li>
+    </script>
+    <style type="stylesheet">
 
-        .images,.image {
-            list-style:none;
-        }
-
-        .image {
-            float:left;
-            width: 25%;
-            margin:5%;
-            padding: 25px;
-            background-color: #ffffff;
-        	-webkit-box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
-        	-moz-box-shadow: 0px 0px 33px 1px rgba(2234, 234, 234, 1);
-        	box-shadow: 0px 0px 33px 1px rgba(234, 234, 234, 1);
-        }
-        .image span{
-            top: 40px;
-            position: relative;
-            float:right;
-            width: 75%;
-            background-color: #fff;
-        }
-        .image h4{
-        }
-        img {
-            display:block;
-            width:100%;
-        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.min.js"></script>
+    <script src="/vendor/lightbox/js/lightbox.js"></script>
+    <script type="text/javascript" src="/script/utils.js"></script>
+    <script type="text/javascript" src="/script/images.js"></script>
 </body>
 </html>

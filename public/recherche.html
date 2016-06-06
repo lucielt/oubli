@@ -11,106 +11,25 @@
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body>
-    <div class='menu' id='recherche'>
+    <div class='menu' id='return'>
         <ul>
-          <li><a href="index.html">Amorce</a></li>
-          <li><a href="recherche.html">Recherche</a></li>
-          <li><a href='/cartes'>E-Archive</a></li>
-          <li><a href="projet.html">Projet</a></li>
+            <li><a href="index.html">retour</a></li>
         </ul>
     </div>
+    <div class="vertical_home vertical_home_left"><div class="line"></div>R<br>E<br>C<br>H<br>E<br>R<br>C<br>H<br>E</div>
     <div class='corps' id='search'>
-        <div class='content' id="content" onscroll="myFunction()">
-            <a name="0_0" class="anchor" id="0_0"></a>
+        <div class='container-content' id="content" onscroll="myFunction()">
+            <!--a name="0_0" class="anchor" id="0_0"></a-->
             <div class='container'>
-                <div class='paragraphe titre'>
-                    <h1>L'oub.li pixélisé</h1>
-                    <p>la carte postale soumise à l’accélération sociale</p>
-                </div>
-            </div>
-            <a name="1_0" class="anchor" id="1_0"></a>
-            <div class='container'>
-                <div class='paragraphe'>
-                    <h2>1.0 Intentions / Problématique</h2>
-                    <div class="s_paragraphe">
-                        <p class="quote">"</br>Si la technologie se souvient à notre place aurons-nous moins de souvenirs?"
-                        </br>Sherry Turkle
-                        </p>
-                            <img src="image/recherche/img_1_1.png" alt="img_intro"></img>
-                    </div>
-                    <div class="s_paragraphe">
-                        <p class="quote">"</br>lorsque l'on dépend de l'ordinateur pour se souvenir du passé, on  s'intéresse surtout au passé qui est conservé sur l'ordinateur, quel qu'il soit. </br>
-                            Et l'on apprend à préférer le passé qui est plus simple à retrouver."
-                        </br>Sherry Turkle
-                        </p>
-                        <p class="columns">
-                            <span class='bold'>Je fus de celles</span> qui envoyaient des cartes postales pendant leurs vacances, pour partager l’expérience vécu et faire savoir aux heureux élus que l’on pense à eux.</br>
-                            <span class='bold'>Je suis de celles</span> qui, cellulaires en poche, prennent des photos destinées soit à mourir au fond d’un disque dur, soit à être postées compulsivement sur différentes plateformes de partage. </br>
-                            <span class='bold'>José van Djick</span> est d’avis que “Like postcards, cameraphone pictures are meant to be thrown away after they are received” je pense au contraire que comme les cartes postales elles sont destinées à être conservées puis retrouvées par hasard ou non. </br>
-                            <span class='bold'>Je suis de celles</span> qui perdent des mois de fichiers dans les décès quasi simultanés de leurs disques durs et de leur ordinateur. Je compris ainsi que ces fichiers étaient bien plus que des cartes postales numériques.</br>
-                            Je les utilisaient en quelque sorte comme des aides mémoire de ce que j’avais fait, vu et vécu.</br>
-                            <span class='bold'>Ma mémoire</span> s’avéra cependant plus fiable que je ne le pensais soulignant ainsi la supercherie du mythe que les technologies numérales sont infaillibles et surtout pallient aux insuffisances de l’humain. Autrement dit je pris également conscience que les supports de mémoire numériques ne remplacent pas notre mémoire mais que s’ils la supportent, ils la redéfinissent également. Et qu’ils semblent à certains égards aussi éphémères sinon plus que les supports traditionnels comme le papier ou la pierre.
-                        </p>
-                    </div>
+                <video width="100%" height="100%" autoplay loop>
+                    <source src="/image/recherche/glitch_recherche.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video_masque">
+                    <p>Soyez patient</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class='gauche'>
-        <ul>
-            <li class="chapter" id=''><a href='#0_0'>0.0</a></li>
-            <li class="chapter" id='link1_0'><a href='#1_0'>1.0</a></li>
-            <li class="chapter" id=''><a href='#2_0'>2.0</a></li>
-            <li class="chapter" id=''><a href='#3_0'>3.0</a>
-                <ul>
-                    <li class="s_chapter" id=''><a href='#3_1'>3.1</a></li>
-                    <li class="s_chapter" id=''><a href='#3_2'>3.2</a></li>
-                    <li class="s_chapter" id=''><a href='#3_3'>3.3</a></li>
-                </ul>
-            </li>
-            <li class="chapter" id=''><a href='#4_0'>4.0</a>
-                <ul>
-                    <li class="s_chapter" id=''><a href='#4_1'>4.1</a></li>
-                    <li class="s_chapter" id=''><a href='#4_2'>4.2</a></li>
-                    <li class="s_chapter" id=''><a href='#4_3'>4.3</a></li>
-                </ul>
-            </li>
-            <li class="chapter" id=''><a href='#5_0'>5.0</a>
-                <ul>
-                    <li class="s_chapter" id=''><a href='#5_1'>5.1</a></li>
-                    <li class="s_chapter" id=''><a href='#5_2'>5.2</a></li>
-                    <li class="s_chapter" id=''><a href='#5_3'>5.3</a></li>
-                    <li class="s_chapter" id=''><a href='#5_4'>5.4</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="down">
-        <a href='#1_0'><p>&rsaquo;&rsaquo;</p></a>
-    </div>
-    <script>
-        var elmnt = document.getElementById("content");
-        var start = new Date().getTime();
-        var diff = new Date().getTime() - start;
-function myFunction() {
-    var y = elmnt.scrollTop;
-    var h = window.innerHeight;
-    console.log(h);
-    if (y > h){
-        console.log(y)
-        document.getElementById('1_0').click();
-    }
-}
-function disparu() {
-    start = new Date().getTime();
-    if(diff <5000){
-        elmnt.style.overflow = "hidden";
-    } else{
-        elmnt.style.overflow = "auto";
-    }
-
-
-}
-</script>
 </body>
 </html>

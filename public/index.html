@@ -20,64 +20,91 @@
         <li><a href="projet.html">Projet</a></li>
         </ul>
     </div-->
-    <div class='corps' id="amorce">
-        <div class='milieu'>
+    <div class="vertical_home vertical_home_left"><div class="line"></div>O<br>U<br>B<br>L<br>I</div>
 
+    <div class='corps'>
+        <canvas id="canvasGameOfLife" width="901" height="433"></canvas>
+        <div class='milieu'>
             <div class='menu-accueil'>
                 <ul>
                     <li class='accueil-forme'>
-                        <a href="index.html">
-                            <span class="what">Ce site web est présenté dans le cadre de la maitrise en recherche-création en média expérimental à l'UQAM</span>
-                            <span class="label">Amorce</span>
-                            <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 178 196.4" style="enable-background:new 0 0 178 196.4;" xml:space="preserve">
-                            <style type="text/css">
-                            .st0{fill:#FFFFFF;}
-                            </style>
-                            <path d="M61.2,0L0,39.2v103.2h19v13h21v14h21v13h20v14h97V73.8L61.2,0L61.2,0z M61.2,11.9L168,79.4v107.1H91v-4.4v-9.6H80.8H71v-3.3
-                            v-9.7H60.9H50v-4.2v-9.8H39.9H29v-3.2v-9.8H19h-9V44.7L61.2,11.9"/>
+                        <a href="about.html">
+                            <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178 196.21">
+                                <title>formes</title>
+                                <style type="text/css">
+                                    /*.st0{fill:#FFFFFF;}*/
+                                    .st0{fill:#7BFFC3;}
+                                    .st1{fill:url(#MyGradient);}
+                                </style>
+                                <defs>
+                                    <linearGradient id="MyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="5%" stop-color="#e2e2e2" />
+                                        <stop offset="95%" stop-color="#f2f2f2" />
+                                    </linearGradient>
+                                </defs>
+                                <g>
+                                <path d="M61.23,11.64L168,79.14V186H91V172H71V159H50V145H29V132H10V44.46L61.23,11.64m0-11.85L0,39V142H19v13H40v14H61v13H81v14h97V73.63L61.2-.21h0Z" transform="translate(0 0.21)"/>
+                                </g>
+                                <g>
+                                <polyline class="st1" points="61.23 11.93 168 79.43 168 186.21 91 186.21 91 182.13 91 172.21 80.85 172.21 71 172.21 71 169.19 71 159.21 60.89 159.21 50 159.21 50 155.25 50 145.21 39.92 145.21 29 145.21 29 142.31 29 132.21 18.96 132.21 10 132.21 10 44.74 61.23 11.93"/>
+                                </g>
                             </svg>
+                            <span class="what">Ce site web est présenté dans le cadre de la maitrise en recherche-création en média expérimental à l'UQAM</span>
+                            <span class="label">Qui? Quoi?</span>
                         </a>
                     </li>
                     <li class='recherche-forme'>
                         <a href="recherche.html">
-                            <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <svg version="1.0" id="Calque_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
                                 <style type="text/css">
                                     /*.st0{fill:#FFFFFF;}*/
                                     .st0{fill:#7BFFC3;}
+                                    .st1{fill:url(#MyGradient);}
                                 </style>
+                                <defs>
+                                    <linearGradient id="MyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="5%" stop-color="#e2e2e2" />
+                                        <stop offset="95%" stop-color="#f2f2f2" />
+                                    </linearGradient>
+                                </defs>
                                 <g>
                                     <path d="M92.6,10v8.6v10h10h8.8v7.1v10h10h8.8v7.6v10h10h8.8v7.6v10h10h8.8V186H85.4v-7.6v-10h-10h-8.8v-7.6v-10h-10h-8.8v-7.6v-10
                                     h-10h-8.8v-7.6v-10h-10H10V10H92.6 M102.6,0H0v125.8h18.8v17.6h18.8v17.6h18.8v17.6h18.8V196H178V70.8h-18.8V53.3h-18.8V35.7h-18.8
                                     V18.6h-18.8V0L102.6,0z"/>
                                 </g>
                                 <g>
-                                    <polyline class="st0" points="92.6,10 92.6,18.6 92.6,28.6 102.6,28.6 111.4,28.6 111.4,35.7 111.4,45.7 121.4,45.7 130.2,45.7
+                                    <polyline class="st1" points="92.6,10 92.6,18.6 92.6,28.6 102.6,28.6 111.4,28.6 111.4,35.7 111.4,45.7 121.4,45.7 130.2,45.7
                                     130.2,53.3 130.2,63.3 140.2,63.3 149,63.3 149,70.9 149,80.9 159,80.9 167.8,80.9 167.8,186 85.4,186 85.4,178.4 85.4,168.4
                                     75.4,168.4 66.6,168.4 66.6,160.8 66.6,150.8 56.6,150.8 47.8,150.8 47.8,143.2 47.8,133.2 37.8,133.2 29,133.2 29,125.6 29,115.6
                                     19,115.6 10,115.6 10,10 92.6,10 	"/>
                                 </g>
                             </svg>
                             <span class="what">Recherche sur les motivations d'extinction de l'oubli et tentative de démonstration que la digitalisation n'y parvient pas</span>
-                            <span class="label">Recherche</span>
+                            <span class="label">Comment?</span>
                         </a>
                     </li>
-                </ul>
-                <ul>
+                <!--/ul>
+                <ul-->
                     <li class='galerie-forme'>
-                        <a href="/cartes">
-                            <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
-                                <style type="text/css">
-                                    .st0{fill:#FFFFFF;}
-                                </style>
+                        <a href="/images.html">
+                            <svg id="Calque_3" data-name="Calque 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178 196">
+                            <style type="text/css">
+                                /*.st0{fill:#FFFFFF;}*/
+                                .st0{fill:#7BFFC3;}
+                                .st1{fill:url(#MyGradient);}
+                            </style>
+                            <defs>
+                                <linearGradient id="MyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="5%" stop-color="#e2e2e2" />
+                                    <stop offset="95%" stop-color="#f2f2f2" />
+                                </linearGradient>
+                            </defs>
                                 <g>
-                                    <!--polygon class="st0" points="159.3,191 127.4,144.2 109.9,166 103.2,158.5 78.6,191 64,191 64,163 49,163 49,138 35,138 35,112
-                                    20,112 20,87 5,87 5,5 114,5 114,28 129,28 129,55 143,55 143,79 158,79 158,105 173,105 173,191 	"/-->
-                                    <path d="M109,10v13v10h9.8h5.2v17.5V60h9.6h4.4v14.1V84h10.4h4.6v15.8V110h10.2h4.8v76h-6.1l-26.6-39.1l-7.6-11.2l-8.4,10.5
-                                    l-9.5,11.9l-6.8-7.8l-7.4,9.9L76.1,186H69v-17.7V158h-9.7H54v-15.3V133h-9.5H40v-16v-10H29.7H25V91.5V82H14.9H10V10H109 M119,0H0
-                                    v92h15v25h15v26h14v25h15v28h22.1l22.4-29.7l6.6,7.5l17-21.2l29.6,43.4H178v-96h-15V74h-15V50h-14V23h-15V0L119,0z"/>
+                                    <path d="M109,11V34h15V61h14V85h15v26h15v76h-6.08l-26.59-39.06L127.7,136.7l-8.44,10.53-9.53,11.92-6.79-7.79-7.42,9.93L76.13,187H69V159H54V134H40V108H25V83H10V11h99M119,1H0V93H15v25H30v26H44v25H59v28H81.1l22.38-29.67,6.58,7.47,17-21.19L156.64,197H178V101H163V75H148V51H134V24H119V1h0Z" transform="translate(0 -1)"/>
+                                </g>
+                                <g>
+                                    <polyline class="st1" points="109 10 109 22.96 109 33 118.79 33 124 33 124 50.46 124 60 133.6 60 138 60 138 74.11 138 84 148.42 84 153 84 153 99.76 153 110 163.23 110 168 110 168 186 161.92 186 135.33 146.94 127.7 135.7 119.26 146.24 109.72 158.15 102.94 150.37 95.51 160.3 76.13 186 69 186 69 168.31 69 158 59.29 158 54 158 54 142.66 54 133 44.48 133 40 133 40 117.02 40 107 29.66 107 25 107 25 91.51 25 82 14.85 82 10 82 10 10 109 10"/>
                                 </g>
                             </svg>
                             <span class="what">Espace évolutif de l'archivage en ligne de la dégradation des souvenirs des uagers ayant vécu l'expérience</span>
@@ -86,29 +113,41 @@
                     </li>
                     <li class='experience-forme'>
                         <a href="projet.html">
-                            <span class="what">Projet de création associé à la recherche sur les formes d'oublis numérique. </span>
-                            <span class="label">Projet</span>
-                            <svg version="1.0" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 178 196" style="enable-background:new 0 0 178 196;" xml:space="preserve">
+                            <svg id="Calque_4" data-name="Calque 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178 196">
+                                <style type="text/css">
+                                    /*.st0{fill:#FFFFFF;}*/
+                                    .st0{fill:#7BFFC3;}
+                                    .st1{fill:url(#MyGradient);}
+                                </style>
+                                <defs>
+                                <linearGradient id="MyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="5%" stop-color="#e2e2e2" />
+                                    <stop offset="95%" stop-color="#f2f2f2" />
+                                    </linearGradient>
+                                </defs>
                                 <g>
-                                    <path d="M71,10v15v10h10h25v17v10h10h25v19v10h10h17v51h-17h-10v10v34h-25v-34v-10h-10H10V10H71 M81,0H0v152h106v44h45v-44h27V81
-                                    h-27V52h-35V25H81V0L81,0z"/>
+                                    <path d="M67,10V35h43V62h23V91h35v50.65l-23.15.35-9.85.15V186H110V142H10V10H67M77,0H0V152H100v44h45V152l33-.5V81H143V52H120V25H77V0h0Z"/>
+                                </g>
+                                <g>
+                                    <polyline class="st1" points="67 10 67 25 67 35 77 35 110 35 110 52 110 62 120 62 133 62 133 81 133 91 143 91 168 91 168 141.65 144.85 142 135 142.15 135 152 135 186 110 186 110 152 110 142 100 142 10 142 10 10 67 10"/>
                                 </g>
                             </svg>
+                            <span class="what">Projet de création associé à la recherche sur les formes d'oublis numérique. </span>
+                            <span class="label">Projet</span>
                         </a>
                     </li>
                 </ul>
-                <div class="accueil">
+                <!--div class="accueil">
                     <h1><a href="">L'oub.li
                         <div class='rect-bas'></div>
                         </a>
                     </h1>
-                </div>
+                </div-->
             </div>
 
         </div>
     </div>
-    <canvas id="canvasGameOfLife" width="901" height="433"></canvas>
+    <!--canvas id="canvasGameOfLife" width="901" height="433"></canvas-->
 <script>
 $('.what').hover(function() {
         if ($(this).hover){

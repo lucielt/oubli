@@ -1,33 +1,171 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>L'oubli - projet</title>
-<!-- Inclure les fichiers externes-->
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<link type="text/css" rel="stylesheet" href="/css/style.css"/>
 
+<head>
+    <title>L'oubli - projet</title>
+    <!-- Inclure les fichiers externes-->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/css/font.css" />
+    <script src="https://use.typekit.net/zur6qxn.js"></script>
+    <script>
+        try {
+            Typekit.load({
+                async: true
+            });
+        } catch (e) {}
+    </script>
 </head>
+
 <body>
-    <div class='menu' id='projet'>
-        <div class="one"></div>
-        <div class="two"></div>
+    <div class='menu' id='return'>
         <ul>
-            <li><a href="index.html">Amorce</a></li>
-            <li><a href="recherche.html">Recherche</a></li>
-            <li><a href='/cartes'>E-Archive</a></li>
-            <li><a href="projet.html">Projet</a></li>
+            <li><a href="index.html">retour</a></li>
         </ul>
     </div>
-    <canvas id="canvas"></canvas>
-    <canvas id="canvas2"></canvas>
-    <audio id="prout">
-        <source src="/AnimusVoxTheGlitchMob.mp3" type="audio/mpeg">
-    </audio>
+    <div class="vertical_home vertical_home_left">
+        <div class="line"></div>
+        P<br>R<br>O<br>J<br>E<br>T
+    </div>
+    <!--div class='corps' id='corps-projet'-->
+    <div class='corps'>
+        <div class='milieu'>
+            <div class='menu-accueil'>
+                <div class='canvas-right'>
+                </div><!--
+                --><div class="canvas-wrapper">
+                    <div class="identify">
+                        <form class="identifyUser">
+                            <p>Entrer votre numéro de carte </p>
+                            <p><input type="text" name="idUser"/></p>
+                            <button type="submit" style="display:none;"></button>
+                        </form>
+                    </div>
+                    <div class="canvas-subwrapper">
+                        <!--div class="sub-canvas-wrapper"-->
+                            <canvas id="canvas" class="canvas canvas-mask"></canvas>
+                            <canvas id="canvas2" class="canvas canvas-background"></canvas>
+                            <canvas id="canvas3" class="canvas canvas-render"></canvas>
+                            <div id="canvas-info">
+                                <div class="info-container" id="info-container">
+                                        <div class="text-right">
+                                            <div class="text-right-bkg"></div>
+                                            <div class="exp">
+                                                <div class="text">
+                                                    <p>Lucie L.T.</p>
+                                                </div>
+                                            </div>
+                                            <div class="message">
+                                                <div class="text">
+                                                    <h2>Voulait te dire . . .</h2>
+                                                    <p id="message_au_destinataire"></p>
+                                                </div>
+                                            </div>
+                                        </div><!--
+                                        --><div class="image-left">
+                                        </div>
+                                </div>
+                            </div>
+                            <div id="canvas-capture">
+                                <div class="info-container">
+                                    <div class="text-right">
+                                        <div class="text-right-bkg"></div>
+                                        <div class="exp" id="message-save">
+                                            <div class="text">
+                                                <h2>Super</h2>
+                                                <p>
+                                                Cette capture est sauvée et partagée dans la galerie
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="message" id="message-form">
+                                            <form action="/cards" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="image"/>
+                                                <p>Nom: </br>
+                                                <input type="text" name="name"/></p>
+                                                <p>Phrase: </p>
+                                                <p><input type="text" name="phrase"/></p>
+                                                <p><input type="submit" value="Sauvegarder"/></p>
+                                            </form>
+                                        </div>
+                                    </div><!--
+                                    --><div class="image-left">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="capture" id="capture-button-div">
+                                <div class="vertical_capture">
+                                    <div class="line canvas-line"></div>
+                                    <a id="capture-button">
+                                        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 130 135" style="enable-background:new 0 0 130 135;" class="camera-icon" xml:space="preserve">
+                                            <style type="text/css">
+                                            .st0{fill:#FFFFFF;
+                                                  animation-name: fill;
+                                                  animation-duration: 3s;
+                                                  animation-iteration-count: 1
+                                            }
+                                            </style>
+                                            <rect x="10" y="30" class="st0" width="110" height="95"/>
+                                            <path d="M0,20v115h130V20H0z M120,125H10V30h110V125z"/>
+                                            <g>
+                                            <path class="camera-lens" d="M64.4,40.6c-20.4,0-36.9,16.5-36.9,36.9s16.5,36.9,36.9,36.9s36.9-16.5,36.9-36.9S84.7,40.6,64.4,40.6z M64.4,104.9
+                                            c-15.2,0-27.5-12.3-27.5-27.5S49.2,50,64.4,50s27.5,12.3,27.5,27.5S79.5,104.9,64.4,104.9z"/>
+                                            <path d="M64.4,58c-10.7,0-19.5,8.7-19.5,19.5s8.7,19.5,19.5,19.5s19.5-8.7,19.5-19.5S75.1,58,64.4,58z M57.9,75.2
+                                            c-2.5,0-4.6-2.1-4.6-4.6s2.1-4.6,4.6-4.6c2.5,0,4.6,2.1,4.6,4.6S60.4,75.2,57.9,75.2z M64.8,81.4c-1.3,0-2.3-1-2.3-2.3
+                                            s1-2.3,2.3-2.3c1.3,0,2.3,1,2.3,2.3S66,81.4,64.8,81.4z"/>
+                                            </g>
+                                            <path d="M45,0v30h40V0H45z M75,20H55V10h20V20z"/>
+                                            <g>
+                                            <circle class="st0" cx="57.5" cy="70.5" r="4.5"/>
+                                            <circle class="st0" cx="65" cy="79" r="2"/>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <span class="close heavy pointy" id="close-capture"></span>
+                            </div>
+                            <div class="info" id="info-button-div">
+                                <span class="close heavy pointy" id="close-info"></span>
+                                <div class="vertical_info">
+                                    <div class="line canvas-line"></div><a id="info-button">info</a>
+                                </div>
+                            </div>
+                        </div>
+                </div><!--
+                --><div class='canvas-left'>
+                    <!--div class='expeditor'>
+                        <div class="text">
+                            <h2>De :</h2>
+                            <p>Lucie Le Touze</br>1675 av. Bennett</p>
+                        </div>
+                    </div>
+                    <div class='recipient'>
+                        <div class="text">
+                            <h2>À :</h2>
+                            <p>Louis-Claude Paquin</br>paquin.louis-claude@uqam.ca</p>
+                        </div>
+                    </div-->
+                </div>
+                <audio id="audio_ambiance"></audio>
+                <audio id="audio_sensorGlitch">
+                    <source src="/sound/sensor_glitch.mp3" type="audio/mp3">
+                </audio>
+                <audio id="audio_bckgGlitch">
+                    <source src="/sound/bckg_glitch2.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.min.js"></script>
+    <script src="/script/json-sans-eval.js"></script>
+    <script type="text/javascript" src="/script/codes.js"></script>
+    <script type="text/javascript" src="/script/utils.js"></script>
+    <script type="text/javascript" src="/script/projet.js"></script>
+    <script>
 
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="/indexScript.js"></script>
+    <!-- src="/script/main.js"></script-->
 </body>
+
 </html>
