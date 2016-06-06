@@ -1,6 +1,6 @@
 var cards = [{
 
-    idInit:'louis-claude0000',
+    idInit:'lcpaquin000000',
     bckg: '/image/cartes/louis_claude.png',
     masque: '/image/cartes/louis_claude_masque.png',
     sound:'/sound/Earl16_FreeTheWorld.mp3',
@@ -8,8 +8,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 486,
+        centerY: 305,
         width: 10,
         height: 10,
         pas: 20,
@@ -19,8 +19,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 57,
+        centerY: 30,
         width: 10,
         height: 10,
         pas: 20,
@@ -30,8 +30,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 86,
+        centerY: 343,
         width: 10,
         height: 10,
         pas: 30,
@@ -41,8 +41,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 277,
+        centerY: 244,
         width: 10,
         height: 10,
         pas: 40,
@@ -52,8 +52,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 405,
+        centerY: 29,
         width: 10,
         height: 10,
         pas: 50,
@@ -63,7 +63,7 @@ var cards = [{
     }, ]
 }, {
 
-    idInit:'danny0001',
+    idInit:'dbeaupre000001',
     bckg: '/image/cartes/danny.png',
     masque: '/image/cartes/danny_masque.png',
     sound:'/sound/Earl16_FreeTheWorld.mp3',
@@ -71,8 +71,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 475,
+        centerY: 295,
         width: 10,
         height: 10,
         pas: 20,
@@ -82,8 +82,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 250,
+        centerY: 238,
         width: 10,
         height: 10,
         pas: 20,
@@ -93,8 +93,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 170,
+        centerY: 120,
         width: 10,
         height: 10,
         pas: 30,
@@ -104,8 +104,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 395,
+        centerY: 85,
         width: 10,
         height: 10,
         pas: 40,
@@ -115,8 +115,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 215,
+        centerY: 380,
         width: 10,
         height: 10,
         pas: 50,
@@ -127,7 +127,7 @@ var cards = [{
 
 }, {
 
-    idInit:'adrien0002',
+    idInit:'adrien000002',
     bckg: '/image/cartes/adrien.png',
     masque: '/image/cartes/adrien_masque.png',
     sound:'/sound/Earl16_FreeTheWorld.mp3',
@@ -135,8 +135,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 370,
+        centerY: 175,
         width: 10,
         height: 10,
         pas: 20,
@@ -146,8 +146,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 175,
+        centerY: 375,
         width: 10,
         height: 10,
         pas: 20,
@@ -157,8 +157,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 5,
+        centerY: 175,
         width: 10,
         height: 10,
         pas: 30,
@@ -168,8 +168,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 575,
+        centerY: 85,
         width: 10,
         height: 10,
         pas: 40,
@@ -179,8 +179,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 184,
+        centerY: 230,
         width: 10,
         height: 10,
         pas: 50,
@@ -190,7 +190,7 @@ var cards = [{
     }, ]
 }, {
 
-    idInit:'parents0003',
+    idInit:'letouze000003',
     bckg: '/image/cartes/mum_et_dad.png',
     masque: '/image/cartes/mum_et_dad_masque.png',
     sound:'/sound/TracyChapman_Change.mp3',
@@ -254,7 +254,7 @@ var cards = [{
 
 }, {
 
-    idInit:'smoomoo0004',
+    idInit:'smoomoo000004',
     bckg: '/image/cartes/david.png',
     masque: '/image/cartes/david_masque.png',
     sound:'/sound/TheGrowlers_LivingInAMemory.mp3',
@@ -262,8 +262,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 364,
+        centerY: 220,
         width: 10,
         height: 10,
         pas: 20,
@@ -273,8 +273,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 76,
+        centerY: 60,
         width: 10,
         height: 10,
         pas: 20,
@@ -284,8 +284,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 542,
+        centerY: 102,
         width: 10,
         height: 10,
         pas: 30,
@@ -295,8 +295,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 402,
+        centerY: 350,
         width: 10,
         height: 10,
         pas: 40,
@@ -306,8 +306,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 102,
+        centerY: 296,
         width: 10,
         height: 10,
         pas: 50,
@@ -318,7 +318,7 @@ var cards = [{
 
 }, {
 
-    idInit:'cynthia0005',
+    idInit:'cynthia000005',
     bckg: '/image/cartes/cynthia.png',
     masque: '/image/cartes/cynthia_masque.png',
     sound:'/sound/Marilou_JeSeraiLaPourToi.mp3',
@@ -326,8 +326,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 205,
+        centerY: 375,
         width: 10,
         height: 10,
         pas: 20,
@@ -337,8 +337,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 550,
+        centerY: 360,
         width: 10,
         height: 10,
         pas: 20,
@@ -348,8 +348,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 5,
+        centerY: 215,
         width: 10,
         height: 10,
         pas: 30,
@@ -359,8 +359,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 362,
+        centerY: 235,
         width: 10,
         height: 10,
         pas: 40,
@@ -370,8 +370,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 220,
+        centerY: 90,
         width: 10,
         height: 10,
         pas: 50,
@@ -382,7 +382,7 @@ var cards = [{
 
 }, {
 
-    idInit:'lulu0006',
+    idInit:'lulu000006',
     bckg: '/image/cartes/lulu.png',
     masque: '/image/cartes/lulu_masque.png',
     sound:'/sound/FirstAidKit_MySilverLining.mp3',
@@ -390,8 +390,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 469,
+        centerY: 286,
         width: 10,
         height: 10,
         pas: 20,
@@ -401,8 +401,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 160,
+        centerY: 19,
         width: 10,
         height: 10,
         pas: 20,
@@ -412,8 +412,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 15,
+        centerY: 362,
         width: 10,
         height: 10,
         pas: 30,
@@ -423,8 +423,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 365,
+        centerY: 154,
         width: 10,
         height: 10,
         pas: 40,
@@ -434,8 +434,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 230,
+        centerY: 290,
         width: 10,
         height: 10,
         pas: 50,
@@ -446,7 +446,7 @@ var cards = [{
 
 }, {
 
-    idInit:'xuan0007',
+    idInit:'xuan000007',
     bckg: '/image/cartes/xuan.png',
     masque: '/image/cartes/xuan_masque.png',
     sound:'/sound/TracyChapman_ThinkingOfYou.mp3',
@@ -454,8 +454,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 260,
+        centerY: 118,
         width: 10,
         height: 10,
         pas: 20,
@@ -465,8 +465,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 455,
+        centerY: 369,
         width: 10,
         height: 10,
         pas: 20,
@@ -476,8 +476,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 427,
+        centerY: 144,
         width: 10,
         height: 10,
         pas: 30,
@@ -487,8 +487,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 72,
+        centerY: 52,
         width: 10,
         height: 10,
         pas: 40,
@@ -498,8 +498,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 109,
+        centerY: 328,
         width: 10,
         height: 10,
         pas: 50,
@@ -510,7 +510,7 @@ var cards = [{
 
 }, {
 
-    idInit:'noemie0008',
+    idInit:'noemie000008',
     bckg: '/image/cartes/noemie.png',
     masque: '/image/cartes/noemie_masque.png',
     sound:'/sound/VonPaulKalkbrenner_Aaron.mp3',
@@ -518,8 +518,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 473,
+        centerY: 334,
         width: 10,
         height: 10,
         pas: 20,
@@ -529,8 +529,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 109,
+        centerY: 18,
         width: 10,
         height: 10,
         pas: 20,
@@ -540,8 +540,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 70,
+        centerY: 112,
         width: 10,
         height: 10,
         pas: 30,
@@ -551,8 +551,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 106,
+        centerY: 195,
         width: 10,
         height: 10,
         pas: 40,
@@ -562,8 +562,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 146,
+        centerY: 345,
         width: 10,
         height: 10,
         pas: 50,
@@ -574,7 +574,7 @@ var cards = [{
 
 }, {
 
-    idInit:'louis0009',
+    idInit:'louis000009',
     bckg: '/image/cartes/louis.png',
     masque: '/image/cartes/louis_masque.png',
     sound:'/sound/PatrickZabe_AgadouDouDou.mp3',
@@ -582,8 +582,8 @@ var cards = [{
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 0,
-        centerY: 250,
+        centerX: 504,
+        centerY: 216,
         width: 10,
         height: 10,
         pas: 20,
@@ -593,8 +593,8 @@ var cards = [{
     }, {
         data: '1',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 186,
-        centerY: 86,
+        centerX: 22,
+        centerY: 347,
         width: 10,
         height: 10,
         pas: 20,
@@ -604,8 +604,8 @@ var cards = [{
     }, {
         data: '2',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 437,
-        centerY: 85,
+        centerX: 87,
+        centerY: 12,
         width: 10,
         height: 10,
         pas: 30,
@@ -615,8 +615,8 @@ var cards = [{
     }, {
         data: '3',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 475,
-        centerY: 267,
+        centerX: 354,
+        centerY: 235,
         width: 10,
         height: 10,
         pas: 40,
@@ -626,8 +626,8 @@ var cards = [{
     }, {
         data: '4',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
-        centerX: 234,
-        centerY: 349,
+        centerX: 225,
+        centerY: 249,
         width: 10,
         height: 10,
         pas: 50,

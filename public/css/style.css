@@ -1006,7 +1006,14 @@ transform: translate(-50%, -50%);
     font-size: 1em;
     letter-spacing: 2px;
 }
-.about_video_masque p{
+.logo{
+    bottom: 0px;
+    position: absolute;
+    margin: auto;
+    height: 10%;
+    width: 90%;
+}
+.logo p{
     position: absolute;
     bottom: 0;
     line-height: 1.5;
@@ -1017,7 +1024,12 @@ transform: translate(-50%, -50%);
     width: 100%;
     letter-spacing: 2px;
 }
-
+.logo img{
+    display: block;
+    height: auto;
+    width: 20%;
+    margin: auto;
+}
 .container-content{
     /*padding: 25px;*/
 width: 100%;
