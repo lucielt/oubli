@@ -3,8 +3,8 @@ var cards = [{
     idInit:'lcpaquin000000',
     bckg: '/image/cartes/louis_claude.png',
     masque: '/image/cartes/louis_claude_masque.png',
-    sound:'/sound/Earl16_FreeTheWorld.mp3',
-    message: 'merci d avoir ete le directio',
+    sound:'/sound/SeniorLiving_Röyksopp.mp3',
+    message: 'merci d\'avoir ete le directeur',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -66,7 +66,7 @@ var cards = [{
     idInit:'dbeaupre000001',
     bckg: '/image/cartes/danny.png',
     masque: '/image/cartes/danny_masque.png',
-    sound:'/sound/Earl16_FreeTheWorld.mp3',
+    sound:'/sound/SeniorLiving_Röyksopp.mp3',
     message: 'Merci pour tes conseils et ton enthousiasme face au projet',
     sensors : [{
         data: '0',
@@ -131,7 +131,7 @@ var cards = [{
     bckg: '/image/cartes/adrien.png',
     masque: '/image/cartes/adrien_masque.png',
     sound:'/sound/Earl16_FreeTheWorld.mp3',
-    message: 'qu elle pense fort à toi qu elle te fait de gros bisous ainsi qu a Candice',
+    message: 'qu\'elle pense fort à toi qu\'elle te fait de gros bisous ainsi qu\'à Candice',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -194,7 +194,7 @@ var cards = [{
     bckg: '/image/cartes/mum_et_dad.png',
     masque: '/image/cartes/mum_et_dad_masque.png',
     sound:'/sound/TracyChapman_Change.mp3',
-    message: 'que vous lui manquez et qu elle vous aime fort',
+    message: 'que vous lui manquez et qu\'elle vous aime fort',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -258,7 +258,7 @@ var cards = [{
     bckg: '/image/cartes/david.png',
     masque: '/image/cartes/david_masque.png',
     sound:'/sound/TheGrowlers_LivingInAMemory.mp3',
-    message: 'qu elle t aime, qu elle te remercie d avoir confiance en elle et de la supporter meme si elle est insupportable',
+    message: 'qu\'elle t aime, qu\'elle te remercie d\'avoir confiance en elle et de la supporter meme si elle est insupportable',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -322,7 +322,7 @@ var cards = [{
     bckg: '/image/cartes/cynthia.png',
     masque: '/image/cartes/cynthia_masque.png',
     sound:'/sound/Marilou_JeSeraiLaPourToi.mp3',
-    message: 'que tu es la plus chouette des amies qui a toujours les mots qu il faut',
+    message: 'que tu es la plus chouette des amies qui a toujours les mots qu\'il faut',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -386,7 +386,7 @@ var cards = [{
     bckg: '/image/cartes/lulu.png',
     masque: '/image/cartes/lulu_masque.png',
     sound:'/sound/FirstAidKit_MySilverLining.mp3',
-    message: 'qu elle est contente d etre ton amie et que geraldine (la plante cadeau) va bien',
+    message: 'qu\'elle est contente d\'etre ton amie et que géraldine (la plante cadeau) va bien',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -450,7 +450,7 @@ var cards = [{
     bckg: '/image/cartes/xuan.png',
     masque: '/image/cartes/xuan_masque.png',
     sound:'/sound/TracyChapman_ThinkingOfYou.mp3',
-    message: 'que tu lui manques et qu elle sait que peut etre tu ne comprendras pas tout mais que tu ferras des efforts parce que c est son projet de mémoire :)',
+    message: 'que tu lui manques et qu\'elle sait que peut etre tu ne comprendras pas tout mais que tu ferras des efforts parce que c\'est son projet de mémoire :)',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -514,7 +514,7 @@ var cards = [{
     bckg: '/image/cartes/noemie.png',
     masque: '/image/cartes/noemie_masque.png',
     sound:'/sound/VonPaulKalkbrenner_Aaron.mp3',
-    message: 'qu elle a hate de te recvoir et que tu dois la contacter pour lui proposer une date pour aller boire un verre ou manger de quoi :)',
+    message: 'qu\'elle a hate de te recvoir et que tu dois la contacter pour lui proposer une date pour aller boire un verre ou manger de quoi :)',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],
@@ -578,7 +578,7 @@ var cards = [{
     bckg: '/image/cartes/louis.png',
     masque: '/image/cartes/louis_masque.png',
     sound:'/sound/PatrickZabe_AgadouDouDou.mp3',
-    message: 'qu elle sait que tu es son ami puis que ca lui fait fucking plaisir',
+    message: 'qu\'elle sait que tu es son ami puis que ca lui fait fucking plaisir',
     sensors : [{
         data: '0',
         color: ['#FDF2FF', '#FFF2F2', '#EFEDFC', '#F2FFEA', '#F2FFFE', '#FCFCE9'],

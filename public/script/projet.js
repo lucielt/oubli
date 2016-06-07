@@ -1,6 +1,6 @@
 var currentCard;
 
-var UPDATE_SENSOR_THROTTLE_DELAY = 100;
+var UPDATE_SENSOR_THROTTLE_DELAY = 50;
 var SAVE_SNAPSHOT_THROTTLE_DELAY = 5000;
 var GLITCH_DELAY = 10000;
 var AUDIO_SENSORGLITCH_DELAY = 500;
@@ -145,7 +145,7 @@ function updateRenderCanvas()
 
     if(!firstRender)
     {
-        //saveSnapshotThrottled();
+        saveSnapshotThrottled();
     }
     firstRender = false;
 }
