@@ -3,7 +3,7 @@ var cards = [{
     idInit:'lcpaquin000000',
     bckg: '/image/cartes/louis_claude.png',
     masque: '/image/cartes/louis_claude_masque.png',
-    sound:'/sound/SeniorLiving_Röyksopp.mp3',
+    sound:'/sound/SeniorLiving_Royksopp.mp3',
     message: 'merci d\'avoir ete le directeur',
     sensors : [{
         data: '0',
@@ -66,7 +66,7 @@ var cards = [{
     idInit:'dbeaupre000001',
     bckg: '/image/cartes/danny.png',
     masque: '/image/cartes/danny_masque.png',
-    sound:'/sound/SeniorLiving_Röyksopp.mp3',
+    sound:'/sound/SeniorLiving_Royksopp.mp3',
     message: 'Merci pour tes conseils et ton enthousiasme face au projet',
     sensors : [{
         data: '0',
