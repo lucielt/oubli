@@ -104,15 +104,18 @@ var switchPage = function ()
     {
         var loadingCount = $imagesPage.find('img').length;
         var loadedCount = 0;
-        $imagesPage.find('img').on('load', function()
+        var imageLoaded = function()
         {
+            console.log("images trouvées");
             loadedCount++;
             if(loadingCount === loadedCount)
             {
                 pagesImagesLoaded[pageIndex] = true;
                 timeline.play();
             }
-        });
+        };
+        $imagesPage.find('img').on('load', imageLoaded);
+        $imagesPage.find('img').on('error', imageLoaded);
     }
     else
     {
