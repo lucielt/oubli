@@ -30,7 +30,10 @@ app.use('/', router);
 
 //MongoDB
 var mongoose = require('mongoose');
-mongoose.connect(Config.mongodb);
+mongoose.Promise = require('bluebird');
+mongoose.connect(Config.mongodb, {
+    useMongoClient: true
+});
 
 //Créer ton modèle de donnée
 var Card = mongoose.model('Card', {
